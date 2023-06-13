@@ -7,25 +7,17 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import TuneIcon from '@mui/icons-material/Tune';
-import PropsListingPage from '../PropsListingPage';
+import PropsListingPage from '../Dashboard';
 import { jsonData } from '../Json';
+import { SharedLayoutStyle } from "./style";
+import theme from "../ThemeProvider/index.jsx";
+import SideBar from "../SideBar/index.jsx";
 
 function SharedLayout() {
   const productArray = jsonData;
-  const theme = createTheme({
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 600,
-        md: 900,
-        lg: 1200,
-        xl: 1536,
-      },
-    },
-  });
 
   const isMdScreen = useMediaQuery(theme.breakpoints.down('lg'));
-
+  const classes = SharedLayoutStyle();
 
   const [open, setOpen] = useState(false);
   const [anchorPosition, setAnchorPosition] = useState({ top: 0, left: 0 });
@@ -92,44 +84,10 @@ function SharedLayout() {
   return (
     <>
     <ThemeProvider theme={theme}>
-      <Container>
+      <Container >
         <AppHeader />
-
-        {/* <div sx={{ display: 'flex', flexDirection: 'column', margin: 0, padding: 0 }}>
-
-          <Container sx={{ flexGrow: 1, minHeight: '70vh', mt: 14, mb: 10 }}>
-            <Grid container spacing={5}>
-
-              {isMdScreen ? (
-                <>
-                  <Fab size="small" color="primary" sx={{ position: 'fixed', bottom: '20px', right: '20px' }}
-                    onClick={handleClick}>
-                    <TuneIcon />
-                  </Fab>
-                  <Popover
-                    id={"simple-popover"}
-                    open={open}
-                    onClose={handleClose}
-                    anchorReference="anchorPosition"
-                    anchorPosition={anchorPosition}
-                  >
-                    Hello world mobile
-                  </Popover>
-                </>
-              ) : (
-                <Grid item lg={3} >
-                  Hello world desktop
-                </Grid>
-              )}
-
-              <Grid item lg={9} xs={12}>
-                <PropsListingPage />
-              </Grid>
-            </Grid>
-          </Container>
-
-        </div > */}
-        <Outlet />
+          <SideBar className={classes.sideBarStyle}/>
+        <Outlet className={classes.outletStyle}/>
       </Container >
     </ThemeProvider>
     </>

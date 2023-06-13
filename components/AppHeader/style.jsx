@@ -2,8 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const appHeaderStyle = makeStyles((theme) => ({
     header: {
-        backgroundColor: '#ffffff !important',
-       
+        backgroundColor: '#1C1C1C !important',
     },
     username: {
         fontWeight: "bold !important", 
@@ -54,13 +53,6 @@ export const appHeaderStyle = makeStyles((theme) => ({
     notClicked: {
         display: 'block',
     },
-    profileButtonLogo: {
-        position: 'fixed !important',
-        zIndex: '99999 !important',
-        paddingTop: '0 !important',
-    },
-    menuButtonLogo: {
-        // position: 'absolute !important',
-        // zIndex: '99999 !important',
-    },
+   
+   
 }));

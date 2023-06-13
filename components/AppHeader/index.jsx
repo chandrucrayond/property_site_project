@@ -2,7 +2,7 @@ import { AppBar, InputBase, Toolbar, Grid, Stack, Collapse } from "@mui/material
 import { styled } from "@mui/system";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Outlet, useNavigate, Route, Routes } from "react-router-dom";
-import logo from "../../public/DNT Logo White-042x.png";
+import logo from "../../src/icons/Sign-in/DNT Logo White-042x.png";
 import { useMediaQuery } from '@mui/material';
 import * as React from "react";
 import {
@@ -29,11 +29,16 @@ import {
 } from "@mui/icons-material";
 import { green, pink } from "@mui/material/colors";
 import { appHeaderStyle } from "./style";
-
+import LogoImage from "../../src/icons/Dashboard/DNT Logo White-04@2x.png"
+import theme from "../ThemeProvider/index.jsx";
+import Badge from '@mui/material/Badge';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 // Inline styled mui elements
 
 const Logo = styled("img")({
-  maxWidth: "150px",
+  maxWidth: "300px",
   marginRight: "8px",
   marginLeft: "20px",
 });
@@ -83,7 +88,7 @@ function AppHeader() {
   }
 
   function handleClickingLogo() {
-    navigate("/products");
+    navigate("/dashboard");
   }
 
   const [menuItemClicked, setMenuItemClicked] = React.useState(false);
@@ -109,40 +114,23 @@ function AppHeader() {
     handleClickingLogout();
   };
 
-  const theme = createTheme({
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 600,
-        md: 900,
-        lg: 1200,
-        xl: 1536,
-      },
-    },
-
-
-  });
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   return (
     <>
       <ThemeProvider theme={theme}>
         <AppBar className={classes.header}>
           <Toolbar>
-            <Grid container spacing={2}>
-              <Grid item xs={6} md={2} className={classes.logoImageSection} style={{ justifyContent: 'start', }}>
+            <Grid container spacing={2} >
+              <Grid item xs={6} md={6} className={classes.logoImageSection} style={{ justifyContent: 'start', }}>
                 {isMdScreen ? (
                   <>
                     <Grid >
                       <Grid item xs={12}>
                         <IconButton onClick={handleClickingMenuIcon}>
                           <img
-                            src="/DNT Logo White-042x.png"
-                            alt="Menu"
-                            style={{
-                              width: 28,
-                              height: 28,
-                            }}
-                            className={`${classes.menuButtonLogo}`}
+                            src={LogoImage}
+                            alt="Logo image"
+                          // className={`${classes.menuButtonLogo}`}
                           />
                         </IconButton>
                       </Grid>
@@ -150,77 +138,77 @@ function AppHeader() {
                     </Grid>
                   </>
                 ) : (
-                  <>
-                    <Logo
-                      src={logo}
-                      alt="Logo"
-                      onClick={handleClickingLogo}
-                      style={{ cursor: 'pointer', }}
-                      sx={{
-                        width: 28,
-                        height: 28,
-                      }}
-                    />
 
-                  </>
+                  <Grid container justifyContent="flex-start" alignItems="center" >
+                    <Grid item>
+                      <Logo
+                        src={LogoImage}
+                        alt="Logo"
+                        onClick={handleClickingLogo}
+                        style={{ cursor: 'pointer', }}
+                        sx={{
+                          width: 130,
+                          height: 25,
+                          borderInlineEnd: "1px solid #98A0AC",
+                          paddingRight: '10px',
+                        }}
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant='h4' sx={{
+                        paddingLeft: '10px',
+                      }}
+                      >PROPERTY MANAGEMENT SOLUTIONS
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 )}
               </Grid>
 
 
-              <Grid item xs={8} md={8} className={classes.paraSection} style={{ display: isMdScreen ? 'none' : 'flex' }}>
-                <Stack spacing={5} direction="row" className={classes.paraStack}>
-                  <Typography
-                    variant="h4"
-                    className={`${classes.appHeaderPara} ${clickedButton === 'Home' ? classes.clicked : ''}`}
-                    onClick={() => handleButtonClick('Home')}
-                  >
-                    Home
-                  </Typography>
-                  <Typography
-                    variant="h4"
-                    className={`${classes.appHeaderPara} ${clickedButton === 'Products' ? classes.clicked : ''}`}
-                    onClick={() => handleButtonClick('Products')}
-                  >
-                    Products
-                  </Typography>
-                  <Typography
-                    variant="h4"
-                    className={`${classes.appHeaderPara} ${clickedButton === 'Services' ? classes.clicked : ''}`}
-                    onClick={() => handleButtonClick('Services')}
-                  >
-                    Services
-                  </Typography>
-                  <Typography
-                    variant="h4"
-                    className={`${classes.appHeaderPara} ${clickedButton === 'About' ? classes.clicked : ''}`}
-                    onClick={() => handleButtonClick('About')}
-                  >
-                    About us
-                  </Typography>
-                </Stack>
-              </Grid>
-              <Grid item xs={6} md={2} style={{ display: 'flex', justifyContent: 'end', alignItems: 'baseline', marginTop: '5px', }}>
-                <Tooltip title="Account settings">
-                  <IconButton
-                    onClick={handleClick}
-                    size="small"
-                    sx={{ ml: 2 }}
-                    aria-controls={open ? "account-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}
-                    className={`${classes.profileButtonLogo}`}
-                  >
-                    <Avatar
-                      sx={{
-                        width: 32,
-                        height: 32,
-                        backgroundColor: "#1976d2",
-                        color: "white",
-                      }}
-                    ></Avatar>
-                  </IconButton>
-                </Tooltip>
+              <Grid item xs={6} md={6} >
+                <Grid container sx={{ alignItems: 'center', display: 'flex', }}>
+                  <Grid item xs={7}>
 
+                  </Grid>
+                  <Grid item xs={1}>
+                    <NotificationIcon variant="dot" />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Grid container style={{ justifyContent: "end", alignItems: "center", borderLeft: '1px solid #98A0AC' }}>
+                      <Grid item xs={4} style={{display: 'flex', justifyContent: 'center',}}>
+                        <Tooltip title="Account settings">
+                          <IconButton
+                            onClick={handleClick}
+                            size="small"
+                            aria-controls={open ? "account-menu" : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? "true" : undefined}
+                            className={`${classes.profileButtonLogo}`}
+                          >
+                            <Avatar
+                              sx={{
+                                width: 32,
+                                height: 32,
+                                backgroundColor: "#1976d2",
+                                color: "white",
+                              }}
+                            ></Avatar>
+                          </IconButton>
+                        </Tooltip>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Box>
+                          <Typography variant='h4'>Bala Ganesh</Typography>
+                          <Typography variant='body1'>Super Admin</Typography>
+                        </Box>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <KeyboardArrowDownIcon />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
 
                 <Menu
                   anchorEl={anchorEl}
@@ -290,14 +278,6 @@ function AppHeader() {
                   </CusMenuItem>
                 </Menu>
               </Grid>
-
-
-
-
-
-
-
-
             </Grid>
 
 
@@ -343,10 +323,16 @@ function AppHeader() {
           </Collapse>
 
         </AppBar >
-
       </ThemeProvider >
-
     </>
+  );
+}
+
+const NotificationIcon = () => {
+  return (
+    <Badge variant="dot" color="primary">
+      <Notifications />
+    </Badge>
   );
 }
 

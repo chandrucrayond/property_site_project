@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, } from 'react-router-dom';
-import PropsListingPage from '../components/PropsListingPage/index';
+import Dashboard from '../components/Dashboard/index';
 import SharedLayout from '../components/SharedLayout/index';
 import Protected from '../components/Protected/index';
 import ErrorPage from '../components/ErrorPage/index';
@@ -42,8 +42,8 @@ const App = () => {
       ),
       children: [
         {
-          path: "properties",
-          element: <PropsListingPage />,
+          path: "dashboard",
+          element: <Dashboard />,
         },
       ],
     },
