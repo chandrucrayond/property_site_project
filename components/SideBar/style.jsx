@@ -35,9 +35,11 @@ const SideBarStyle = makeStyles((theme) => ({
             backgroundColor: "#5078E1 !important",
         },
     },
+    sideBarHeadingBox: {
+        // width: '60%',
+    },
     sideBarHeading: {
         display: 'flex',
-         whiteSpace: 'normal',
         marginLeft: '10px',
         positon:'fixed',
     },

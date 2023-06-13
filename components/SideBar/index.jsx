@@ -101,7 +101,7 @@ const SideBar = () => {
         <Drawer variant="permanent" open={open} className={classes.drawer}>
             <DrawerHeader style={{ justifyContent: open ? 'end' : 'center' }}>
 
-                {open ? <Box><Typography variant='body1' className={classes.sideBarHeading}>Property Manager For Start up</Typography></Box> : ''}
+                {open ? <Box className={classes.sideBarHeadingBox}><Typography variant='body1' className={classes.sideBarHeading}>Property Manager For Start up</Typography></Box> : ''}
 
                 <IconButton onClick={handleToggleOpen} className={classes.toggleIcon} >
                     {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
