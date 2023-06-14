@@ -89,12 +89,23 @@ function SharedLayout() {
           <Grid item xs={12} className={classes.Style}>
             <AppHeader />
           </Grid>
-          <Grid item xs={2} className={classes.sideBarStyle} >
+          {/* <Grid item xs={12} className={classes.sideBarStyle} >
             <SideBar/>
+          </Grid> */}
+          <Grid item xs={12} >
+            <Grid container  >
+
+              <Grid item className={classes.sideBarStyle}>
+                <SideBar />
+              </Grid>
+
+              <Grid item className={classes.outletStyle} >
+                <Outlet />
+              </Grid>
+
+            </Grid>
           </Grid>
-          <Grid item xs={10} className={classes.outletStyle} >
-            <Outlet />
-          </Grid>
+
         </Grid>
       </div>
     </ThemeProvider>

@@ -9,7 +9,7 @@ export const DashboardSection1CardStyle = makeStyles((theme) => ({
         borderRadius: '4px !important',
         color: '#091B29 !important',
         backgroundBox: 'padding-box',
-        padding: '5px',
+        padding: '5px 15px',
     },
     Dashboard_S1_Card_count: {
         display: 'flex',

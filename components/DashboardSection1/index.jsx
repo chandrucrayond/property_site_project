@@ -12,7 +12,8 @@ export default function DashboardSection1() {
     const classes = DashboardSection1Style();
 
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
+
             {dashboardSection1Data.map((property, index) => {
                 return (
                     <Grid item xs={6} md={4} lg={1.5} key={index}>

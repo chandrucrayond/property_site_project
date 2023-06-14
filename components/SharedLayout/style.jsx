@@ -3,17 +3,17 @@ import { makeStyles } from "@mui/styles";
 
 export const SharedLayoutStyle = makeStyles((theme) => ({
     outletStyle: {
-        position: 'absolute !important',
+        position: 'relative !important',
         top: '90px !important',
-        left: '90px !important',
+        //  left: '20px !important',
     },
     // sideBarStyle: {
     //     position: 'relative',
     // },
-    appHeaderStyle: {
-        position: 'relative',
-    },
-    // root: {
-    //     flexGrow: 1,
+    // appHeaderStyle: {
+    //     position: 'relative',
     // },
+    root: {
+        flexGrow: 1,
+    },
 }));
