@@ -6,6 +6,7 @@ import {DashboardStyle} from "./style.jsx";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import ActivePropertiesIcon from "../../src/icons/Dashboard/S1ActivePropertiesIcon.jsx";
+import DashboardSection1 from "../DashboardSection1/index.jsx";
 
 export default function Dashboard() {
     const classes = DashboardStyle();
@@ -14,16 +15,7 @@ export default function Dashboard() {
         <ThemeProvider theme={theme} >
             <Grid container className={`${classes.dashboardContainer}`}>
                 <Grid item xs={12}>
-                    <Grid container>
-                        <Grid item xs={1} >
-                            <Typography variant='h4'>14</Typography>
-                            
-                        </Grid>
-                        <Grid item xs={1}>
-                            
-                        </Grid>
-
-                    </Grid>
+                      <DashboardSection1 />
                 </Grid>
             </Grid>
         </ThemeProvider>

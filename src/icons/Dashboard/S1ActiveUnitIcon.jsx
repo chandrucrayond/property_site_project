@@ -3,7 +3,7 @@ import React from 'react';
 const ActiveUnitIcon = () => {
 
   return (
-    <img src="property_site_project/src/icons/Dashboard/Group 96941-3@2x.png"
+    <img src="../../src/icons/Dashboard/Group 96941-3.png"
     alt="active_unit_icon" />
   );
 }

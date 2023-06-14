@@ -45,6 +45,10 @@ const App = () => {
           path: "dashboard",
           element: <Dashboard />,
         },
+        {
+          path: "checking",
+          element: <p>Hello world of the product, this is entered in main.jsx</p>,
+        },
       ],
     },
     {

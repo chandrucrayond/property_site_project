@@ -8,14 +8,13 @@ const SideBarStyle = makeStyles((theme) => ({
             top: "63px !important",
             backgroundColor: "#333333 !important",
             color: '#FFFFFF !important',
-            zIndex: '1',
         }
     },
     toggleIcon: {
         backgroundColor: "#5078E1 !important",
         width: '26px !important',
         height: '26px !important',
-        zIndex: '2 !important',
+        // zIndex: '2 !important',
         '&:focus-visible': {
             backgroundColor: "#5078E1 !important",
         },
@@ -41,7 +40,8 @@ const SideBarStyle = makeStyles((theme) => ({
     sideBarHeading: {
         display: 'flex',
         marginLeft: '10px',
-        positon:'fixed',
+        // positon:'fixed',
+        whiteSpace: 'normal',
     },
 }
 ));

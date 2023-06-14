@@ -3,7 +3,7 @@ import React from 'react';
 const OccupiedIcon = () => {
 
     return (
-        <img src="property_site_project/src/icons/Dashboard/Leads-2@2x.png"
+        <img src="../../src/icons/Dashboard/Leads-2.png"
             alt="Occupied_icon" />
     );
 }

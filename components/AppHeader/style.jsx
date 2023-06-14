@@ -32,7 +32,7 @@ export const appHeaderStyle = makeStyles((theme) => ({
         cursor: "pointer !important",
     },
     appHeaderParaSelected: {
-      position: 'relative',
+    //   position: 'relative',
       top: '3px',
     //   content: '\2022',
       color: '#219ebc',

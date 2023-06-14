@@ -101,13 +101,13 @@ const SideBar = () => {
         <Drawer variant="permanent" open={open} className={classes.drawer}>
             <DrawerHeader style={{ justifyContent: open ? 'end' : 'center' }}>
 
-                {open ? <Box className={classes.sideBarHeadingBox}><Typography variant='body1' className={classes.sideBarHeading}>Property Manager For Start up</Typography></Box> : ''}
+                {open && <Typography variant='body1' className={classes.sideBarHeading}>Property Manager For Start up</Typography>}
 
                 <IconButton onClick={handleToggleOpen} className={classes.toggleIcon} >
                     {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
             </DrawerHeader>
-            <Divider style={{backgroundColor: '#666666', width:'60%', marginLeft: 'auto',marginRight: 'auto',}}/>
+            <Divider style={{backgroundColor: '#666666', width: '60%', marginLeft: 'auto',marginRight: 'auto',}}/>
             <List>
                 {['Dashboard','Companies'].map((text, index) => (
                     <ListItem key={text} disablePadding sx={{ display: 'block', }}>

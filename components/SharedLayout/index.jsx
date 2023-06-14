@@ -82,15 +82,23 @@ function SharedLayout() {
 
 
   return (
-    <>
+
     <ThemeProvider theme={theme}>
-      <Container >
-        <AppHeader />
-          <SideBar className={classes.sideBarStyle}/>
-        <Outlet className={classes.outletStyle}/>
-      </Container >
+      <div className={classes.root}>
+        <Grid container>
+          <Grid item xs={12} className={classes.Style}>
+            <AppHeader />
+          </Grid>
+          <Grid item xs={2} className={classes.sideBarStyle} >
+            <SideBar/>
+          </Grid>
+          <Grid item xs={10} className={classes.outletStyle} >
+            <Outlet />
+          </Grid>
+        </Grid>
+      </div>
     </ThemeProvider>
-    </>
+
   );
 }
 
