@@ -120,164 +120,153 @@ function AppHeader() {
       <ThemeProvider theme={theme}>
         <AppBar className={classes.header}>
           <Toolbar>
-            <Grid container spacing={2} >
-              <Grid item xs={6} md={6} className={classes.logoImageSection} style={{ justifyContent: 'start', }}>
-                {isMdScreen ? (
-                  <>
-                    <Grid >
-                      <Grid item xs={12}>
-                        <IconButton onClick={handleClickingMenuIcon}>
-                          <img
-                            src={LogoImage}
-                            alt="Logo image"
-                          // className={`${classes.menuButtonLogo}`}
-                          />
-                        </IconButton>
-                      </Grid>
+            <Grid container spacing={2} style={{ alignItems: "center" }}>
+              <Grid item xs={12} md={6} className={classes.logoImageSection} style={{ justifyContent: 'start', }}>
 
-                    </Grid>
-                  </>
-                ) : (
-
-                  <Grid container justifyContent="flex-start" alignItems="center" >
-                    <Grid item>
-                      <Logo
-                        src={LogoImage}
-                        alt="Logo"
-                        onClick={handleClickingLogo}
-                        style={{ cursor: 'pointer', }}
-                        sx={{
-                          width: 130,
-                          height: 25,
-                          borderInlineEnd: "1px solid #98A0AC",
-                          paddingRight: '10px',
-                        }}
-                      />
-                    </Grid>
-                    <Grid item>
-                      <Typography variant='h4' sx={{
-                        paddingLeft: '10px',
+                <Grid container justifyContent="flex-start" alignItems="center" >
+                  <Grid item >
+                    <Logo
+                      src={LogoImage}
+                      alt="Logo"
+                      onClick={handleClickingLogo}
+                      style={{ cursor: 'pointer', }}
+                      sx={{
+                        width: 130,
+                        height: 25,
+                        borderInlineEnd: "1px solid #98A0AC",
+                        paddingRight: '10px',
                       }}
-                      >PROPERTY MANAGEMENT SOLUTIONS
-                      </Typography>
-                    </Grid>
+                    />
                   </Grid>
-                )}
-              </Grid>
-
-
-              <Grid item xs={6} md={6} >
-                <Grid container sx={{ alignItems: 'center', display: 'flex', }}>
-                  <Grid item xs={7}>
-
-                  </Grid>
-                  <Grid item xs={1}>
-                    <NotificationIcon variant="dot" />
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Grid container style={{ justifyContent: "end", alignItems: "center", borderLeft: '1px solid #98A0AC' }}>
-                      <Grid item xs={4} style={{display: 'flex', justifyContent: 'center',}}>
-                        <Tooltip title="Account settings">
-                          <IconButton
-                            onClick={handleClick}
-                            size="small"
-                            aria-controls={open ? "account-menu" : undefined}
-                            aria-haspopup="true"
-                            aria-expanded={open ? "true" : undefined}
-                            className={`${classes.profileButtonLogo}`}
-                          >
-                            <Avatar
-                              sx={{
-                                width: 32,
-                                height: 32,
-                                backgroundColor: "#1976d2",
-                                color: "white",
-                              }}
-                            ></Avatar>
-                          </IconButton>
-                        </Tooltip>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Box>
-                          <Typography variant='h4'>Bala Ganesh</Typography>
-                          <Typography variant='body1'>Super Admin</Typography>
-                        </Box>
-                      </Grid>
-                      <Grid item xs={2}>
-                        <KeyboardArrowDownIcon />
-                      </Grid>
-                    </Grid>
+                  <Grid item>
+                    <Typography variant='h4' sx={{
+                      paddingLeft: '10px',
+                    }}
+                    >PROPERTY MANAGEMENT SOLUTIONS
+                    </Typography>
                   </Grid>
                 </Grid>
-
-                <Menu
-                  anchorEl={anchorEl}
-                  id="account-menu"
-                  open={open}
-                  onClose={handleClose}
-                  onClick={handleClose}
-                  PaperProps={{
-                    elevation: 0,
-                    sx: {
-                      overflow: "visible",
-                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                      mt: 1.5,
-                      "& .MuiAvatar-root": {
-                        width: 32,
-                        height: 32,
-                        ml: -0.5,
-                        mr: 1,
-                      },
-                      "&:before": {
-                        content: '""',
-                        display: "block",
-                        position: "absolute",
-                        top: 0,
-                        right: 14,
-                        width: 10,
-                        height: 10,
-                        bgcolor: "background.paper",
-                        transform: "translateY(-50%) rotate(45deg)",
-                        zIndex: 0,
-                      },
-                    },
-                  }}
-                  transformOrigin={{ horizontal: "right", vertical: "top" }}
-                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                >
-                  <CusMenuItem onClick={handleClose}>
-                    <Avatar sx={{ bgcolor: pink[500] }}>
-                      <Face />
-                    </Avatar>{" "}
-                    Profile
-                  </CusMenuItem>
-                  <CusMenuItem onClick={handleClose}>
-                    <Avatar sx={{ bgcolor: green[500] }}>
-                      <Assignment />
-                    </Avatar>{" "}
-                    Order's
-                  </CusMenuItem>
-                  <Divider />
-                  <CusMenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                      <PersonAdd fontSize="small" sx={{ color: "#1e88e5" }} />
-                    </ListItemIcon>
-                    24/7 Customer Care
-                  </CusMenuItem>
-                  <CusMenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                      <Settings fontSize="small" sx={{ color: "#212121" }} />
-                    </ListItemIcon>
-                    Settings
-                  </CusMenuItem>
-                  <CusMenuItem onClick={handleLogout}>
-                    <ListItemIcon>
-                      <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                  </CusMenuItem>
-                </Menu>
               </Grid>
+              <Grid item xs={6} md={6} >
+                  {isMdScreen ? (
+                    <>
+
+                    </>
+                  ) : (
+                    <>
+                      <Grid container sx={{ alignItems: 'center', display: 'flex', }}>
+                        <Grid item xs={7}>
+
+                        </Grid>
+                        <Grid item xs={1}>
+                          <NotificationIcon variant="dot" />
+                        </Grid>
+                        <Grid item xs={4}>
+                          <Grid container style={{ justifyContent: "end", alignItems: "center", borderLeft: '1px solid #98A0AC' }}>
+                            <Grid item xs={4} style={{ display: 'flex', justifyContent: 'center', }}>
+                              <Tooltip title="Account settings">
+                                <IconButton
+                                  onClick={handleClick}
+                                  size="small"
+                                  aria-controls={open ? "account-menu" : undefined}
+                                  aria-haspopup="true"
+                                  aria-expanded={open ? "true" : undefined}
+                                  className={`${classes.profileButtonLogo}`}
+                                >
+                                  <Avatar
+                                    sx={{
+                                      width: 32,
+                                      height: 32,
+                                      backgroundColor: "#1976d2",
+                                      color: "white",
+                                    }}
+                                  ></Avatar>
+                                </IconButton>
+                              </Tooltip>
+                            </Grid>
+                            <Grid item xs={6}>
+                              <Box>
+                                <Typography variant='h4'>Bala Ganesh</Typography>
+                                <Typography variant='body1'>Super Admin</Typography>
+                              </Box>
+                            </Grid>
+                            <Grid item xs={2}>
+                              <KeyboardArrowDownIcon />
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+
+                      <Menu
+                        anchorEl={anchorEl}
+                        id="account-menu"
+                        open={open}
+                        onClose={handleClose}
+                        onClick={handleClose}
+                        PaperProps={{
+                          elevation: 0,
+                          sx: {
+                            overflow: "visible",
+                            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                            mt: 1.5,
+                            "& .MuiAvatar-root": {
+                              width: 32,
+                              height: 32,
+                              ml: -0.5,
+                              mr: 1,
+                            },
+                            "&:before": {
+                              content: '""',
+                              display: "block",
+                              position: "absolute",
+                              top: 0,
+                              right: 14,
+                              width: 10,
+                              height: 10,
+                              bgcolor: "background.paper",
+                              transform: "translateY(-50%) rotate(45deg)",
+                              zIndex: 0,
+                            },
+                          },
+                        }}
+                        transformOrigin={{ horizontal: "right", vertical: "top" }}
+                        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                      >
+                        <CusMenuItem onClick={handleClose}>
+                          <Avatar sx={{ bgcolor: pink[500] }}>
+                            <Face />
+                          </Avatar>{" "}
+                          Profile
+                        </CusMenuItem>
+                        <CusMenuItem onClick={handleClose}>
+                          <Avatar sx={{ bgcolor: green[500] }}>
+                            <Assignment />
+                          </Avatar>{" "}
+                          Order's
+                        </CusMenuItem>
+                        <Divider />
+                        <CusMenuItem onClick={handleClose}>
+                          <ListItemIcon>
+                            <PersonAdd fontSize="small" sx={{ color: "#1e88e5" }} />
+                          </ListItemIcon>
+                          24/7 Customer Care
+                        </CusMenuItem>
+                        <CusMenuItem onClick={handleClose}>
+                          <ListItemIcon>
+                            <Settings fontSize="small" sx={{ color: "#212121" }} />
+                          </ListItemIcon>
+                          Settings
+                        </CusMenuItem>
+                        <CusMenuItem onClick={handleLogout}>
+                          <ListItemIcon>
+                            <Logout fontSize="small" />
+                          </ListItemIcon>
+                          Logout
+                        </CusMenuItem>
+                      </Menu>
+                    </>
+                  )}
+                </Grid>
             </Grid>
 
 

@@ -98,7 +98,7 @@ const SideBar = () => {
         setOpen((open) => !open);
     };
     return (
-        <Drawer variant="permanent" open={open} className={classes.drawer}>
+        <Drawer anchor="bottom" variant="permanent" open={open} className={classes.drawer}>
             <DrawerHeader style={{ justifyContent: open ? 'end' : 'center' }}>
 
                 {open && <Typography variant='body1' className={classes.sideBarHeading}>Property Manager For Start up</Typography>}

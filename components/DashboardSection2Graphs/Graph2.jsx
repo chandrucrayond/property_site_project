@@ -6,7 +6,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 
 const data = [
@@ -60,18 +61,11 @@ const data = [
   },
 ];
 
-export default function App() {
+export default function Graph2() {
   return (
+    <ResponsiveContainer width={"100%"} height={'100%'}>
     <BarChart
-      width={300}
-      height={300}
       data={data}
-      margin={{
-        top: 20,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
@@ -83,5 +77,6 @@ export default function App() {
       <Bar dataKey="Reserved" stackId="a" fill="#5AC782" />
       <Bar dataKey="Listed" stackId="a" fill="#F3E137" />
     </BarChart>
+    </ResponsiveContainer>
   );
 }

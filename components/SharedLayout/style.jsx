@@ -4,8 +4,13 @@ import { makeStyles } from "@mui/styles";
 export const SharedLayoutStyle = makeStyles((theme) => ({
     outletStyle: {
         position: 'relative !important',
-        top: '90px !important',
-        //  left: '20px !important',
+        marginTop: '90px !important',
+        width: 'calc(100% - 20px)',
+        // marginLeft: '80px',
+        // marginRight: '20px',
+        marginLeft: '20px !important',
+        marginRight: '20px !important',
+        marginBottom: '50px !important',
     },
     // sideBarStyle: {
     //     position: 'relative',

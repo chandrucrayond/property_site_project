@@ -8,18 +8,22 @@ import Typography from '@mui/material/Typography';
 import ActivePropertiesIcon from "../../src/icons/Dashboard/S1ActivePropertiesIcon.jsx";
 import DashboardSection1 from "../DashboardSection1/index.jsx";
 import DashboardSection2 from "../DashboardSection2/index.jsx";
+import DashboardSection3 from "../DashboardSection3/index.jsx";
 
 export default function Dashboard() {
     const classes = DashboardStyle();
 
     return (
         <ThemeProvider theme={theme} >
-            <Grid container className={`${classes.dashboardContainer}`}>
+            <Grid container className={`${classes.dashboardContainer}`} spacing={2}>
                 <Grid item xs={12}>
                       <DashboardSection1 />
                 </Grid>
                 <Grid item xs={12}>
                       <DashboardSection2 />
+                </Grid>
+                <Grid item xs={12}>
+                      <DashboardSection3 />
                 </Grid>
             </Grid>
         </ThemeProvider>
