@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const DashboardSection1CardStyle = makeStyles((theme) => ({
     Dashboard_S1_Card_Container: {
-        width: 'auto !important',
+        width: '100% !important',
         height: '90px !important',
         backgroundColor: '#FFFFFF !important',
         boxShadow: '0px 3px 30px #5C86CB2E !important',

@@ -4,12 +4,31 @@ export const appHeaderStyle = makeStyles((theme) => ({
     header: {
         backgroundColor: '#1C1C1C !important',
     },
+
+    logoImage: {
+        cursor: 'pointer',
+        width: 130,
+        height: 25,
+        borderInlineEnd: "1px solid #98A0AC",
+        paddingRight: '10px',    
+    },
+
+    logoMobile: {
+        width: 110,
+        marginLeft: '0 !important',
+    },
+
+    headerParaMobile: {
+        fontSize: '10px !important',
+    },
+
     username: {
         fontWeight: "bold !important", 
         display: "inline !important", 
         textAlign: "right !important",
         color: "black !important", 
     },
+
     logoImageSection: {
         // display: "flex",
         // justifyContent: "center",
