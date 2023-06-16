@@ -1,13 +1,17 @@
 import { makeStyles } from "@mui/styles";
 
 export const createAccountStyle = makeStyles((theme) => ({
-  rootContainer: {
-    height: '100vh !important',
-    // overflow: "hidden"
-  },
+
   createAccountContainer: {
     height: '100vh !important',
+    width: '100% !important',
     // overflow: "hidden"
+  },
+
+  subSection1: {
+    backgroundColor: "#FFFFFF !important",
+    minHeight: '100% !important',
+    width: '100% !important',
   },
 
   RoundIconFirst: {
@@ -29,48 +33,50 @@ export const createAccountStyle = makeStyles((theme) => ({
     left: 0,
   },
 
-  subSection1: {
-    backgroundColor: "#FFFFFF !important",
-    minHeight: '100% !important',
-    width: 'auto',
+  subSection2: {
+    // zIndex: '1 !important',
+    backgroundColor: "#5078E1 !important",
+    // position: 'relative !important',
+    // minHeight: '100% !important',
+    // width: '100% !important',
+    height: '100vh !important',
   },
 
-  subSection2: {
-    zIndex: '1 !important',
-    backgroundColor: "#5078E1 !important",
-    position: 'relative !important',
-    minHeight: '100% !important',
+  buildingImageContainer: {
+
   },
-  signInSection: {
+
+  buildingImage: {
+    // position: 'absoltue',
+    zIndex: '2 !important',
+    // bottom: 0,
+    // maxWidth: '500px !important',
+    // height: 'auto !important',
+    // left: '10%',
+
+  },
+
+  signInSectionContainer: {
     backgroundColor: "#FFFFFF !important",
-    display: 'flex !important',
-    position: 'relative !important',
-    left: '40% !important',
-    top: '60px !important',
+    // display: 'flex !important',
+    // position: 'relative !important',
+    // left: '40% !important',
+    // top: '60px !important',
     padding: '32px 37px !important',
     borderRadius: '16px !important',
     zIndex: '5 !important',
   },
-  // signInSectionTablet:{
-  //   left: '0 !important',
-  //   top: '0 !important',
-  //   width: '100% !important',
-  //   margin: 'auto',
-  //   backgroundColor: "#FFFFFF !important",
-  //   // display: 'flex !important',
-  //   position: 'relative !important',
-  //   padding: '13px 16px !important',
-  //   borderRadius: '16px !important',
-  //   zIndex: '5 !important',
-  // },
-  teamImage: {
-    position: 'absolute',
-    zIndex: '2 !important',
-    bottom: 0,
-    maxWidth: '500px !important',
-    height: 'auto !important',
-    left: '10%',
+
+  signInSecionTabletContainer: {
+    position: 'relative !important',
+    padding: '13px 16px !important',
+    borderRadius: '16px !important',
+    // bottom: '90px',
+    zIndex: '5',
+    height: '100%',
   },
+
+
   input: {
     display: "block !important",
     marginTop: "10px !important",
@@ -81,6 +87,9 @@ export const createAccountStyle = makeStyles((theme) => ({
     borderColor: "#E4E8EE !important",
     borderRadius: "10px !important",
     boxSizing: 'border-box !important',
+    fontWeight: 600,
+    fontSize: '14px',
+    lineHeight: '19px',
     "&:hover": {
       cursor: "pointer !important",
     },
@@ -91,36 +100,48 @@ export const createAccountStyle = makeStyles((theme) => ({
       cursor: "text !important",
     },
   },
+
   helperText: {
     color: "#888 !important",
     fontSize: "12px !important",
     marginTop: "5px !important",
   },
+
   inputBoxSection: {
     display: 'block',
     width: '100%',
   },
+
   firstInputBox: {
     marginTop: '30px !important',
   },
+
   inputUsernameHover: {
     backgroundColor: "#219ebc1a !important",
     cursor: "pointer !important",
   },
+
   inputUsernameFocus: {
     border: "1px solid #219ebc !important",
     boxShadow: "none !important",
     caretColor: "#219ebc !important",
     cursor: "text !important",
   },
+
   inputPassword: {
     color: "#091b29 !important",
     background: "#ffffff 0% 0% no-repeat padding-box !important",
     border: "1px solid #e4e8ee !important",
     marginBottom: "7px !important",
+    fontWeight: "600",
+    letterSpacing: 2,
   },
+
   inputPasswordSmallSzie: {
-    fontWeight: "600 !important",
+    fontWeight: 600,
+    fontSize: '14px',
+    lineHeight: '19px',
+    letterSpacing: 'normal !important',
   },
 
   forgotPasswordSection: {
@@ -145,12 +166,13 @@ export const createAccountStyle = makeStyles((theme) => ({
     display: 'flex !important',
     justifyContent: 'center !important',
     alignItems: 'center !important',
+    marginBottom: '10px',
   },
-
 
   loginButtonSection: {
     width: '100% !important',
   },
+
   loginButton: {
     color: "white !important",
     width: "100% !important",
@@ -166,6 +188,7 @@ export const createAccountStyle = makeStyles((theme) => ({
     borderRadius: '12px !important',
     border: '1px solid transparent',
   },
+
   successCard: {
     position: "fixed !important",
     top: "50% !important",
@@ -179,34 +202,43 @@ export const createAccountStyle = makeStyles((theme) => ({
     zIndex: "-1 !important",
     transition: "opacity 0.5s ease-in-out !important",
   },
+
   successText: {
     // font: "normal normal 800 18px/18px Montserrat !important",
   },
+
   show: {
     zIndex: "10 !important",
     opacity: "1 !important",
   },
+
   headingWelcome: {
     color: "#091b29 !important",
+    marginBottom: '15px !important',
   },
+
   headingRegister: {
     letterSpacing: "0.11px !important",
     color: "#bbbbbb !important",
     paddingTop: "10px !important",
     paddingBottom: "25px !important",
   },
+
   label: {
     color: "#98a0ac !important",
   },
+
   inputUsername: {
     color: "#091b29 !important",
     background: "#ffffff 0% 0% no-repeat padding-box !important",
     border: "1px solid #e4e8ee !important",
   },
+
   containerPassword: {
     position: "relative !important",
     marginBottom: "0px !important",
   },
+
   eyeIcon: {
     position: "relative !important",
     width: "20px !important",
@@ -215,24 +247,46 @@ export const createAccountStyle = makeStyles((theme) => ({
     left: "90% !important",
     display: "inline !important",
   },
+
   errorMessage: {
     color: "red",
     position: "relative",
     bottom: "15px",
     marginTop: "5px !important",
   },
+
   passwordError: {
     bottom: "25px",
-    marginBottom: '10px',
+    marginBottom: '10px !important',
   },
+
   firstDotIcon: {
     position: 'absolute !important',
     right: '50% !important',
     top: '3% !important',
   },
+
   secondDotIcon: {
     position: 'absolute !important',
     right: 0,
     bottom: 0,
   },
+
+  poweredBy: {
+    fontWeight: 'normal !important',
+    fontSize: '10px !important',
+    lineHeight: '14px !important',
+    letterSpacing: '0px !important',
+    color: '#98A0AC !important',
+  },
+
+  propAutomateText: {
+    color:' #4E5A6B',
+  },
+
+  PropIcon: {
+    marginLeft: '5px',
+    marginRight: '5px',
+  }
+
 }));

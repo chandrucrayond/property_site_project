@@ -11,6 +11,7 @@ import DotIcon from '../../src/icons/Sign-in/DotIcon.jsx'
 import DotIcon2 from '../../src/icons/Sign-in/DotIcon2.jsx'
 import { useMediaQuery } from '@mui/material';
 import theme from "../ThemeProvider/index.jsx";
+import Card from '@mui/material/Card';
 
 function CreateAccount({ onLogin }) {
 
@@ -81,9 +82,10 @@ function CreateAccount({ onLogin }) {
             isValid = false;
             return false;
 
-        } else if (!isValidEmail(email)) {
+        }
+        else if (!isValidMobileEmail(email)) {
 
-            setEmailError('Please enter a valid email');
+            setEmailError('Please enter a valid Mobile Number/Email Id');
             isValid = false;
             return false;
 
@@ -97,9 +99,26 @@ function CreateAccount({ onLogin }) {
     }
 
 
-    function isValidEmail(email) {
-        const emailRegex = /\S+@\S+\.\S+/;
-        return emailRegex.test(email);
+    // function isValidEmail(email) {
+    //     const emailRegex = /\S+@\S+\.\S+/;
+    //     return emailRegex.test(email);
+    // }
+
+    // function isValidMobile(email) {
+    //     // Check if the input is a valid mobile number
+    //     const mobileRegex = /^\d{10,}$/;
+    //     return mobileRegex.test(email);
+    // }
+
+    function isValidMobileEmail(email) {
+        // Check if the input is a valid mobile number
+        const isMobileValid = /^\d{10,}$/.test(email);
+
+        // Check if the input is a valid email address
+        const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        // Return true if either mobile number or email is valid
+        return isMobileValid || isEmailValid;
     }
 
     function validatePassword() {
@@ -131,140 +150,143 @@ function CreateAccount({ onLogin }) {
     }
 
     return (
-       <Grid container className={classes.createAccountContainer}>
+        <Grid container>
 
-                    <Grid item xs={12} md={3} className={classes.subSection1} >
-                        <Grid container style={{ display: isMdScreen ? 'none' : '' }}>
-                            <Grid item className={classes.RoundIconFirst}>
-                                <RoundIcon fill="#5078e1" opacity="0.25" width="186" height="160" />
-                            </Grid>
-                            <Grid item className={classes.RoundIconSecond}>
-                                <RoundIcon2 fill="#2C3060" opacity="1" width="400" height="300" />
-                            </Grid>
-                            <Grid item className={classes.RoundIconThird}>
-                                <RoundIcon fill="#5078e1" opacity="0.25" width="186" height="140" />
-                            </Grid>
-                        </Grid>
-                    
+            <Grid item xs={12} md={3}>
+                <Grid container style={{ display: isMdScreen ? 'none' : '' }}>
+                    <Grid item className={classes.RoundIconFirst}>
+                        <RoundIcon fill="#5078e1" opacity="0.25" width="186" height="160" />
+                    </Grid>
+                    <Grid item className={classes.RoundIconSecond}>
+                        <RoundIcon2 fill="#2C3060" opacity="1" width="400" height="300" />
+                    </Grid>
+                    <Grid item className={classes.RoundIconThird}>
+                        <RoundIcon fill="#5078e1" opacity="0.25" width="186" height="140" />
+                    </Grid>
+                </Grid>
+            </Grid >
+
+            <Grid item xs={12} md={9}>
+
+                {/* subSection2  container start  */}
+                <Grid container className={classes.subSection2}>
+
+                    {/* Building image container grid item */}
+                    <Grid item className={classes.buildingImageContainer} style={{ display: 'flex', alignItems: isMdScreen ? 'start' : 'end' }}>
                         <img
-                            className={classes.teamImage}
+                            className={classes.buildingImage}
                             src={BuildingImage}
-                            alt="An model building image"
+                            alt="A model building image"
+                            style={{ width: isMdScreen ? '90%' : '40%', position: isMdScreen ? '' : 'absolute', left: isMdScreen ? '' : '100px', paddingTop: isMdScreen ? '50px' : '', }}
                         />
-                    </Grid >
+                    </Grid>
 
-                    <Grid item xs={12} md={9} className={classes.subSection2}>
-                        <Box className={classes.firstDotIcon}>
-                            <DotIcon />
-                        </Box>
-                        <Grid
-                            container
-                            xs={12}
-                            md={isMdScreen ? 12 : 4} // Set xs to 12 and md to 12 or 4 based on screen size
-                            className={isMdScreen ? classes.signInSection : classes.signInSection}
-                        >
-                            <Grid item className={classes.inputBoxSection} >
-                                <Typography
-                                    variant="h4"
-                                    className={`${classes.headingWelcome} createAccount--heading__welcome`}
-                                >
-                                    Sign in
-                                </Typography>
-                            </Grid>
-                            <Grid item  >
-                                <Grid container>
-                                    <Grid item className={`${classes.inputBoxSection} ${classes.firstInputBox}`}  >
-                                        <Typography htmlFor="email" className={classes.label}>
-                                            Mobile Number / Email ID
-                                        </Typography>
-                                        <input
-                                            type="email"
-                                            className={`${classes.input} ${classes.inputUsername}`}
-                                            id="email"
-                                            name="email"
-                                            value={email}
-                                            onChange={(e) => {
-                                                setEmail(e.target.value);
-                                                validateEmail();
-                                            }}
-                                            fullWidth
-                                        />
-                                        <Box className={classes.errorMessage}>{emailError}</Box>
-                                    </Grid>
-                                    <Grid item className={classes.inputBoxSection}>
-                                        <Typography htmlFor="password" className={classes.label}>
-                                            Enter Password
-                                        </Typography>
-                                        <input
-                                            type={showPassword ? 'text' : 'password'}
-                                            className={`
+                    {/* first dot icon section without  to fit in the grid item */}
+                    <Box className={classes.firstDotIcon} style={{ display: isMdScreen ? 'none' : '', }}>
+                        <DotIcon />
+                    </Box>
+
+                    {/* second dot icon section without to fit in the grid item */}
+                    <Box className={classes.secondDotIcon} style={{ display: isMdScreen ? 'none' : '', }}>
+                        <DotIcon2 />
+                    </Box>
+
+
+                    <Grid item xs={12} style={{ display: 'flex', justifyContent: isMdScreen ? '' : 'end' }}>
+                        <Card className={` ${isMdScreen ? classes.signInSecionTabletContainer : classes.signInSectionContainer}`} style={{
+                            display: isMdScreen ? '' : 'inline-block', width: isMdScreen ? '100%' : '300px',
+                            height: isMdScreen ? '' : '350px', marginRight: isMdScreen ? '' : '150px', marginTop: isMdScreen ? '' : '50px'
+                        }}>
+
+                            {/* sign in para  */}
+                            <Typography variant="h1" className={`${classes.headingWelcome}`}> Sign in </Typography>
+
+
+                            {/* mob no and email section without putting it in container */}
+                            <Typography htmlFor="email" variant='h5' className={classes.label}>Mobile Number / Email ID</Typography>
+                            <input
+                                type="email"
+                                className={`${classes.input} ${classes.inputUsername}`}
+                                id="email"
+                                name="email"
+                                value={email}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    validateEmail();
+                                }}
+                                fullWidth
+                            />
+                            <Typography variant='h4' className={classes.errorMessage}>{emailError}</Typography>
+
+
+                            {/* Password section without putting it in container */}
+                            <Typography htmlFor="password" variant='h5' className={classes.label}>
+                                Enter Password
+                            </Typography>
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                className={`
                                             ${classes.input} 
                                             ${classes.inputPassword} 
                                             ${showPassword ? classes.inputPasswordSmallSzie : ''
-                                                }
+                                    }
                                             `}
-                                            id="password"
-                                            name="password"
-                                            value={password}
-                                            onChange={(e) => {
-                                                setPassword(e.target.value);
-                                                validatePassword();
-                                            }}
-                                        />
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                    validatePassword();
+                                }}
+                            />
+                            <Box className={classes.eyeIcon}
+                                onClick={handleTogglePassword}>
+                                <VisibilityIcon />
+                            </Box>
+                            <Typography variant='h4' className={`${classes.errorMessage} ${classes.passwordError}`}>{passwordError}</Typography>
 
-                                        <Box className={classes.eyeIcon}
-                                            onClick={handleTogglePassword}>
-                                            <VisibilityIcon />
-                                        </Box>
-                                        <Box className={`${classes.errorMessage} ${classes.passwordError}`}>{passwordError}</Box>
-                                        <Typography variant='body2' className={classes.forgotPasswordSection}>Did you forget your password?
-                                            <Link href="#" underline="none"> Click Here</Link>
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item className={`${classes.propAutomateSection}`} xs={12} md={9}>
-                                        <Box className={classes.propSubSection}>
-                                            <Typography
-                                                variant="body1"
-                                                className={`${classes.poweredBy}`}
-                                            >
-                                                Powered by
-                                            </Typography>
-                                            <img
-                                                className={classes.PropIcon}
-                                                src={PropIcon}
-                                                alt="Property automate logo image"
-                                            />
-                                            <Typography
-                                                variant="body1"
-                                                className={`${classes.propAutomateText}`}
-                                            >
-                                                Property Automate
-                                            </Typography>
-                                        </Box>
-                                    </Grid>
-                                    <Grid item className={`${classes.loginButtonSection}`}>
-                                        <button
-                                            className={`${classes.loginButton}`}
-                                            // onClick={handleLoginClick}
-                                            onClick={handleFormSubmit}
-                                        >
-                                            {loading ? 'Logging in...' : ' Log in'}
-                                        </button>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid item id="successMessage" className={classes.successCard}>
-                                <span className={classes.successText}>
-                                    Account created successfully!
-                                </span>
-                            </Grid>
 
-                        </Grid>
-                        <Box className={classes.secondDotIcon}>
-                            <DotIcon2 />
-                        </Box>
+                            {/* forget your password section */}
+                            <Typography variant='h4' className={classes.forgotPasswordSection}>Did you forget your password?
+                                <Link href="#" underline="none" style={{ marginLeft: '5px', }}> Click Here</Link>
+                            </Typography>
+
+
+
+                            {/* powered by property automate para contained in a box container */}
+                            <Box className={classes.propSubSection}>
+                                <Typography
+                                    variant="body1"
+                                    className={`${classes.poweredBy}`}
+                                >
+                                    Powered by
+                                </Typography>
+                                <img
+                                    className={classes.PropIcon}
+                                    src={PropIcon}
+                                    alt="Property automate logo image"
+                                />
+                                <Typography
+                                    variant="h5"
+                                    className={`${classes.propAutomateText}`}
+                                >
+                                    Property Automate
+                                </Typography>
+                            </Box>
+
+
+                            {/* Log in button  */}
+                            <button className={`${classes.loginButton}`} onClick={handleFormSubmit}><Typography variant='h3'>{loading ? 'Logging in...' : ' Log in'}</Typography></button>
+
+
+                        </Card>
                     </Grid>
+
+
+
                 </Grid >
+            </Grid>
+        </Grid >
     );
 }
 
