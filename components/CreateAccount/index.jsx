@@ -9,7 +9,6 @@ import { createAccountStyle } from "./style";
 import BuildingImage from '../../src/icons/Sign-in/teamImage.png';
 import DotIcon from '../../src/icons/Sign-in/DotIcon.jsx'
 import DotIcon2 from '../../src/icons/Sign-in/DotIcon2.jsx'
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import theme from "../ThemeProvider/index.jsx";
 
@@ -40,7 +39,7 @@ function CreateAccount({ onLogin }) {
         }
         setOpenSnackBar(false);
     };
-   
+
     const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
 
     function handleFormSubmit(event) {
@@ -132,9 +131,7 @@ function CreateAccount({ onLogin }) {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <div className={classes.rootContainer}>
-                <Grid container className={classes.createAccountContainer}>
+       <Grid container className={classes.createAccountContainer}>
 
                     <Grid item xs={12} md={3} className={classes.subSection1} >
                         <Grid container style={{ display: isMdScreen ? 'none' : '' }}>
@@ -148,6 +145,7 @@ function CreateAccount({ onLogin }) {
                                 <RoundIcon fill="#5078e1" opacity="0.25" width="186" height="140" />
                             </Grid>
                         </Grid>
+                    
                         <img
                             className={classes.teamImage}
                             src={BuildingImage}
@@ -159,8 +157,11 @@ function CreateAccount({ onLogin }) {
                         <Box className={classes.firstDotIcon}>
                             <DotIcon />
                         </Box>
-                        <Grid container xs={12} md={9}
-                            className={` ${isMdScreen ?  classes.signInSection : classes.signInSection}`}
+                        <Grid
+                            container
+                            xs={12}
+                            md={isMdScreen ? 12 : 4} // Set xs to 12 and md to 12 or 4 based on screen size
+                            className={isMdScreen ? classes.signInSection : classes.signInSection}
                         >
                             <Grid item className={classes.inputBoxSection} >
                                 <Typography
@@ -264,8 +265,6 @@ function CreateAccount({ onLogin }) {
                         </Box>
                     </Grid>
                 </Grid >
-            </div>
-        </ThemeProvider>
     );
 }
 

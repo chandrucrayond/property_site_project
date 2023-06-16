@@ -18,6 +18,12 @@ export default function DashboardSection2() {
         <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={4} lg={3}>
                 <Card className={classes.GraphCard} >
+                    <Grid container>
+                    <Grid item xs={6}>Property Types</Grid>
+                    <Grid item xs={6} style={{display: 'flex', justifyContent: 'end',}}>Enlarge</Grid>
+                
+
+                    </Grid>
                     <Graph1 />
                 </Card>
             </Grid>

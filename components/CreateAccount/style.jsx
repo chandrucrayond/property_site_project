@@ -32,6 +32,7 @@ export const createAccountStyle = makeStyles((theme) => ({
   subSection1: {
     backgroundColor: "#FFFFFF !important",
     minHeight: '100% !important',
+    width: 'auto',
   },
 
   subSection2: {
@@ -46,7 +47,6 @@ export const createAccountStyle = makeStyles((theme) => ({
     position: 'relative !important',
     left: '40% !important',
     top: '60px !important',
-    width: '40% !important',
     padding: '32px 37px !important',
     borderRadius: '16px !important',
     zIndex: '5 !important',

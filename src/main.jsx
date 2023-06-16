@@ -5,10 +5,11 @@ import Dashboard from '../components/Dashboard/index';
 import SharedLayout from '../components/SharedLayout/index';
 import Protected from '../components/Protected/index';
 import ErrorPage from '../components/ErrorPage/index';
-import { createTheme } from '@mui/material/styles';
 import './index.css';
 import CreateAccount from '../components/CreateAccount/index';
 import ExampleComponent from '../components/ExampleComponent/index';
+import theme from '../components/ThemeProvider';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -60,9 +61,11 @@ const App = () => {
   ]);
 
   return (
+    <ThemeProvider theme={theme}>
     <RouterProvider
       router={router}
     />
+    </ThemeProvider>
   );
 };
 

@@ -14,6 +14,7 @@ export default function Graph1() {
       <PieChart>
         <Pie
           data={data}
+          outerRadius={80}
         >
         </Pie>
       </PieChart>

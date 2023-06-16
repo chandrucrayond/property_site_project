@@ -48,37 +48,133 @@ function GeneralRequests() {
                 />
             </Grid>
             <Grid item xs={12}>
+               
                 <Grid container style={{ alignItems: 'center', }}>
                     <Grid item xs={8}>
                         <Typography variant='body2'>Water Leakage Repair</Typography>
-                        <Typography variant='body2'>
-                            Maintenance
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <CircleIcon />
-                                    </ListItemIcon>
-                                    <ListItemText ><Typography variant='body2'>22 Jan 21</Typography></ListItemText>
-                                </ListItem>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <CircleIcon />
-                                    </ListItemIcon>
-                                    <ListItemText ><Typography variant='body2'>K-F01-U277</Typography></ListItemText>
-                                </ListItem>
-                            </List>
+                        <Typography variant='body2' style={{fontSize: '12px'}}>
+                           
+                                Maintenance  <CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px' }}/>22 Jan 21<CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px'  }}/>K-F01-U277
+                                
                         </Typography>
                     </Grid>
                     <Grid item xs={4} justifyContent="end" sx={{ display: 'flex', }}>
                         <Typography variant='body2' style={{ marginRight: '20px', }}><ModeIcon /></Typography>
                         <Typography variant='body2' ><VisibilityIcon /></Typography>
                     </Grid>
-
                 </Grid>
+
+                <Grid container style={{ alignItems: 'center', marginTop: '10px',}}>
+                    <Grid item xs={8}>
+                        <Typography variant='body2'>Electricity Voltage Drop</Typography>
+                        <Typography variant='body2' style={{fontSize: '12px'}}>
+                           
+                                Maintenance  <CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px' }}/>22 Jan 21<CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px'  }}/>K-F01-U277
+                                
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4} justifyContent="end" sx={{ display: 'flex', }}>
+                        <Typography variant='body2' style={{ marginRight: '20px', }}><ModeIcon /></Typography>
+                        <Typography variant='body2' ><VisibilityIcon /></Typography>
+                    </Grid>
+                </Grid>
+
+                <Grid container style={{ alignItems: 'center', marginTop: '10px',}}>
+                    <Grid item xs={8}>
+                        <Typography variant='body2'>Water Leakage Repair</Typography>
+                        <Typography variant='body2' style={{fontSize: '12px'}}>
+                           
+                                Maintenance  <CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px' }}/>22 Jan 21<CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px'  }}/>K-F01-U277
+                                
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4} justifyContent="end" sx={{ display: 'flex', }}>
+                        <Typography variant='body2' style={{ marginRight: '20px', }}><ModeIcon /></Typography>
+                        <Typography variant='body2' ><VisibilityIcon /></Typography>
+                    </Grid>
+                </Grid>
+
             </Grid>
         </Grid>
     );
 }
+
+
+function Maintenance() {
+    return (
+        <Grid container spacing={3}>
+            <Grid item xs={6}>
+                <Typography variant='h4'>Maintenance (15)</Typography>
+            </Grid>
+            <Grid item xs={6} justifyContent="end" sx={{ display: 'flex', }}>
+                <Link href="#" underline="none">
+                    <Typography variant='h4'>View All</Typography>
+                </Link>
+            </Grid>
+            <Grid item xs={12} >
+                <OutlinedInput fullWidth sx={{ height: '37px' }}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="center">
+                                <SearchIcon />
+                            </InputAdornment>
+                        )
+                    }}
+                    placeholder="Search Maintenance ID, Maintenance Name, Category"
+                />
+            </Grid>
+            <Grid item xs={12}>
+               
+                <Grid container style={{ alignItems: 'center', }}>
+                    <Grid item xs={8}>
+                        <Typography variant='body2'>Water Leakage Repair</Typography>
+                        <Typography variant='body2' style={{fontSize: '12px'}}>
+                           
+                                Maintenance  <CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px' }}/>22 Jan 21<CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px'  }}/>K-F01-U277
+                                
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4} justifyContent="end" sx={{ display: 'flex', }}>
+                        <Typography variant='body2' style={{ marginRight: '20px', }}><ModeIcon /></Typography>
+                        <Typography variant='body2' ><VisibilityIcon /></Typography>
+                    </Grid>
+                </Grid>
+
+                <Grid container style={{ alignItems: 'center', marginTop: '10px',}}>
+                    <Grid item xs={8}>
+                        <Typography variant='body2'>Electricity Voltage Drop</Typography>
+                        <Typography variant='body2' style={{fontSize: '12px'}}>
+                           
+                                Maintenance  <CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px' }}/>22 Jan 21<CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px'  }}/>K-F01-U277
+                                
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4} justifyContent="end" sx={{ display: 'flex', }}>
+                        <Typography variant='body2' style={{ marginRight: '20px', }}><ModeIcon /></Typography>
+                        <Typography variant='body2' ><VisibilityIcon /></Typography>
+                    </Grid>
+                </Grid>
+
+                <Grid container style={{ alignItems: 'center', marginTop: '10px',}}>
+                    <Grid item xs={8}>
+                        <Typography variant='body2'>Water Leakage Repair</Typography>
+                        <Typography variant='body2' style={{fontSize: '12px'}}>
+                           
+                                Maintenance  <CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px' }}/>22 Jan 21<CircleIcon style={{ fontSize: '6px', marginLeft:'10px',marginRight:'10px'  }}/>K-F01-U277
+                                
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4} justifyContent="end" sx={{ display: 'flex', }}>
+                        <Typography variant='body2' style={{ marginRight: '20px', }}><ModeIcon /></Typography>
+                        <Typography variant='body2' ><VisibilityIcon /></Typography>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </Grid>
+    );
+}
+
 
 function SelectTabs() {
     const [value, setValue] = React.useState(1);
@@ -94,7 +190,7 @@ function SelectTabs() {
                 <Tab label="Maintenance" sx={{ textTransform: 'capitalize' }} value={2} />
             </TabList>
             <TabPanel value={1}><GeneralRequests /></TabPanel>
-            <TabPanel value={2}>Item Two</TabPanel>
+            <TabPanel value={2}><Maintenance /></TabPanel>
         </TabContext>
     );
 }
