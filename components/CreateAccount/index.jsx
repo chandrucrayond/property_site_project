@@ -98,18 +98,6 @@ function CreateAccount({ onLogin }) {
         }
     }
 
-
-    // function isValidEmail(email) {
-    //     const emailRegex = /\S+@\S+\.\S+/;
-    //     return emailRegex.test(email);
-    // }
-
-    // function isValidMobile(email) {
-    //     // Check if the input is a valid mobile number
-    //     const mobileRegex = /^\d{10,}$/;
-    //     return mobileRegex.test(email);
-    // }
-
     function isValidMobileEmail(email) {
         // Check if the input is a valid mobile number
         const isMobileValid = /^\d{10,}$/.test(email);

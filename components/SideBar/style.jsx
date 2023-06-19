@@ -34,6 +34,14 @@ const SideBarStyle = makeStyles((theme) => ({
             backgroundColor: "#5078E1 !important",
         },
     },
+
+    togglePara: {
+        display: 'flex',
+        justifyContent: 'flex-start',
+        position: 'relative',
+        left: '100px',
+    },
+
     sideBarHeadingBox: {
         // width: '60%',
     },
@@ -41,6 +49,7 @@ const SideBarStyle = makeStyles((theme) => ({
         display: 'flex',
         marginLeft: '10px',
         // positon:'fixed',
+        paddingRight: '10px',
         whiteSpace: 'normal',
     },
 }

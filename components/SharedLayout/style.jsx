@@ -9,7 +9,7 @@ export const SharedLayoutStyle = makeStyles((theme) => ({
     // marginLeft: '20px !important',
     // marginRight: '20px !important',
     // marginBottom: '50px !important',
-    width: "calc(100% - 80px) !important",
+    width: "calc(100% - 100px) !important",
     marginLeft: "80px !important",
     marginRight: "20px !important",
     marginBottom: "50px !important",

@@ -27,7 +27,6 @@ export const DashboardSection2Style = makeStyles((theme) => ({
         "& .recharts-surface": {
             display: 'flex !important',
             alignItems: 'end !important',
-            bottom: '20px !important',
             position: "relative !important",
             bottom: '1px !important',
         },
