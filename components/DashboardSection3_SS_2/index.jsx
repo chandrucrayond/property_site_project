@@ -25,10 +25,10 @@ function createData(name, calories, fat, carbs, protein) {
     function BasicTable() {
       const classes = DashboardSection3_SS_2_Style();
     return (
-      <TableContainer component={Paper} className={classes.table}>
-        <Table aria-label="simple table">
+      <TableContainer className={classes.table}>
+        <Table>
           <TableHead>
-            <TableRow>
+            <TableRow sx={{backgroundColor: '#F2F4F7'}}>
               <TableCell>Property Id</TableCell>
               <TableCell >Property Name</TableCell>
               <TableCell >Total Units</TableCell>
@@ -61,7 +61,7 @@ const DashboardSection_3_SS_2 = () => {
  
     return(
         <>
-        <Typography variant="h5">Occupancy By Property</Typography>
+        <Typography variant="h2" sx={{paddingTop:'10px',}}>Occupancy By Property</Typography>
         <BasicTable />
         </>
     );

@@ -1,58 +1,54 @@
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Typography } from '@mui/material';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
 
 const data = [
     {
-        name: "0",
-        uv: 4000,
+        name: "Rubix",
+        uv: 40,
     },
     {
-        name: "1",
-        uv: 3000,
+        name: "Prop 03",
+        uv: 30,
     },
     {
-        name: "2",
-        uv: 201,
+        name: "Prop 02",
+        uv: 101,
     },
     {
-        name: "3",
-        uv: 2780,
-        pv: 3908,
-        amt: 2000
+        name: "Prop 06",
+        uv: 90,
     },
     {
-        name: "Page E",
-        uv: 1890,
-        pv: 4800,
-        amt: 2181
+        name: "Prop 01",
+        uv: 75,
     },
     {
-        name: "Page F",
-        uv: 2390,
-        pv: 3800,
-        amt: 2500
+        name: "Prop 41",
+        uv: 23,
     },
     {
-        name: "Page G",
-        uv: 3490,
-        pv: 4300,
-        amt: 2100
+        name: "Prop 43",
+        uv: 34,
     }
 ];
 
 export default function Graph3() {
     return (
-        <ResponsiveContainer width={"100%"} height={'100%'}>
+        <ResponsiveContainer width={"100%"} height={'75%'} >
             <BarChart
                 data={data}
                 layout='vertical'
             >
-                <XAxis type="number" />
-                <YAxis type="category" dataKey="name" />
-                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B', }}>
+                <Label value="No of vacants" offset={-4} position="insideBottom" />
+                </XAxis>
+               
+                <YAxis type="category" dataKey="name"   style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B', }}>
+                {/* <Label value="No of vacants" angle= {-90} /> */}
+                </YAxis>
                 <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
+             
+                <Bar dataKey="uv" fill="#58D0E0" />
             </BarChart>
         </ResponsiveContainer>
     );

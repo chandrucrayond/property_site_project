@@ -10,11 +10,8 @@ import theme from "../ThemeProvider/index.jsx";
 import SideBar from "../SideBar/index.jsx";
 
 function SharedLayout() {
- 
-
-  const isMdScreen = useMediaQuery(theme.breakpoints.down('lg'));
+  const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const classes = SharedLayoutStyle();
-  const [open, setOpen] = useState(false);
 
   return (
 
@@ -24,13 +21,13 @@ function SharedLayout() {
             <AppHeader />
           </Grid>
 
-          <Grid item xs={12} className={classes.outletStyle} >
+          <Grid item xs={12} className={` ${isMdScreen ? classes.outletStyleTablet : classes.outletStyle}`} >
               <Outlet />
           </Grid>
           
-          {/* <Grid item  xs={12} className={classes.sideBarStyle}>
+          <Grid item xs={12} className={classes.sideBarStyle} sx={{display : isMdScreen ? 'none' : 'block'}}>
                 <SideBar />
-          </Grid>  */}
+          </Grid> 
 
         </Grid>
 

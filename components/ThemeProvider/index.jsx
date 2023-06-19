@@ -14,10 +14,16 @@ const theme = createTheme({
     typography: {
         fontFamily: "Nunito Sans",
         'h1': {
-            fontWeight: 800,
+            fontWeight: 700,
             fontSize: '24px',
             lineHeight: '32px',
             letterSpacing: '0.14px',
+            color: '#091B29',
+        },
+        'h2': {
+            fontWeight: 700,
+            fontSize: '16px',
+            lineHeight: '22px',
             color: '#091B29',
         },
         'h3':{

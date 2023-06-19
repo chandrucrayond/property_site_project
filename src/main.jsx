@@ -7,6 +7,7 @@ import Protected from '../components/Protected/index';
 import ErrorPage from '../components/ErrorPage/index';
 import './index.css';
 import CreateAccount from '../components/CreateAccount/index';
+import CreateProperty from '../components/CreateProperty';
 import ExampleComponent from '../components/ExampleComponent/index';
 import theme from '../components/ThemeProvider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -49,6 +50,10 @@ const App = () => {
         {
           path: "checking",
           element: <p>Hello world of the product, this is entered in main.jsx</p>,
+        },
+        {
+          path: "createProperty",
+          element: <CreateProperty />
         },
       ],
     },

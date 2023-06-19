@@ -49,9 +49,9 @@ const Title = styled(Typography)({
 });
 
 const CusMenuItem = styled(MenuItem)({
-  fontSize: "13px",
-  fontFamily: "Montserrat , sans-serif",
-  fontWeight: "500",
+  // fontSize: "13px",
+  // fontFamily: "Montserrat , sans-serif",
+  // fontWeight: "500",
 });
 
 // Inline styled mui elements ending
@@ -145,14 +145,15 @@ function AppHeader() {
           </Grid>
 
 
-          <Grid item xs={6} sm={6} style={{ display: isSmScreen ? 'none' : 'flex', cursor: 'pointer' }} >
-            <Grid container sx={{ alignItems: 'center', justifyContent: 'end',}}>
+          <Grid item xs={6} sm={6} style={{ display: isSmScreen ? 'none' : 'flex',  }} >
+            <Grid container sx={{ alignItems: 'center', cursor: 'pointer' ,justifyContent: 'end',}} onClick={handleClick}>
              
-                <NotificationIcon variant="dot" />
+                <NotificationIcon variant="dot"/>
                 <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', marginLeft: '20px', marginRight: '20px' }} />
+                 
                     <Tooltip title="Account settings">
                       <IconButton
-                        onClick={handleClick}
+                        
                         size="small"
                         aria-controls={open ? "account-menu" : undefined}
                         aria-haspopup="true"
@@ -172,12 +173,12 @@ function AppHeader() {
                
                     <Box>
                       <Typography variant='h4' style={{color: 'white',}}>Bala Ganesh</Typography>
-                      <Typography variant='h5'>Super Admin</Typography>
+                      <Typography variant='h5' >Super Admin</Typography>
                     </Box>
                 
                
                     <KeyboardArrowDownIcon />
-                 
+                   
             </Grid>
 
             <Menu

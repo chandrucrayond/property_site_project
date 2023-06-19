@@ -20,7 +20,7 @@ export default function DashboardSection1Card({ title, image, count }) {
                 {image}
             </Grid>
             <Grid item xs={6}>
-                <Typography variant='h3' style={{ color: '#091B29', }}>{title}</Typography>
+                <Typography variant='h3' style={{ color: '#091B29', marginTop:'10px'}}>{title}</Typography>
             </Grid>
         </Grid>
     );
