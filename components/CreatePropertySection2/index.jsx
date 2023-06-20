@@ -8,22 +8,8 @@ import InputLabel from '@mui/material/InputLabel';
 import { OutlinedInput } from '@mui/material';
 import { Input } from '@mui/material';
 import { InputBase } from '@mui/material';
-import Bullet from '../../src/icons/Create-Property/Bullet';
-import Bold from '../../src/icons/Create-Property/Bold';
-import Italic from '../../src/icons/Create-Property/Italic';
-import Strike from '../../src/icons/Create-Property/Strike';
-import Underline from '../../src/icons/Create-Property/Underline';
-import Numbered from '../../src/icons/Create-Property/Numbered';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import CreatePropertyQuill from "../CreatePropertyQuill/index";
 
-
-
-function MyComponent() {
-    const [value, setValue] = useState('');
-  
-    return <ReactQuill theme="snow" value={value} onChange={setValue} />;
-  }
 
 
 const CreatePropertySection2 = () => {
@@ -62,11 +48,11 @@ const CreatePropertySection2 = () => {
     };
 
     return (
-        <Grid container className={classes.container}>
-            <Grid item xs={12} className={classes.subContainer}>
+        <Grid container>
+            <Grid item xs={12} >
                 <Typography variant='h4' style={{ color: '#4E5A6B', marginBottom: '15px', }}>PROPERTY DETAILS</Typography>
             </Grid>
-            <Grid item xs={12} className={classes.subContainer} >
+            <Grid item xs={12}  >
                 <Grid container spacing={3}>
 
                     <Grid item xs={12} sm={6} md={3}>
@@ -132,7 +118,7 @@ const CreatePropertySection2 = () => {
 
                     <Grid item xs={12} >
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Description</Typography>
-                        <FormControl fullWidth >
+                        {/* <FormControl fullWidth >
                             <textarea
                                 placeholder="Enter your text"
                                 value={select5}
@@ -151,7 +137,8 @@ const CreatePropertySection2 = () => {
                             <Grid item style={{cursor: 'pointer'}}><Bullet /></Grid>
 
                          </Grid>
-                        </FormControl>
+                        </FormControl> */}
+                        <CreatePropertyQuill />
                     </Grid>
 
 

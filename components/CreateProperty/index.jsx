@@ -1,9 +1,10 @@
-import { AppBar, Grid, IconButton, Typography, useMediaQuery } from "@mui/material";
+import { AppBar, Card, Grid, IconButton, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import { CreatePropertyStyle } from "./style";
 import theme from "../ThemeProvider";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useNavigate } from "react-router-dom";
+import CreateCard, {NormalCard} from "../CreateCard";
 import CreatePropertySection1 from "../CreatePropertySection1";
 import CreatePropertySection2 from "../CreatePropertySection2";
 import CreatePropertySection3 from "../CreatePropertySection3";
@@ -27,25 +28,28 @@ const CreateProperty = () => {
 
 
 
+      <div className={`${classes.createContainer}
+       ${isMdScreen ? classes.createContainerTablet : ''} 
+        ${isSmScreen ? classes.createContainerMobile : ''}`} >
 
-      <Grid container columnGap={2} rowGap={2} className={`${isLgScreen ? classes.createContainer : ''} ${isMdScreen ? classes.createContainerTablet : ''} ${isSmScreen ? classes.createContainerMobile : ''}`}>
-       
-       <Grid item xs={12} style={{ flexWrap: 'wrap',}}>
-        <Grid item xs={12} md={2} className={`${classes.gridSection} ${classes.gridSectionWrap}`}>
-          <CreatePropertySection1 />
+        <Grid container spacing={2}>
+
+          <Grid item xs={12} md={2}>
+            <CreateCard> <CreatePropertySection1 /></CreateCard>
+          </Grid>
+
+          <Grid item xs={12} md={10}>
+            <CreateCard> <CreatePropertySection2 /></CreateCard>
+          </Grid>
+
+
+          <Grid item xs={12} >
+          <NormalCard><CreatePropertySection3 /></NormalCard>
+          </Grid>
+
+
         </Grid>
-
-        <Grid item xs={12} md={10} className={`${classes.gridSection} ${classes.gridSectionWrap}`}>
-          <CreatePropertySection2 />
-        </Grid>
-        </Grid>
-
-        <Grid item xs={12}  className={`${classes.gridSection}`}>
-          <CreatePropertySection3 />
-        </Grid>
-
-
-      </Grid>
+      </div>
     </>
   );
 };

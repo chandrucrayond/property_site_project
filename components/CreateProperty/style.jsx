@@ -55,25 +55,19 @@ export const CreatePropertyStyle = makeStyles((theme) => ({
   },
 
   createContainer: {
-    position: 'relative',
-   top: '30px !important',
+    // position: 'relative',
+   marginTop: '30px !important',
   
   },
 
   createContainerTablet: {
     position: 'relative',
-    top: '30px !important',
+    top: '0px !important',
   },
 
   createContainerMobile: {
     position: 'relative',
-    top: '10px !important',
-  },
-
-  createSection: {
-    backgroundColor: '#FFFFFF !important',
-    borderRadius: '8px !important',
-    padding: '20px',
+    top: '0px !important',
   },
 
   gridSection: {
@@ -82,7 +76,7 @@ export const CreatePropertyStyle = makeStyles((theme) => ({
     padding: '20px',
   },
 
-  gridSectionWrap: {
-   
-  },
+  
+
+  
 }));
