@@ -6,6 +6,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useNavigate } from "react-router-dom";
 import CreatePropertySection1 from "../CreatePropertySection1";
 import CreatePropertySection2 from "../CreatePropertySection2";
+import CreatePropertySection3 from "../CreatePropertySection3";
 
 
 const CreateProperty = () => {
@@ -28,14 +29,21 @@ const CreateProperty = () => {
 
 
       <Grid container columnGap={2} rowGap={2} className={`${isLgScreen ? classes.createContainer : ''} ${isMdScreen ? classes.createContainerTablet : ''} ${isSmScreen ? classes.createContainerMobile : ''}`}>
-
-        <Grid item xs={12} md={2} className={`${classes.gridSection}`}>
+       
+       <Grid item xs={12} style={{ flexWrap: 'wrap',}}>
+        <Grid item xs={12} md={2} className={`${classes.gridSection} ${classes.gridSectionWrap}`}>
           <CreatePropertySection1 />
         </Grid>
 
-        <Grid item xs={12} md={10} className={`${classes.gridSection}`}>
+        <Grid item xs={12} md={10} className={`${classes.gridSection} ${classes.gridSectionWrap}`}>
           <CreatePropertySection2 />
         </Grid>
+        </Grid>
+
+        <Grid item xs={12}  className={`${classes.gridSection}`}>
+          <CreatePropertySection3 />
+        </Grid>
+
 
       </Grid>
     </>

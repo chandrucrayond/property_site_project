@@ -7,7 +7,6 @@ export const CreatePropertyStyle = makeStyles((theme) => ({
     height: '40px',
     width: '100%',
     top: '64px !important',
-    backgroundColor: '#FFFFFF',
     display: 'grid !important',
     justifyContent: 'start',
     alignItems: 'center',
@@ -58,7 +57,7 @@ export const CreatePropertyStyle = makeStyles((theme) => ({
   createContainer: {
     position: 'relative',
    top: '30px !important',
-   flexWrap: 'inherit !important',
+  
   },
 
   createContainerTablet: {
@@ -81,5 +80,9 @@ export const CreatePropertyStyle = makeStyles((theme) => ({
     backgroundColor: '#FFFFFF !important',
     borderRadius: '8px !important',
     padding: '20px',
+  },
+
+  gridSectionWrap: {
+   
   },
 }));
