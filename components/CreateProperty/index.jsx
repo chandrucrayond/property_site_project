@@ -1,14 +1,15 @@
 import { AppBar, Card, Grid, IconButton, Typography, useMediaQuery } from "@mui/material";
-import React from "react";
+import React, {useState} from "react";
 import { CreatePropertyStyle } from "./style";
 import theme from "../ThemeProvider";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useNavigate } from "react-router-dom";
-import CreateCard, {NormalCard} from "../CreateCard";
+import CreateCard, { NormalCard } from "../CreateCard";
 import CreatePropertySection1 from "../CreatePropertySection1";
 import CreatePropertySection2 from "../CreatePropertySection2";
 import CreatePropertySection3 from "../CreatePropertySection3";
-
+import CreatePropertySection4 from "../CreatePropertySection4";
+import CreatePropertySection5 from "../CreatePropertySection5";
 
 const CreateProperty = () => {
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
@@ -19,6 +20,65 @@ const CreateProperty = () => {
   function handleClickingToggle() {
     navigate("/dashboard");
   }
+
+  const [formData, setFormData] = useState({
+
+    property_details: {
+      cname: "Company Name",
+      pname: "",
+      pperiod: "Daily",
+      status: "Active",
+      pdesc: "",
+    },
+
+    property_details2: {
+      ptype: "Apartment",
+      ppurp: "Residential",
+      rtype: "Lease",
+      munit: "Sq.ft",
+      carea: "",
+      tarea: "",
+      ybuilt: "2020-01-01",
+      hdate: "2023-01-01",
+      plist: "",
+      pets: "false",
+    },
+
+    address_details: {
+      lang: "",
+      lat: "",
+      dno: "",
+      aline1: "",
+      aline2: "",
+      landmark: "",
+      area: "Neelankarai",
+      city: "Chennai",
+      state: "Tamilnadu",
+      country: "",
+      pincode: "Pincode",
+    },
+
+    contact_details: {
+      bphone: "",
+      ccode: "+91",
+      mphone: "",
+      website: "",
+      email: "",
+    },
+  });
+  
+
+  const handleChange = (event, section, element) => {
+  
+    setFormData((prevState) => ({
+      ...prevState,
+      [section]: {
+        ...prevState[section],
+        [element]: event.target.value,
+      },
+    }));
+
+  };
 
   return (
     <>
@@ -39,14 +99,22 @@ const CreateProperty = () => {
           </Grid>
 
           <Grid item xs={12} md={10}>
-            <CreateCard> <CreatePropertySection2 /></CreateCard>
+            <CreateCard> <CreatePropertySection2 data={formData} setData={handleChange} /></CreateCard>
           </Grid>
 
 
           <Grid item xs={12} >
-          <NormalCard><CreatePropertySection3 /></NormalCard>
+            <NormalCard><CreatePropertySection3 data={formData} setData={handleChange}/></NormalCard>
           </Grid>
 
+          <Grid item xs={12} >
+            <NormalCard><CreatePropertySection4 data={formData} setData={handleChange}/></NormalCard>
+          </Grid>
+
+
+          <Grid item xs={12} >
+            <NormalCard><CreatePropertySection5 data={formData} setData={handleChange}/></NormalCard>
+          </Grid>
 
         </Grid>
       </div>

@@ -12,40 +12,15 @@ import CreatePropertyQuill from "../CreatePropertyQuill/index";
 
 
 
-const CreatePropertySection2 = () => {
+const CreatePropertySection2 = ({ data, setData }) => {
 
     const classes = CreatePropertySection2Style();
-    const [select1, setSelect1] = React.useState('Company Name');
+    const { property_details } = data;
 
-    const handleChange1 = (event) => {
-        setSelect1(event.target.value);
+    const handlePropertyDetailsChange = (event, element) => {
+        setData(event, 'property_details', element);
     };
 
-    const [select2, setSelect2] = React.useState('');
-
-    const handleChange2 = (event) => {
-        setSelect2(event.target.value);
-    };
-
-    const [select3, setSelect3] = React.useState('Daily');
-
-    const handleChange3 = (event) => {
-        setSelect3(event.target.value);
-    };
-
-
-    const [select4, setSelect4] = React.useState('Active');
-
-    const handleChange4 = (event) => {
-        setSelect4(event.target.value);
-    };
-
-
-    const [select5, setSelect5] = React.useState('');
-
-    const handleChange5 = (event) => {
-        setSelect5(event.target.value);
-    };
 
     return (
         <Grid container>
@@ -59,8 +34,8 @@ const CreatePropertySection2 = () => {
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Company Name</Typography>
                         <FormControl fullWidth>
                             <Select
-                                value={select1}
-                                onChange={handleChange1}
+                                value={property_details.cname}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'cname')}
                             >
                                 <MenuItem value={'Company Name'}>Company Name</MenuItem>
                                 <MenuItem value={'Organization Name'}>Organization Name</MenuItem>
@@ -75,8 +50,8 @@ const CreatePropertySection2 = () => {
                         <FormControl fullWidth>
                             <InputBase
                                 placeholder="Property Name"
-                                value={select2}
-                                onChange={handleChange2}
+                                value={property_details.pname}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'pname')}
                                 fullWidth
                                 style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
                             />
@@ -89,8 +64,8 @@ const CreatePropertySection2 = () => {
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Payment Period</Typography>
                         <FormControl fullWidth>
                             <Select
-                                value={select3}
-                                onChange={handleChange3}
+                                value={property_details.pperiod}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'pperiod')}
                             >
                                 <MenuItem value={'Daily'}>Daily</MenuItem>
                                 <MenuItem value={'Monthly'}>Monthly</MenuItem>
@@ -106,8 +81,8 @@ const CreatePropertySection2 = () => {
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Status</Typography>
                         <FormControl fullWidth>
                             <Select
-                                value={select4}
-                                onChange={handleChange4}
+                                value={property_details.status}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'status')}
                             >
                                 <MenuItem value={'Active'}>Active</MenuItem>
                                 <MenuItem value={'Inactive'}>Inactive</MenuItem>
@@ -116,29 +91,14 @@ const CreatePropertySection2 = () => {
                         </FormControl>
                     </Grid>
 
+
                     <Grid item xs={12} >
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Description</Typography>
-                        {/* <FormControl fullWidth >
-                            <textarea
-                                placeholder="Enter your text"
-                                value={select5}
-                                onChange={handleChange5}
-                                fullWidth
-                                style={{ border: '1px solid #bdbdbd', borderBottom: 'none', height: '50px' , flexWrap: 'wrap',  padding: '15px', marginBottom: '5px', borderRadius: '4px', resize: 'none', borderBottomLeftRadius: 'inherit',borderBottomRightRadius: 'inherit', }}
-                                className={classes.textarea}
-                           />
-                         <Grid container columnGap={2}  alignItems={"center"} style={{border: '1px solid #bdbdbd',position: 'relative', bottom: '9px',  width: '100%',borderRadius: '4px', paddingTop: '10px', paddingBottom: '10px', paddingLeft: '10px', }}>
-                           <Grid item style={{cursor: 'pointer'}}><Bold /></Grid> 
-                           <Grid item style={{cursor: 'pointer'}}><Italic /></Grid> 
-                           <Grid item style={{cursor: 'pointer'}}><Underline /></Grid> 
-                           <Grid item style={{cursor: 'pointer'}}><Strike /></Grid> 
-                           <Grid item><Divider orientation="vertical" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '15px', padding: '0'   }} /></Grid>
-                            <Grid item style={{cursor: 'pointer'}}><Numbered /></Grid>
-                            <Grid item style={{cursor: 'pointer'}}><Bullet /></Grid>
-
-                         </Grid>
-                        </FormControl> */}
-                        <CreatePropertyQuill />
+                      
+                        <CreatePropertyQuill 
+                        value={property_details.pdesc}
+                        setValue={handlePropertyDetailsChange}
+                        />
                     </Grid>
 
 

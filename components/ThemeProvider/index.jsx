@@ -15,25 +15,25 @@ const theme = createTheme({
         fontFamily: "Nunito Sans",
         'h1': {
             fontWeight: 700,
-            fontSize: '24px',
+            fontSize: '20px',
             lineHeight: '32px',
             letterSpacing: '0.14px',
             color: '#091B29',
         },
         'h2': {
             fontWeight: 700,
-            fontSize: '16px',
+            fontSize: '14px',
             lineHeight: '22px',
             color: '#091B29',
         },
         'h3':{
             fontWeight: 600,
-            fontSize: '14px',
+            fontSize: '12px',
             lineHeight: '19px',
         },
         'h4': {
             fontWeight: '600',
-            fontSize: '12px',
+            fontSize: '13px',
             lineHeight: '14px',
         },
         'h5': {

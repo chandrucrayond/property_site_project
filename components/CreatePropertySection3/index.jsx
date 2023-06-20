@@ -1,5 +1,5 @@
-import { Typography, useMediaQuery, Grid, Button, TextField, Box, Divider } from "@mui/material";
-import React from "react";
+import { Typography, useMediaQuery, Grid, Button, TextField, Box, Divider, InputAdornment, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { CreatePropertySection3Style } from "./style";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -8,44 +8,38 @@ import InputLabel from '@mui/material/InputLabel';
 import { OutlinedInput } from '@mui/material';
 import { Input } from '@mui/material';
 import { InputBase } from '@mui/material';
+import { ToggleButton, ToggleButtonGroup, } from '@mui/material';
+import theme from "../ThemeProvider";
 
 
 
-const CreatePropertySection3 = () => {
+const CreatePropertySection3 = ({ data, setData }) => {
 
     const classes = CreatePropertySection3Style();
-    const [select1, setSelect1] = React.useState('Apartment');
+    const { property_details2 } = data;
 
-    const handleChange1 = (event) => {
-        setSelect1(event.target.value);
+    const handlePropertyDetailsChange = (event, element) => {
+        setData(event, 'property_details2', element);
     };
 
-    const [select2, setSelect2] = React.useState('Residential');
+    const [measure_unit, setMeasure_unit] = useState('Sq.ft');
+    useEffect(() => {
+        setMeasure_unit(property_details2.munit);
+    }, [property_details2.munit]);
 
-    const handleChange2 = (event) => {
-        setSelect2(event.target.value);
+
+    const [selected, setSelected] = React.useState(1);
+    
+    const [selectedPets, setSelectedPets] = React.useState("false");
+    const handleClick = (value) => {
+        if (selected === value) {
+            setSelected(null);
+        } else {
+            setSelected(value);
+        }
     };
 
-    const [select3, setSelect3] = React.useState('Daily');
-
-    const handleChange3 = (event) => {
-        setSelect3(event.target.value);
-    };
-
-
-    const [select4, setSelect4] = React.useState('Active');
-
-    const handleChange4 = (event) => {
-        setSelect4(event.target.value);
-    };
-
-
-    const [select5, setSelect5] = React.useState('');
-
-    const handleChange5 = (event) => {
-        setSelect5(event.target.value);
-    };
-
+    const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
     return (
         <Grid container>
             <Grid item xs={12} >
@@ -54,12 +48,14 @@ const CreatePropertySection3 = () => {
             <Grid item xs={12}  >
                 <Grid container spacing={3}>
 
-                    <Grid item xs={12} sm={6} md={3}>
+
+                    {/* 1st grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Type</Typography>
                         <FormControl fullWidth>
                             <Select
-                                value={select1}
-                                onChange={handleChange1}
+                                value={property_details2.ptype}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'ptype')}
                             >
                                 <MenuItem value={'Apartment'}>Apartment</MenuItem>
                                 <MenuItem value={'Individual house'}>Individual house</MenuItem>
@@ -69,12 +65,13 @@ const CreatePropertySection3 = () => {
                     </Grid>
 
 
-                    <Grid item xs={12} sm={6} md={3}>
+                    {/* 2nd grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Purpose</Typography>
                         <FormControl fullWidth>
-                        <Select
-                                value={select2}
-                                onChange={handleChange2}
+                            <Select
+                                value={property_details2.ppurp}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'ppurp')}
                             >
                                 <MenuItem value={'Residential'}>Residential</MenuItem>
                                 <MenuItem value={'Commercial'}>Commercial</MenuItem>
@@ -83,39 +80,186 @@ const CreatePropertySection3 = () => {
                     </Grid>
 
 
+                    {/* 3rd grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Revenue Type</Typography>
+                        <FormControl fullWidth>
+                            <Select
+                                value={property_details2.rtype}
+                                onChange={(event) => {
+                                    handlePropertyDetailsChange(event, 'rtype')
+                                }}
+                            >
+                                <MenuItem value={'Lease'}>Lease</MenuItem>
+                                <MenuItem value={'Rent'}>Rent</MenuItem>
 
+                            </Select>
+                        </FormControl>
+                    </Grid>
+
+
+                    {/* 4th grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Measurement unit</Typography>
+                        <FormControl fullWidth>
+                            <Select
+                                value={property_details2.munit}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'munit')}
+                            >
+                                <MenuItem value={'Sq.ft'}>Sq.ft</MenuItem>
+                                <MenuItem value={'Sq.m'}>Sq.m</MenuItem>
+
+                            </Select>
+                        </FormControl>
+                    </Grid>
+
+
+                    {/* 5th grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Carpet Area</Typography>
+                        <FormControl fullWidth>
+                            <InputBase
+                                type="number"
+                                placeholder="Carpet Area"
+                                value={property_details2.carea}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'carea')}
+                                fullWidth
+                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                className={classes.numberInput}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        {measure_unit}
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                    </Grid>
+
+
+                    {/* 6th grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Total Area</Typography>
+                        <FormControl fullWidth>
+                            <InputBase
+                                type="number"
+                                placeholder="Total Area"
+                                value={property_details2.tarea}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'tarea')}
+                                fullWidth
+                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                className={classes.numberInput}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        {measure_unit}
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                    </Grid>
+
+
+                    {/* 7th grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Year Built</Typography>
+                        <FormControl fullWidth>
+                            <InputBase
+                                type="date"
+                                value={property_details2.ybuilt}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'ybuilt')}
+                                fullWidth
+                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+
+                            />
+                        </FormControl>
+                    </Grid>
+
+
+
+                    {/* 8th grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Handover Date</Typography>
+                        <FormControl fullWidth>
+                            <InputBase
+                                type="date"
+                                value={property_details2.hdate}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'hdate')}
+                                fullWidth
+                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+
+                            />
+                        </FormControl>
+                    </Grid>
+
+
+                    {/* 9th grid item value not added in data */}
                     <Grid item xs={12} sm={6} md={3}>
-                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Payment Period</Typography>
-                        <FormControl fullWidth>
-                            <Select
-                                value={select3}
-                                onChange={handleChange3}
-                            >
-                                <MenuItem value={'Daily'}>Daily</MenuItem>
-                                <MenuItem value={'Monthly'}>Monthly</MenuItem>
-                                <MenuItem value={'Yearly'}>Yearly</MenuItem>
-
-                            </Select>
-                        </FormControl>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Public Listing</Typography>
+                        <ToggleButton
+                            value="check"
+                            selected={selected === 1}
+                            onClick={() => handleClick(1)}
+                            color="primary"
+                            style={{
+                                marginRight: '10px',
+                                textTransform: 'none',
+                                ...(selected === 1 && { backgroundColor: "#5078E1", color: 'white' }),
+                                borderRadius: '10px',
+                              }}
+                            
+                        >
+                            Private
+                        </ToggleButton>
+                        <ToggleButton
+                            value="check"
+                            selected={selected === 2}
+                            onClick={() => handleClick(2)}
+                            color="primary"
+                            style={{
+                                marginRight: '10px',
+                                textTransform: 'none',
+                                ...(selected === 2 && { backgroundColor: "#5078E1", color: 'white' }),
+                                borderRadius: '10px',
+                              }}
+                        >
+                             Public
+                        </ToggleButton>
+                        <ToggleButton
+                            value="check"
+                            selected={selected === 3}
+                            onClick={() => handleClick(3)}
+                            color="primary"
+                            style={{
+                                
+                                textTransform: 'none',
+                                ...(selected === 3 && { backgroundColor: "#5078E1", color: 'white' }),
+                                borderRadius: '10px',
+                              }}
+                        >
+                             None
+                        </ToggleButton>
                     </Grid>
 
 
-
-                    <Grid item xs={12} sm={6}  md={3}>
-                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Status</Typography>
-                        <FormControl fullWidth>
-                            <Select
-                                value={select4}
-                                onChange={handleChange4}
-                            >
-                                <MenuItem value={'Active'}>Active</MenuItem>
-                                <MenuItem value={'Inactive'}>Inactive</MenuItem>
-
-                            </Select>
-                        </FormControl>
+                      {/* 10th grid item value not added in data */}
+                      <Grid item xs={12} sm={6} md={2} style={{ ...(isLgScreen && {position: 'relative', right: '50px',}),}}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Pets Allowed</Typography>
+                        <ToggleButton
+                            value="check"
+                            selected={selectedPets}
+                            onClick={() => { setSelectedPets(!selectedPets);}}
+                            color="primary"
+                            style={{
+                                marginRight: '10px',
+                                textTransform: 'none',
+                                ...(selectedPets  && { backgroundColor: "#5078E1", color: 'white' }),
+                                borderRadius: '10px',
+                               
+                              }}
+                            
+                        >
+                            {selectedPets ? 'Yes' : 'No'}
+                        </ToggleButton>
                     </Grid>
-
-                
 
                 </Grid>
             </Grid>

@@ -1,0 +1,217 @@
+import { Typography, useMediaQuery, Grid, Button, TextField, Box, Divider, InputAdornment } from "@mui/material";
+import React from "react";
+import { CreatePropertySection4Style } from "./style";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import { OutlinedInput } from '@mui/material';
+import { Input } from '@mui/material';
+import { InputBase } from '@mui/material';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+
+const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+    <GoogleMap
+        defaultZoom={8}
+        defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    >
+        {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+    </GoogleMap>
+))
+
+
+
+const CreatePropertySection4 = ({ data, setData }) => {
+
+    const classes = CreatePropertySection4Style();
+    const { address_details } = data;
+
+    const handleAddressDetailsChange = (event, element) => {
+        setData(event, 'address_details', element);
+    };
+
+
+    return (
+        <Grid container>
+            <Grid item xs={12} >
+                <Typography variant='h4' style={{ color: '#4E5A6B', marginBottom: '15px', }}>ADDRESS</Typography>
+            </Grid>
+            <Grid item xs={12}  >
+                <Grid container spacing={2}>
+
+                    {/* 1st grid item */}
+                    <Grid item xs={12} sm={6} md={5}>
+                        <MyMapComponent
+                            isMarkerShown
+                            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                            loadingElement={<div style={{ height: `100%` }} />}
+                            containerElement={<div style={{ height: `300px` }} />}
+                            mapElement={<div style={{ height: `100%` }} />}
+                        />
+                    </Grid>
+
+
+                    <Grid item xs={12} sm={6} md={7}>
+                        <Grid container spacing={2}>
+                            {/* 2nd grid item */}
+                            <Grid item xs={12} sm={6} md={2}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>Door No.</Typography>
+                                <FormControl fullWidth>
+                                    <InputBase
+                                        type="number"
+                                        placeholder="Door No"
+                                        value={address_details.dno}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'dno')}
+                                        fullWidth
+                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                        className={classes.numberInput}
+
+                                    />
+                                </FormControl>
+                            </Grid>
+
+                            {/* 3rd grid item */}
+                            <Grid item xs={12} sm={6} md={5}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>Address line 1</Typography>
+                                <FormControl fullWidth>
+                                    <InputBase
+                                        placeholder="Address line 1"
+                                        value={address_details.aline1}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'aline1')}
+                                        fullWidth
+                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+
+                                    />
+                                </FormControl>
+                            </Grid>
+
+
+                            {/* 4th grid item */}
+                            <Grid item xs={12} sm={6} md={5}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>Address line 2</Typography>
+                                <FormControl fullWidth>
+                                    <InputBase
+                                        placeholder="Address line 2"
+                                        value={address_details.aline2}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'aline2')}
+                                        fullWidth
+                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+
+                                    />
+                                </FormControl>
+                            </Grid>
+
+
+                            {/* 5th grid item */}
+                            <Grid item xs={12} sm={6} md={3}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>Landmark</Typography>
+                                <FormControl fullWidth>
+                                    <InputBase
+                                        placeholder="Landmark"
+                                        value={address_details.landmark}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'landmark')}
+                                        fullWidth
+                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                    />
+                                </FormControl>
+                            </Grid>
+
+
+                            {/* 6th grid item */}
+                            <Grid item xs={12} sm={6} md={3}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>Area</Typography>
+                                <FormControl fullWidth>
+                                    <Select
+                                        value={address_details.area}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'area')}
+                                    >
+                                        <MenuItem value={'Pallavaram'}>Pallavaram</MenuItem>
+                                        <MenuItem value={'Neelankarai'}>Neelankarai</MenuItem>
+                                        <MenuItem value={'Adyar'}>Adyar</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+
+
+
+                               {/* 7th grid item */}
+                               <Grid item xs={12} sm={6} md={3}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>City</Typography>
+                                <FormControl fullWidth>
+                                    <Select
+                                        value={address_details.city}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'city')}
+                                    >
+                                        <MenuItem value={'Chennai'}>Chennai</MenuItem>
+                                        <MenuItem value={'Kanchipuram'}>Kanchipuram</MenuItem>
+                                        <MenuItem value={'Kanyakumari'}>Kanyakumari</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+
+
+
+                             {/* 8th grid item */}
+                             <Grid item xs={12} sm={6} md={3}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>State</Typography>
+                                <FormControl fullWidth>
+                                    <Select
+                                        value={address_details.state}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'state')}
+                                    >
+                                        <MenuItem value={'Tamilnadu'}>Tamilnadu</MenuItem>
+                                        <MenuItem value={'Kerala'}>Kerala</MenuItem>
+                                        <MenuItem value={'AdKarnatakayar'}>Karnataka</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+
+
+                             {/* 9th grid item */}
+                             <Grid item xs={12} sm={6} md={3}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>Country</Typography>
+                                <FormControl fullWidth>
+                                    <Select
+                                        value={address_details.country}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'country')}
+                                    >
+                                        <MenuItem value={'India'}>India</MenuItem>
+                                        <MenuItem value={'USA'}>USA</MenuItem>
+                                        <MenuItem value={'Poland'}>Poland</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+
+
+                             {/* 10th grid item */}
+                             <Grid item xs={12} sm={6} md={2}>
+                                <Typography variant='h5' style={{ marginBottom: '10px', }}>Pincode</Typography>
+                                <FormControl fullWidth>
+                                    <InputBase
+                                        type="number"
+                                        placeholder="Pincode"
+                                        value={address_details.pincode}
+                                        onChange={(event) => handleAddressDetailsChange(event, 'pincode')}
+                                        fullWidth
+                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                        className={classes.numberInput}
+                                    />
+                                </FormControl>
+                            </Grid>
+
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+        </Grid>
+    );
+};
+
+export default CreatePropertySection4;

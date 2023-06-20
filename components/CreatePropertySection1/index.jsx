@@ -3,8 +3,10 @@ import React from "react";
 import { CreatePropertySection1Style } from "./style";
 import UploadImage from "../../src/icons/Create-Property/UploadImage.jsx";
 
-const CreatePropertySection1 = () => {
+const CreatePropertySection1 = ({data, setData}) => {
     const classes = CreatePropertySection1Style();
+   
+
     return (
         <Grid container>
             <Grid item xs={12} className={classes.subContainer}>
