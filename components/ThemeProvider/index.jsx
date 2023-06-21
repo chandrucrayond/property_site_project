@@ -21,7 +21,7 @@ const theme = createTheme({
             color: '#091B29',
         },
         'h2': {
-            fontWeight: 700,
+            fontWeight: 600,
             fontSize: '14px',
             lineHeight: '22px',
             color: '#091B29',

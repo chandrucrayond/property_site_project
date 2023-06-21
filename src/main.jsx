@@ -11,9 +11,20 @@ import CreateProperty from '../components/CreateProperty';
 import ExampleComponent from '../components/ExampleComponent/index';
 import theme from '../components/ThemeProvider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { createContext } from 'react';
+import ViewProperties from '../components/ViewProperties';
+
+export const MyContext = createContext([]);
+
+// export const MyContext = createContext({
+//   state:[],
+//   setState:()=>null,
+// });
+
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [properties, setProperties] = useState("");
 
   const handleLogin = () => {
     setIsSignedIn(true);
@@ -55,6 +66,10 @@ const App = () => {
           path: "createProperty",
           element: <CreateProperty />
         },
+        {
+          path: "viewProperties",
+          element: <ViewProperties/>
+        },
       ],
     },
     {
@@ -66,11 +81,13 @@ const App = () => {
   ]);
 
   return (
+    <MyContext.Provider value={{ properties, setProperties }}>
     <ThemeProvider theme={theme}>
     <RouterProvider
       router={router}
     />
     </ThemeProvider>
+    </MyContext.Provider>
   );
 };
 

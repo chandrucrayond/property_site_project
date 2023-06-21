@@ -23,6 +23,8 @@ import theme from '../ThemeProvider';
 import SideBarStyle from '../SideBar/style';
 import DashboardIcon from '../../src/icons/Dashboard/DashboardIcon.jsx';
 import CustomerNotFocusedIcon from '../../src/icons/Dashboard/CustomerNotFocusedIcon';
+import { useNavigate } from "react-router-dom";
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -90,6 +92,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
+
+
 const SideBar = () => {
     const classes = SideBarStyle();
     const [open, setOpen] = React.useState(false);
@@ -97,6 +101,19 @@ const SideBar = () => {
     const handleToggleOpen = () => {
         setOpen((open) => !open);
     };
+
+    let navigate = useNavigate();
+
+    function handleViewDashboard() {
+        console.log("going to dashboard");
+        navigate("/dashboard");
+    }
+
+    function handleViewProperties() {
+        console.log("going to view");
+        navigate("/viewProperties");
+    }
+
     return (
         <Drawer anchor="bottom" variant="permanent" open={open} className={classes.drawer}>
             <DrawerHeader style={{ justifyContent: open ? 'end' : 'center' }}>
@@ -107,10 +124,15 @@ const SideBar = () => {
                     {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
             </DrawerHeader>
-            <Divider style={{backgroundColor: '#666666', width: '60%', marginLeft: 'auto',marginRight: 'auto',}}/>
+            <Divider style={{ backgroundColor: '#666666', width: '60%', marginLeft: 'auto', marginRight: 'auto', }} />
             <List>
-                {['Dashboard','Companies'].map((text, index) => (
-                    <ListItem key={text} disablePadding sx={{ display: 'block', }}>
+                {['Dashboard', 'Properties'].map((text, index) => (
+                    <ListItem
+                        key={text}
+                        disablePadding
+                        sx={{ display: 'block' }}
+                        onClick={index % 2 === 0 ? handleViewDashboard : handleViewProperties}
+                    >
                         <ListItemButton
                             sx={{
                                 minHeight: 48,
@@ -121,7 +143,7 @@ const SideBar = () => {
                             <ListItemIcon
                                 sx={{
                                     width: 10,
-                                    mr: open ? 3 :0,
+                                    mr: open ? 3 : 0,
                                     justifyContent: 'center',
                                 }}
                             >

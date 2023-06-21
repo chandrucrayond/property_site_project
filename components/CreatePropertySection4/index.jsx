@@ -13,9 +13,9 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
         defaultZoom={8}
-        defaultCenter={{ lat: -34.397, lng: 150.644 }}
+        defaultCenter={{ lat: 12.949060, lng: 80.254333 }}
     >
-        {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+         {props.isMarkerShown && <Marker position={{ lat: 12.949060, lng: 80.254333 }} />}
     </GoogleMap>
 ))
 
@@ -43,7 +43,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                     <Grid item xs={12} sm={6} md={5}>
                         <MyMapComponent
                             isMarkerShown
-                            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YkaEhzqTBfhFWKDNs1QXjQtTiFSkUJ4&v=3.exp&libraries=geometry,drawing,places"
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div style={{ height: `300px` }} />}
                             mapElement={<div style={{ height: `100%` }} />}
