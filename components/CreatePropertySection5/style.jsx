@@ -10,6 +10,12 @@ export const CreatePropertySection5Style = makeStyles((theme) => ({
         '& input[type=number]::-webkit-outer-spin-button': { 
             WebkitAppearance: 'none',
             margin: 0,
-          }
+          },
+
+        
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: 'none !important',
+        }
+
       },
 }));

@@ -1,4 +1,4 @@
-import { AppBar, Card, Grid, IconButton, Typography, useMediaQuery } from "@mui/material";
+import { AppBar, Card, Grid, IconButton, Typography, useMediaQuery, Button } from "@mui/material";
 import React, {useState} from "react";
 import { CreatePropertyStyle } from "./style";
 import theme from "../ThemeProvider";
@@ -10,6 +10,7 @@ import CreatePropertySection2 from "../CreatePropertySection2";
 import CreatePropertySection3 from "../CreatePropertySection3";
 import CreatePropertySection4 from "../CreatePropertySection4";
 import CreatePropertySection5 from "../CreatePropertySection5";
+import CreatePropertySectionEnd from "../CreatePropertySectionEnd";
 
 const CreateProperty = () => {
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
@@ -17,6 +18,7 @@ const CreateProperty = () => {
   const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
   const classes = CreatePropertyStyle();
   let navigate = useNavigate();
+
   function handleClickingToggle() {
     navigate("/dashboard");
   }
@@ -60,8 +62,9 @@ const CreateProperty = () => {
 
     contact_details: {
       bphone: "",
-      ccode: "+91",
+      stdcode: "044",
       mphone: "",
+      ccode: "+91",
       website: "",
       email: "",
     },
@@ -85,7 +88,6 @@ const CreateProperty = () => {
       <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
         <IconButton className={classes.toggleIcon} onClick={handleClickingToggle}> <ChevronLeftIcon /></IconButton> <Typography variant="h2" color={"black"} className={classes.togglePara}>Create New Property</Typography>
       </AppBar>
-
 
 
       <div className={`${classes.createContainer}
@@ -116,7 +118,14 @@ const CreateProperty = () => {
             <NormalCard><CreatePropertySection5 data={formData} setData={handleChange}/></NormalCard>
           </Grid>
 
-        </Grid>
+
+          <Grid item xs={12} >
+            <CreatePropertySectionEnd data={formData} setData={handleChange}/>
+          </Grid>
+        </Grid> 
+
+
+      
       </div>
     </>
   );

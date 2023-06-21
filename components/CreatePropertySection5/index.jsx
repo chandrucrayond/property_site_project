@@ -43,14 +43,49 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <Select
-                                            value={contact_details.ccode}
-                                            onChange={(event) => handleContactDetailsChange(event, 'ccode')}
-                                            style={{ minWidth: '60px', borderTop: 'none', borderLeft: 'none', borderBottom: 'none',}}
+                                            value={contact_details.stdcode}
+                                            onChange={(event) => handleContactDetailsChange(event, 'stdcode')}
+                                            style={{ minWidth: '60px', border: 'none'}}
                                         >
-                                            <MenuItem value="+1">+1</MenuItem>
-                                            <MenuItem value="+91">+91</MenuItem>
+                                            <MenuItem value="044">044</MenuItem>
+                                            <MenuItem value="043">043</MenuItem>
+                                            <MenuItem value="042">042</MenuItem>
+                                            <MenuItem value="001">001</MenuItem>
                                             {/* Add more country code options */}
                                         </Select>
+                                        <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', }} />
+                                    </InputAdornment>
+                                }
+                            />
+                        </FormControl>
+                    </Grid>
+
+
+                   {/* 2nd grid item */}
+                   <Grid item xs={12} sm={6} md={2}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Mobile Phone</Typography>
+                        <FormControl fullWidth>
+                            <InputBase
+                                type="number"
+                                placeholder="Mobile Phone"
+                                value={contact_details.mphone}
+                                onChange={(event) => handleContactDetailsChange(event, 'mphone')}
+                                fullWidth
+                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', paddingLeft: '0', borderRadius: '4px' }}
+                                className={classes.numberInput}
+                                startAdornment={
+                                    <InputAdornment position="start">
+                                        <Select
+                                            value={contact_details.ccode}
+                                            onChange={(event) => handleContactDetailsChange(event, 'ccode')}
+                                            style={{ minWidth: '60px', border: 'none'}}
+                                        >
+                                            <MenuItem value="+91">+91</MenuItem>
+                                            <MenuItem value="+02">+02</MenuItem>
+                                            <MenuItem value="+35">+35</MenuItem>
+                                            {/* Add more country code options */}
+                                        </Select>
+                                        <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', }} />
                                     </InputAdornment>
                                 }
 
@@ -59,13 +94,15 @@ const CreatePropertySection5 = ({ data, setData }) => {
                     </Grid>
 
 
-                    {/* <Grid item xs={12} sm={6} md={4}>
-                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Landmark</Typography>
+                      {/* 3rd grid item */}
+                   <Grid item xs={12} sm={6} md={4}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Website</Typography>
                         <FormControl fullWidth>
                             <InputBase
-                                placeholder="Landmark"
-                                value={address_details.landmark}
-                                onChange={(event) => handleAddressDetailsChange(event, 'landmark')}
+                                type= "url"
+                                placeholder="WWW.Business-Website.com"
+                                value={contact_details.website}
+                                onChange={(event) => handleContactDetailsChange(event, 'website')}
                                 fullWidth
                                 style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
                             />
@@ -73,38 +110,21 @@ const CreatePropertySection5 = ({ data, setData }) => {
                     </Grid>
 
 
-                   
-                    <Grid item xs={12} sm={6} md={2}>
-                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Address line 1</Typography>
+                    
+                      {/* 4th grid item */}
+                   <Grid item xs={12} sm={6} md={4}>
+                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Email Address</Typography>
                         <FormControl fullWidth>
                             <InputBase
-                                placeholder="Address line 1"
-                                value={address_details.aline1}
-                                onChange={(event) => handleAddressDetailsChange(event, 'aline1')}
+                                type= "email"
+                                placeholder="org@Business-Website.com"
+                                value={contact_details.email}
+                                onChange={(event) => handleContactDetailsChange(event, 'email')}
                                 fullWidth
                                 style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-
                             />
                         </FormControl>
                     </Grid>
-
-
-               
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Typography variant='h5' style={{ marginBottom: '10px', }}>Address line 2</Typography>
-                        <FormControl fullWidth>
-                            <InputBase
-                                placeholder="Address line 2"
-                                value={address_details.aline2}
-                                onChange={(event) => handleAddressDetailsChange(event, 'aline2')}
-                                fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-
-                            />
-                        </FormControl>
-                    </Grid>
- */}
-
 
 
                 </Grid>
