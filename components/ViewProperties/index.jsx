@@ -9,6 +9,7 @@ import CreatePropertySection2 from "../CreatePropertySection2";
 import CreatePropertySection3 from "../CreatePropertySection3";
 import ViewProperties_Section1_SearchFilter from "../ViewProperties_Section1_SearchFilter";
 import ViewProperties_Section2_Table from "../ViewProperties_Section2_Table";
+import { DataContext } from "../Context";
 
 
 const ViewProperties = () => {
@@ -21,6 +22,8 @@ const ViewProperties = () => {
     function handleClickingToggle() {
         navigate("/dashboard");
     }
+
+    const { propertiesList, setPropertiesList } = useContext(DataContext);
 
     return (
         <>

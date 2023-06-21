@@ -13,9 +13,9 @@ import theme from '../components/ThemeProvider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { createContext } from 'react';
 import ViewProperties from '../components/ViewProperties';
+import { DataContext } from '../components/Context';
 
-export const MyContext = createContext([]);
-
+// export const MyContext = createContext([]);
 // export const MyContext = createContext({
 //   state:[],
 //   setState:()=>null,
@@ -23,8 +23,57 @@ export const MyContext = createContext([]);
 
 
 const App = () => {
+  
+const [formData, setFormData] = useState({
+
+  property_details: {
+    cname: "Company Name",
+    pname: "",
+    pperiod: "Daily",
+    status: "Active",
+    pdesc: "",
+  },
+
+  property_details2: {
+    ptype: "Apartment",
+    ppurp: "Residential",
+    rtype: "Lease",
+    munit: "Sq.ft",
+    carea: "",
+    tarea: "",
+    ybuilt: "2020-01-01",
+    hdate: "2023-01-01",
+    plist: "",
+    pets: "false",
+  },
+
+  address_details: {
+    lang: "",
+    lat: "",
+    dno: "",
+    aline1: "",
+    aline2: "",
+    landmark: "",
+    area: "Neelankarai",
+    city: "Chennai",
+    state: "Tamilnadu",
+    country: "",
+    pincode: "",
+  },
+
+  contact_details: {
+    bphone: "",
+    stdcode: "044",
+    mphone: "",
+    ccode: "+91",
+    website: "",
+    email: "",
+  },
+});
+ const { propertiesList, setPropertiesList } = React.useContext(DataContext);
+
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [properties, setProperties] = useState("");
+  const [open, setOpen] = React.useState(false);
 
   const handleLogin = () => {
     setIsSignedIn(true);
@@ -34,6 +83,19 @@ const App = () => {
   const handleLogout = () => {
     setIsSignedIn(false);
   };
+
+  const handleChange = (event, section, element) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [section]: {
+        ...prevState[section],
+        [element]: event.target.value,
+      },
+    }));
+  
+  };
+
+ 
 
 
   const router = createBrowserRouter([
@@ -64,7 +126,7 @@ const App = () => {
         },
         {
           path: "createProperty",
-          element: <CreateProperty />
+          element: <CreateProperty formData={formData} handleChange={handleChange}  open={open} setOpen={setOpen}/>
         },
         {
           path: "viewProperties",
@@ -81,13 +143,13 @@ const App = () => {
   ]);
 
   return (
-    <MyContext.Provider value={{ properties, setProperties }}>
+    <DataContext.Provider value={{ propertiesList, setPropertiesList }}>
     <ThemeProvider theme={theme}>
     <RouterProvider
       router={router}
     />
     </ThemeProvider>
-    </MyContext.Provider>
+    </DataContext.Provider>
   );
 };
 

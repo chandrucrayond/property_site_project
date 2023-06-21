@@ -23,7 +23,9 @@ import theme from '../ThemeProvider';
 import SideBarStyle from '../SideBar/style';
 import DashboardIcon from '../../src/icons/Dashboard/DashboardIcon.jsx';
 import CustomerNotFocusedIcon from '../../src/icons/Dashboard/CustomerNotFocusedIcon';
+import CustomerIcon from '../../src/icons/Dashboard/CustomerIcon';
 import { useNavigate } from "react-router-dom";
+import DashboardNotIcon from '../../src/icons/Dashboard/DashboardNotIcon';
 
 const drawerWidth = 240;
 
@@ -103,14 +105,17 @@ const SideBar = () => {
     };
 
     let navigate = useNavigate();
+    const [selected, setSelected] = React.useState('dashboard');
 
     function handleViewDashboard() {
         console.log("going to dashboard");
+        setSelected('dashboard');
         navigate("/dashboard");
     }
 
     function handleViewProperties() {
         console.log("going to view");
+        setSelected('viewProperties');
         navigate("/viewProperties");
     }
 
@@ -147,7 +152,19 @@ const SideBar = () => {
                                     justifyContent: 'center',
                                 }}
                             >
-                                {index % 2 === 0 ? <DashboardIcon /> : <CustomerNotFocusedIcon />}
+                                {index % 2 === 0 ? (
+                                    selected === 'dashboard' ? (
+                                        <DashboardIcon/>
+                                    ) : (
+                                        <DashboardNotIcon/>
+                                    )
+                                ) : (
+                                    selected === 'viewProperties' ? (
+                                        <CustomerIcon />
+                                    ) : (
+                                        <CustomerNotFocusedIcon />
+                                    )
+                                )}
                             </ListItemIcon>
                             <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>

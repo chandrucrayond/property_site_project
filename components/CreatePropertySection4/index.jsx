@@ -9,15 +9,16 @@ import { OutlinedInput } from '@mui/material';
 import { Input } from '@mui/material';
 import { InputBase } from '@mui/material';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { Loader } from '@googlemaps/js-api-loader';
 
-const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
         defaultZoom={8}
         defaultCenter={{ lat: 12.949060, lng: 80.254333 }}
     >
          {props.isMarkerShown && <Marker position={{ lat: 12.949060, lng: 80.254333 }} />}
     </GoogleMap>
-))
+));
 
 
 
@@ -47,6 +48,10 @@ const CreatePropertySection4 = ({ data, setData }) => {
                             loadingElement={<div style={{ height: `100%` }} />}
                             containerElement={<div style={{ height: `300px` }} />}
                             mapElement={<div style={{ height: `100%` }} />}
+                            onLoad={props => {
+                                // Perform any necessary actions after the Google Maps API is loaded
+                                console.log('Google Maps API loaded:', props);
+                              }}
                         />
                     </Grid>
 
