@@ -9,22 +9,37 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ViewProperties_Section2_Table_Style } from "./style";
-
+import { DataContext } from "../../Context";
 
 function createData(pid, pname, cname, location, rtype, ptype, status) {
     return { pid, pname, cname, location, rtype, ptype, status };
 }
 
-const rows = [
-    createData('Prop 012', 'Rubix Apartment', 'Property Automate 102', 'T.Nagar,Chennai', 'Lease', 'Individual House', 'Active'),
-    createData('Prop 012', 'Apartment 2', 'Property Automate 102', 'T.Nagar,Chennai', 'Rent', 'Apartment', 'Active'),
-    createData('Prop 012', 'Apartment 3', 'Property Automate 102', 'T.Nagar,Chennai', 'Lease', 'Apartment', 'Inactive'),
-    createData('Prop 012', 'Apartment 4', 'Property Automate 102', 'T.Nagar,Chennai', 'Lease', 'Individual House', 'Inactive'),
-    createData('Prop 012', 'Apartment 5', 'Property Automate 102', 'T.Nagar,Chennai', 'Rent', 'Apartment', 'Active'),
-];
 
-function BasicTable() {
+function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
     const classes = ViewProperties_Section2_Table_Style();
+    const { propertiesList, setPropertiesList } = React.useContext(DataContext);
+
+    let rows = [];
+
+    if (propertiesList.length >= 0) {
+        rows = propertiesList.map((item, index) =>
+            createData(
+                `Prop ${index + 1}`,
+                item.property_details?.pname || "", // Add null check and provide a default value
+                item.property_details?.cname || "", // Add null check and provide a default value
+                `${item.address_details?.area}, ${item.address_details?.city}`, // Add null checks
+                item.property_details2?.rtype || "", // Add null check and provide a default value
+                item.property_details2?.ptype || "", // Add null check and provide a default value
+                item.property_details?.status || "" // Add null check and provide a default value
+            )
+        );
+    }
+
+    // Inside your component
+    const filteredRows = rows.filter(row =>
+        row.pname.toLowerCase().includes(searchQuery.toLowerCase())
+    );
     return (
         <TableContainer className={classes.table}>
             <Table>
@@ -42,7 +57,7 @@ function BasicTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {filteredRows.map((row) => (
                         <TableRow
                             key={row.pname}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -55,9 +70,9 @@ function BasicTable() {
                             <TableCell ><Typography variant='h2' className={classes.tableBody}>{row.location}</Typography></TableCell>
                             <TableCell ><Typography variant='h2' className={classes.tableBody}>{row.rtype}</Typography></TableCell>
                             <TableCell >
-                                <Typography 
-                                variant='h2' 
-                                className={`${classes.tableBody} ${classes.propType} ${row.ptype === 'Apartment' && classes.apartmentType}  ${row.ptype === 'Individual House' && classes.houseType}  ${row.ptype === 'Plot' && classes.plotType}`}
+                                <Typography
+                                    variant='h2'
+                                    className={`${classes.tableBody} ${classes.propType} ${row.ptype === 'Apartment' && classes.apartmentType}  ${row.ptype === 'Individual house' && classes.houseType}  ${row.ptype === 'Plot' && classes.plotType}`}
                                 >
                                     {row.ptype}
                                 </Typography>
@@ -79,14 +94,5 @@ function BasicTable() {
 }
 
 
-const ViewProperties_Section2_Table = () => {
-
-    return (
-        <>
-
-            <BasicTable />
-        </>
-    );
-}
 
 export default ViewProperties_Section2_Table;

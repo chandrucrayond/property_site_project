@@ -1,8 +1,10 @@
 import { makeStyles } from "@mui/styles";
 
-export const ViewProperties_Section2_Table_Style = makeStyles((theme) => ({
+export const ViewProperties_Section2_Card_Style = makeStyles((theme) => ({
     tableHead: {
         color: '#4E5A6B',
+        // marginBottom: '4px !important',
+        fontSize: '10px !important',
     },
 
     activeStatus: {

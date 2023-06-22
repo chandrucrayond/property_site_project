@@ -15,7 +15,8 @@ import { useContext } from 'react';
 import { DataContext } from "../../Context";
 
 
-const CreateProperty = ({ formData, handleChange, open, setOpen, context }) => {
+
+const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, context }) => {
   // debugger
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
@@ -34,27 +35,74 @@ const CreateProperty = ({ formData, handleChange, open, setOpen, context }) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    console.log(propertiesList);
+  }, [propertiesList]);
+
   function handleClickingCreate() {
     setOpen(true);
-    context.setPropertiesList({
-      ...context.propertiesList,
-      ...formData
+    setPropertiesList((prevData) => [...prevData, formData])
+    setFormData({
+
+      property_details: {
+        cname: "Company Name",
+        pname: "",
+        pperiod: "Daily",
+        status: "Active",
+        pdesc: "",
+      },
+
+      property_details2: {
+        ptype: "Apartment",
+        ppurp: "Residential",
+        rtype: "Lease",
+        munit: "Sq.ft",
+        carea: "",
+        tarea: "",
+        ybuilt: "2020-01-01",
+        hdate: "2023-01-01",
+        plist: "",
+        pets: "false",
+      },
+
+      address_details: {
+        lang: "",
+        lat: "",
+        dno: "",
+        aline1: "",
+        aline2: "",
+        landmark: "",
+        area: "Neelankarai",
+        city: "Chennai",
+        state: "Tamilnadu",
+        country: "",
+        pincode: "",
+      },
+
+      contact_details: {
+        bphone: "",
+        stdcode: "044",
+        mphone: "",
+        ccode: "+91",
+        website: "",
+        email: "",
+      },
     });
   }
 
 
   return (
     <>
+     
       <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
         <IconButton className={classes.toggleIcon} onClick={handleClickingToggle}> <ChevronLeftIcon /></IconButton> <Typography variant="h2" color={"black"} className={classes.togglePara}>Create New Property</Typography>
       </AppBar>
 
       <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert variant="filled" onClose={handleClose} severity="success" sx={{ width: '100%', backgroundColor: '#5AC782', color: '#FFFFFF' }}>
+        <Alert variant="filled" onClose={handleClose} autoHideDuration={3000} severity="success" sx={{ width: '100%', backgroundColor: '#5AC782', color: '#FFFFFF' }}>
           Property Created Successfully
         </Alert>
       </Snackbar>
@@ -101,6 +149,6 @@ const CreateProperty = ({ formData, handleChange, open, setOpen, context }) => {
   );
 };
 
-CreateProperty.contextType = DataContext;
+// CreateProperty.contextType = DataContext;
 
 export default CreateProperty;

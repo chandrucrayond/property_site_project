@@ -1,0 +1,61 @@
+{
+    "propauto": {
+      "cards":[
+        {
+            "title": "Active Properties",
+            "image": "<ActivePropertiesIcon />",
+            "count": 14
+        },
+        {
+            "title": "Blocks",
+            "image": "<BlockIcon />",
+            "count": 14
+        },
+        {
+            "title": "Floors",
+            "image": "<FloorsIcon />",
+            "count": 14
+        },
+        {
+            "title": "Residents",
+            "image": "<ResidentsIcon />",
+            "count": 14
+        },
+        {
+            "title": "Active Unit",
+            "image": "<ActiveUnitIcon />",
+            "count": 14
+        },
+        {
+            "title": "Vacant",
+            "image": "<VacantIcon />",
+            "count": 14
+        },
+        {
+            "title": "Reserved",
+            "image": "<ReservedIcon />",
+            "count": 14
+        },
+        {
+            "title": "Occupied",
+            "image": "<OccupiedIcon />",
+            "count": 14
+        }
+    ],
+      "charts": {
+        "chart1": {
+          "vacant": 50,
+          "reserved": 35,
+          "occupied": 25,
+          "listed": 45
+        },
+        "chart2": {
+          "vacant": 50,
+          "reserved": 35,
+          "occupied": 25,
+          "listed": 45
+        }
+      }
+    }
+  }
+  

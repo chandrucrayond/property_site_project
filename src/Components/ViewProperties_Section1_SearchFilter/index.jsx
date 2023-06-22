@@ -7,7 +7,7 @@ import FilterIcon from "../../icons/View-Properties/FilterIcon";
 import FilterIconNotified from "../../icons/View-Properties/FilterIconNotified";
 import SearchIcon from "../../icons/View-Properties/SearchIcon";
 
-const ViewProperties_Section1_SearchFilter = () => {
+const ViewProperties_Section1_SearchFilter = ({searchQuery, setSearchQuery}) => {
   const classes = ViewProperties_Section1_SearchFilter_Style();
 
   return (
@@ -22,6 +22,7 @@ const ViewProperties_Section1_SearchFilter = () => {
                 placeholder="Search Properties"
                 // value={property_details2.carea}
                 // onChange={(event) => handlePropertyDetailsChange(event, 'carea')}
+                onChange={e => setSearchQuery(e.target.value)}
                 fullWidth
                 className={classes.filterBox}
                 startAdornment={

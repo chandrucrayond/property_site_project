@@ -16,3 +16,32 @@ export const NormalCard = ({children}) => {
     <Box className={classes.styleCard}>{children}</Box>
     );
 }
+
+export const NormalCardZeroBottom = ({children}) => {
+    const classes = CreateCardStyle();
+    return(
+    <Box className={classes.styleCardZeroBottom}>{children}</Box>
+    );
+}
+
+export const NormalCardZeroTop = ({children}) => {
+    const classes = CreateCardStyle();
+    return(
+    <Box className={classes.styleCardZeroTop}>{children}</Box>
+    );
+}
+
+export const NormalCardNoRadius = ({children}) => {
+    const classes = CreateCardStyle();
+    return(
+    <Box className={classes.styleCardNoRadius}>{children}</Box>
+    );
+}
+
+
+export const ViewCard = ({children}) => {
+    const classes = CreateCardStyle();
+    return(
+    <Box className={classes.ViewCard}>{children}</Box>
+    );
+}

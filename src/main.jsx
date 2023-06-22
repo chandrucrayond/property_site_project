@@ -15,6 +15,7 @@ import { DataContext } from '../src/Context';
 import Context from './app.context';
 import ViewProperties from '../src/components/ViewProperties';
 import theme from './components/ThemeProvider';
+import {data} from './components/PreGeneratedFormData/index';
 // export const MyContext = createContext({
 //   state:[],
 //   setState:()=>null,
@@ -122,7 +123,7 @@ const App = (props) => {
         },
         {
           path: "createProperty",
-          element: <CreateProperty context={context} formData={formData} handleChange={handleChange} open={open} setOpen={setOpen} />
+          element: <CreateProperty context={context} formData={formData} setFormData={setFormData} handleChange={handleChange} open={open} setOpen={setOpen} />
         },
         {
           path: "viewProperties",

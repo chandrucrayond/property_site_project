@@ -4,10 +4,12 @@ import { ViewPropertiesStyle } from "./style";
 import theme from "../ThemeProvider";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useNavigate } from "react-router-dom";
-import CreateCard, { NormalCard } from "../CreateCard";
+import CreateCard, { NormalCard, NormalCardZeroBottom, NormalCardNoRadius, NormalCardZeroTop } from "../CreateCard";
 import ViewProperties_Section1_SearchFilter from "../ViewProperties_Section1_SearchFilter";
 import ViewProperties_Section2_Table from "../ViewProperties_Section2_Table";
 import { DataContext } from "../../Context";
+import ViewProperties_Section3_Pagination from "../ViewProperties_Section3_Pagination";
+import ViewProperties_Section2_Card from "../ViewProperties_Section2_Card/index";
 
 
 const ViewProperties = () => {
@@ -21,9 +23,13 @@ const ViewProperties = () => {
         navigate("/dashboard");
     }
 
+    // Inside your component
+    const [searchQuery, setSearchQuery] = useState('');
+
 
     return (
         <>
+
             <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
                 <IconButton className={classes.toggleIcon} onClick={handleClickingToggle}> <ChevronLeftIcon /></IconButton> <Typography variant="h2" color={"black"} className={classes.togglePara}>Properties</Typography>
             </AppBar>
@@ -36,17 +42,25 @@ const ViewProperties = () => {
                 <Grid container>
 
                     <Grid item xs={12} >
-                        <NormalCard>
-                            < ViewProperties_Section1_SearchFilter />
-                        </NormalCard>
+                        <NormalCardZeroBottom >
+                            < ViewProperties_Section1_SearchFilter searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+                        </NormalCardZeroBottom>
                     </Grid>
 
 
                     <Grid item xs={12} >
-                        <NormalCard>
-                            <ViewProperties_Section2_Table />
-                        </NormalCard>
+                        <NormalCardNoRadius>
+                            {isSmScreen ? (<ViewProperties_Section2_Card searchQuery={searchQuery} setSearchQuery={setSearchQuery} />) : (<ViewProperties_Section2_Table searchQuery={searchQuery} setSearchQuery={setSearchQuery} />)}
+                        </NormalCardNoRadius>
                     </Grid>
+
+
+                    <Grid item xs={12} >
+                        <NormalCardZeroTop>
+                            <ViewProperties_Section3_Pagination />
+                        </NormalCardZeroTop>
+                    </Grid>
+
 
                 </Grid>
 
