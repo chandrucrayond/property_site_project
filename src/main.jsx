@@ -1,21 +1,20 @@
 import React, { useContext, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, } from 'react-router-dom';
-import Dashboard from '../components/Dashboard/index';
-import SharedLayout from '../components/SharedLayout/index';
-import Protected from '../components/Protected/index';
-import ErrorPage from '../components/ErrorPage/index';
+import Dashboard from './Components/Dashboard/index';
+import SharedLayout from './Components/SharedLayout/index';
+import Protected from './Components/Protected/index';
+import ErrorPage from './Components/ErrorPage/index';
 import './index.css';
-import CreateAccount from '../components/CreateAccount/index';
-import CreateProperty from '../components/CreateProperty';
-import ExampleComponent from '../components/ExampleComponent/index';
-import theme from '../components/ThemeProvider';
+import CreateAccount from './Components/CreateAccount/index';
+import CreateProperty from './Components/CreateProperty';
+import ExampleComponent from './Components/ExampleComponent/index';
+import theme from './Components/ThemeProvider';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { createContext } from 'react';
-import ViewProperties from '../components/ViewProperties';
-import { DataContext } from '../components/Context';
+import { DataContext } from './Components/Context';
 import Context from './app.context';
-
+import ViewProperties from './components/ViewProperties';
 // export const MyContext = createContext({
 //   state:[],
 //   setState:()=>null,

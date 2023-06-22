@@ -1,15 +1,13 @@
 import { AppBar, Card, Grid, IconButton, Typography, useMediaQuery, Button, Snackbar, Alert } from "@mui/material";
 import React, { useState } from "react";
 import { ViewPropertiesStyle } from "./style";
-import theme from "../ThemeProvider";
+import theme from "./ThemeProvider";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useNavigate } from "react-router-dom";
-import CreateCard, { NormalCard } from "../CreateCard";
-import CreatePropertySection2 from "../CreatePropertySection2";
-import CreatePropertySection3 from "../CreatePropertySection3";
+import CreateCard, { NormalCard } from "./CreateCard";
 import ViewProperties_Section1_SearchFilter from "../ViewProperties_Section1_SearchFilter";
 import ViewProperties_Section2_Table from "../ViewProperties_Section2_Table";
-import { DataContext } from "../Context";
+import { DataContext } from "../../Context";
 
 
 const ViewProperties = () => {
@@ -23,7 +21,6 @@ const ViewProperties = () => {
         navigate("/dashboard");
     }
 
-    const { propertiesList, setPropertiesList } = useContext(DataContext);
 
     return (
         <>
