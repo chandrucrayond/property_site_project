@@ -1,7 +1,7 @@
 import { Typography, useMediaQuery, Grid, Button, Avatar, Box } from "@mui/material";
 import React from "react";
 import { CreatePropertySection1Style } from "./style";
-import UploadImage from "../../src/icons/Create-Property/UploadImage.jsx";
+import UploadImage from "../../icons/Create-Property/UploadImage.jsx";
 
 const CreatePropertySection1 = ({data, setData}) => {
     const classes = CreatePropertySection1Style();

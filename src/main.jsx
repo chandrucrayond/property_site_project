@@ -1,20 +1,20 @@
 import React, { useContext, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, } from 'react-router-dom';
-import Dashboard from './Components/Dashboard/index';
-import SharedLayout from './Components/SharedLayout/index';
-import Protected from './Components/Protected/index';
-import ErrorPage from './Components/ErrorPage/index';
+import Dashboard from '../src/components/Dashboard/index'
+import SharedLayout from '../src/components/SharedLayout/index';
+import Protected from '../src/components/Protected/index';
+import ErrorPage from '../src/components/ErrorPage/index';
 import './index.css';
-import CreateAccount from './Components/CreateAccount/index';
-import CreateProperty from './Components/CreateProperty';
-import ExampleComponent from './Components/ExampleComponent/index';
-import theme from './Components/ThemeProvider';
+import CreateAccount from '../src/components/CreateAccount/index';
+import CreateProperty from '../src/components/CreateProperty';
+import ExampleComponent from '../src/components/ExampleComponent/index';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { createContext } from 'react';
-import { DataContext } from './Components/Context';
+import { DataContext } from '../src/Context';
 import Context from './app.context';
-import ViewProperties from './components/ViewProperties';
+import ViewProperties from '../src/components/ViewProperties';
+import theme from './components/ThemeProvider';
 // export const MyContext = createContext({
 //   state:[],
 //   setState:()=>null,
@@ -22,7 +22,7 @@ import ViewProperties from './components/ViewProperties';
 
 
 const App = (props) => {
-  debugger
+  // debugger
   const context = useContext(DataContext)
   const [formData, setFormData] = useState({
 

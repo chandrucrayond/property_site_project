@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { ViewProperties_Section1_SearchFilter_Style } from "./style";
 import FormControl from '@mui/material/FormControl';
 import { InputBase } from '@mui/material';
-import FilterIcon from "../../src/icons/View-Properties/FilterIcon";
-import FilterIconNotified from "../../src/icons/View-Properties/FilterIconNotified";
-import SearchIcon from "../../src/icons/View-Properties/SearchIcon";
+import FilterIcon from "../../icons/View-Properties/FilterIcon";
+import FilterIconNotified from "../../icons/View-Properties/FilterIconNotified";
+import SearchIcon from "../../icons/View-Properties/SearchIcon";
 
 const ViewProperties_Section1_SearchFilter = () => {
   const classes = ViewProperties_Section1_SearchFilter_Style();

@@ -23,8 +23,8 @@ import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import SendIcon from "@mui/icons-material/Send";
 import CircleIcon from "@mui/icons-material/Circle";
-import EyeIcon from "../../src/icons/Dashboard/S1EyeIcon";
-import PenIcon from "../../src/icons/Dashboard/S1PenIcon";
+import EyeIcon from "../../icons/Dashboard/S1EyeIcon";
+import PenIcon from "../../icons/Dashboard/S1PenIcon";
 
 function GeneralRequests() {
     return (

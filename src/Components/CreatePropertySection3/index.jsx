@@ -56,10 +56,11 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             <Select
                                 value={property_details2.ptype}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'ptype')}
+                                className={`${classes.SelectStyling}`}
                             >
-                                <MenuItem value={'Apartment'}>Apartment</MenuItem>
-                                <MenuItem value={'Individual house'}>Individual house</MenuItem>
-                                <MenuItem value={'Plot'}>Plot</MenuItem>
+                                <MenuItem value={'Apartment'}><Typography variant='h2'>Apartment</Typography></MenuItem>
+                                <MenuItem value={'Individual house'}><Typography variant='h2'>Individual house</Typography></MenuItem>
+                                <MenuItem value={'Plot'}><Typography variant='h2'>Plot</Typography></MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
@@ -72,9 +73,10 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             <Select
                                 value={property_details2.ppurp}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'ppurp')}
+                                className={`${classes.SelectStyling}`}
                             >
-                                <MenuItem value={'Residential'}>Residential</MenuItem>
-                                <MenuItem value={'Commercial'}>Commercial</MenuItem>
+                                <MenuItem value={'Residential'}><Typography variant='h2'>Residential</Typography></MenuItem>
+                                <MenuItem value={'Commercial'}><Typography variant='h2'>Commercial</Typography></MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
@@ -89,9 +91,10 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 onChange={(event) => {
                                     handlePropertyDetailsChange(event, 'rtype')
                                 }}
+                                className={`${classes.SelectStyling}`}
                             >
-                                <MenuItem value={'Lease'}>Lease</MenuItem>
-                                <MenuItem value={'Rent'}>Rent</MenuItem>
+                                <MenuItem value={'Lease'}><Typography variant='h2'>Lease</Typography></MenuItem>
+                                <MenuItem value={'Rent'}><Typography variant='h2'>Rent</Typography></MenuItem>
 
                             </Select>
                         </FormControl>
@@ -105,9 +108,10 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             <Select
                                 value={property_details2.munit}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'munit')}
+                                className={`${classes.SelectStyling}`}
                             >
-                                <MenuItem value={'Sq.ft'}>Sq.ft</MenuItem>
-                                <MenuItem value={'Sq.m'}>Sq.m</MenuItem>
+                                <MenuItem value={'Sq.ft'}><Typography variant='h2'>Sq.ft</Typography></MenuItem>
+                                <MenuItem value={'Sq.m'}><Typography variant='h2'>Sq.m</Typography></MenuItem>
 
                             </Select>
                         </FormControl>
@@ -124,11 +128,10 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 value={property_details2.carea}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'carea')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-                                className={classes.numberInput}
+                                className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
                                     <InputAdornment position="end">
-                                        {measure_unit}
+                                         <Typography variant='h2'>{measure_unit}</Typography>
                                     </InputAdornment>
                                 }
                             />
@@ -146,11 +149,10 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 value={property_details2.tarea}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'tarea')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-                                className={classes.numberInput}
+                                className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
                                     <InputAdornment position="end">
-                                        {measure_unit}
+                                        <Typography variant='h2'>{measure_unit}</Typography>
                                     </InputAdornment>
                                 }
                             />
@@ -167,8 +169,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 value={property_details2.ybuilt}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'ybuilt')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-
+                                className={`${classes.InputStyling}`}
                             />
                         </FormControl>
                     </Grid>
@@ -185,7 +186,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 onChange={(event) => handlePropertyDetailsChange(event, 'hdate')}
                                 fullWidth
                                 style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-
+                                className={`${classes.InputStyling}`}
                             />
                         </FormControl>
                     </Grid>
@@ -207,7 +208,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                               }}
                             
                         >
-                            Private
+                            <Typography variant='h2'>Private</Typography>
                         </ToggleButton>
                         <ToggleButton
                             value="check"
@@ -221,7 +222,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 borderRadius: '10px',
                               }}
                         >
-                             Public
+                            <Typography variant='h2'>Public</Typography> 
                         </ToggleButton>
                         <ToggleButton
                             value="check"
@@ -235,7 +236,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 borderRadius: '10px',
                               }}
                         >
-                             None
+                            <Typography variant='h2'>None</Typography> 
                         </ToggleButton>
                     </Grid>
 
@@ -253,11 +254,12 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 textTransform: 'none',
                                 ...(selectedPets  && { backgroundColor: "#5078E1", color: 'white' }),
                                 borderRadius: '10px',
+                                height: '60%',
                                
                               }}
                             
                         >
-                            {selectedPets ? 'Yes' : 'No'}
+                          {selectedPets ? 'Yes' : 'No'}
                         </ToggleButton>
                     </Grid>
 

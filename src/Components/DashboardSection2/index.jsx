@@ -9,7 +9,7 @@ import Graph1 from "../DashboardSection2Graphs/Graph1.jsx";
 import Graph2 from "../DashboardSection2Graphs/Graph2.jsx";
 import Graph3 from "../DashboardSection2Graphs/Graph3.jsx";
 import Graph4 from "../DashboardSection2Graphs/Graph4.jsx";
-import EnlargeIcon from "../../src/icons/Dashboard/icons8-enlarge-48-1.png";
+import EnlargeIcon from "../../icons/Dashboard/icons8-enlarge-48-1.png";
 
 export default function DashboardSection2() {
   const classes = DashboardSection2Style();

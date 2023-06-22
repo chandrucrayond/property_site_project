@@ -38,19 +38,17 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                 value={contact_details.bphone}
                                 onChange={(event) => handleContactDetailsChange(event, 'bphone')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', paddingLeft: '0', borderRadius: '4px' }}
-                                className={classes.numberInput}
+                                className={`${classes.InputStyling} ${classes.numberInput} ${classes.InnerInputStyling}`}
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <Select
                                             value={contact_details.stdcode}
                                             onChange={(event) => handleContactDetailsChange(event, 'stdcode')}
-                                            style={{ minWidth: '60px', border: 'none'}}
                                         >
-                                            <MenuItem value="044">044</MenuItem>
-                                            <MenuItem value="043">043</MenuItem>
-                                            <MenuItem value="042">042</MenuItem>
-                                            <MenuItem value="001">001</MenuItem>
+                                            <MenuItem value="044"><Typography variant="h2">044</Typography></MenuItem>
+                                            <MenuItem value="043"><Typography variant="h2">043</Typography></MenuItem>
+                                            <MenuItem value="042"><Typography variant="h2">042</Typography></MenuItem>
+                                            <MenuItem value="001"><Typography variant="h2">001</Typography></MenuItem>
                                             {/* Add more country code options */}
                                         </Select>
                                         <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', }} />
@@ -67,12 +65,11 @@ const CreatePropertySection5 = ({ data, setData }) => {
                         <FormControl fullWidth>
                             <InputBase
                                 type="number"
+                                className={`${classes.InputStyling} ${classes.numberInput} ${classes.InnerInputStyling}`}
                                 placeholder="Mobile Phone"
                                 value={contact_details.mphone}
                                 onChange={(event) => handleContactDetailsChange(event, 'mphone')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', paddingLeft: '0', borderRadius: '4px' }}
-                                className={classes.numberInput}
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <Select
@@ -80,9 +77,9 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                             onChange={(event) => handleContactDetailsChange(event, 'ccode')}
                                             style={{ minWidth: '60px', border: 'none'}}
                                         >
-                                            <MenuItem value="+91">+91</MenuItem>
-                                            <MenuItem value="+02">+02</MenuItem>
-                                            <MenuItem value="+35">+35</MenuItem>
+                                            <MenuItem value="+91"><Typography variant="h2">+91</Typography></MenuItem>
+                                            <MenuItem value="+02"><Typography variant="h2">+02</Typography></MenuItem>
+                                            <MenuItem value="+35"><Typography variant="h2">+35</Typography></MenuItem>
                                             {/* Add more country code options */}
                                         </Select>
                                         <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', }} />
@@ -100,11 +97,11 @@ const CreatePropertySection5 = ({ data, setData }) => {
                         <FormControl fullWidth>
                             <InputBase
                                 type= "url"
-                                placeholder="WWW.Business-Website.com"
+                                placeholder="www. website. com"
                                 value={contact_details.website}
                                 onChange={(event) => handleContactDetailsChange(event, 'website')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                className={`${classes.InputStyling}`}
                             />
                         </FormControl>
                     </Grid>
@@ -117,11 +114,11 @@ const CreatePropertySection5 = ({ data, setData }) => {
                         <FormControl fullWidth>
                             <InputBase
                                 type= "email"
-                                placeholder="org@Business-Website.com"
+                                placeholder="mail-id @ org.com"
                                 value={contact_details.email}
                                 onChange={(event) => handleContactDetailsChange(event, 'email')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                className={`${classes.InputStyling}`}
                             />
                         </FormControl>
                     </Grid>

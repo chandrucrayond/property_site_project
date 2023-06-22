@@ -24,7 +24,8 @@ export default function CreatePropertyQuill({value, setValue}) {
      <ReactQuill theme="snow"   
       value={value}
       onChange={handleChange}
-      modules={toolbarOptions} />
+      modules={toolbarOptions} 
+      />
      </div>
   );
   }

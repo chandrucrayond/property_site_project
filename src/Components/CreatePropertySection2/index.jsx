@@ -36,10 +36,11 @@ const CreatePropertySection2 = ({ data, setData }) => {
                             <Select
                                 value={property_details.cname}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'cname')}
+                                className={`${classes.SelectStyling}`}
                             >
-                                <MenuItem value={'Company Name'}>Company Name</MenuItem>
-                                <MenuItem value={'Organization Name'}>Organization Name</MenuItem>
-                                <MenuItem value={'Retail Name'}>Retail Name</MenuItem>
+                                <MenuItem value={'Company Name'}><Typography variant="h2">Company Name</Typography></MenuItem>
+                                <MenuItem value={'Organization Name'}><Typography variant="h2">Organization Name</Typography></MenuItem>
+                                <MenuItem value={'Retail Name'}><Typography variant="h2">Retail Name</Typography></MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
@@ -48,12 +49,13 @@ const CreatePropertySection2 = ({ data, setData }) => {
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Name</Typography>
                         <FormControl fullWidth>
+                      
                             <InputBase
                                 placeholder="Property Name"
                                 value={property_details.pname}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'pname')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                className={`${classes.InputStyling}`}
                             />
                         </FormControl>
                     </Grid>
@@ -66,10 +68,11 @@ const CreatePropertySection2 = ({ data, setData }) => {
                             <Select
                                 value={property_details.pperiod}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'pperiod')}
+                                className={`${classes.SelectStyling}`}
                             >
-                                <MenuItem value={'Daily'}>Daily</MenuItem>
-                                <MenuItem value={'Monthly'}>Monthly</MenuItem>
-                                <MenuItem value={'Yearly'}>Yearly</MenuItem>
+                                <MenuItem value={'Daily'}><Typography variant="h2">Daily</Typography></MenuItem>
+                                <MenuItem value={'Monthly'}><Typography variant="h2">Monthly</Typography></MenuItem>
+                                <MenuItem value={'Yearly'}><Typography variant="h2">Yearly</Typography></MenuItem>
 
                             </Select>
                         </FormControl>
@@ -83,9 +86,10 @@ const CreatePropertySection2 = ({ data, setData }) => {
                             <Select
                                 value={property_details.status}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'status')}
+                                className={`${classes.SelectStyling}`}
                             >
-                                <MenuItem value={'Active'}>Active</MenuItem>
-                                <MenuItem value={'Inactive'}>Inactive</MenuItem>
+                                <MenuItem value={'Active'}><Typography variant="h2">Active</Typography></MenuItem>
+                                <MenuItem value={'Inactive'}><Typography variant="h2">Inactive</Typography></MenuItem>
 
                             </Select>
                         </FormControl>

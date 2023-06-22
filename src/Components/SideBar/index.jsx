@@ -21,11 +21,11 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import theme from '../ThemeProvider';
 import SideBarStyle from '../SideBar/style';
-import DashboardIcon from '../../src/icons/Dashboard/DashboardIcon.jsx';
-import CustomerNotFocusedIcon from '../../src/icons/Dashboard/CustomerNotFocusedIcon';
-import CustomerIcon from '../../src/icons/Dashboard/CustomerIcon';
+import DashboardIcon from '../../icons/Dashboard/DashboardIcon';
+import CustomerNotFocusedIcon from '../../icons/Dashboard/CustomerNotFocusedIcon';
+import CustomerIcon from '../../icons/Dashboard/CustomerIcon';
 import { useNavigate } from "react-router-dom";
-import DashboardNotIcon from '../../src/icons/Dashboard/DashboardNotIcon';
+import DashboardNotIcon from '../../icons/Dashboard/DashboardNotIcon';
 
 const drawerWidth = 240;
 

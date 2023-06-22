@@ -1,14 +1,14 @@
 import { Box, Grid, Typography, Link } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import RoundIcon from '../../src/icons/Sign-in/RoundIcon.jsx';
-import RoundIcon2 from '../../src/icons/Sign-in/RoundIcon2.jsx';
-import VisibilityIcon from '../../src/icons/Sign-in/VisibilityIcon.jsx';
-import PropIcon from '../../src/icons/Sign-in/logo.png';
+import RoundIcon from '../../icons/Sign-in/RoundIcon.jsx';
+import RoundIcon2 from '../../icons/Sign-in/RoundIcon2.jsx';
+import VisibilityIcon from '../../icons/Sign-in/VisibilityIcon.jsx';
+import PropIcon from '../../icons/Sign-in/logo.png';
 import { createAccountStyle } from "./style";
-import BuildingImage from '../../src/icons/Sign-in/teamImage.png';
-import DotIcon from '../../src/icons/Sign-in/DotIcon.jsx'
-import DotIcon2 from '../../src/icons/Sign-in/DotIcon2.jsx'
+import BuildingImage from '../../icons/Sign-in/teamImage.png';
+import DotIcon from '../../icons/Sign-in/DotIcon.jsx'
+import DotIcon2 from '../../icons/Sign-in/DotIcon2.jsx'
 import { useMediaQuery } from '@mui/material';
 import theme from "../ThemeProvider/index.jsx";
 import Card from '@mui/material/Card';

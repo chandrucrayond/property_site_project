@@ -2,7 +2,7 @@ import { AppBar, InputBase, Toolbar, Grid, Stack, Collapse } from "@mui/material
 import { styled } from "@mui/system";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Outlet, useNavigate, Route, Routes } from "react-router-dom";
-import logo from "../../src/icons/Sign-in/DNT Logo White-042x.png";
+import logo from "../../icons/Sign-in/DNT Logo White-042x.png";
 import { useMediaQuery } from '@mui/material';
 import * as React from "react";
 import {
@@ -29,7 +29,7 @@ import {
 } from "@mui/icons-material";
 import { green, pink } from "@mui/material/colors";
 import { appHeaderStyle } from "./style";
-import LogoImage from "../../src/icons/Dashboard/DNT Logo White-04@2x.png"
+import LogoImage from "../../icons/Dashboard/DNT Logo White-04@2x.png"
 import theme from "../ThemeProvider/index.jsx";
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';

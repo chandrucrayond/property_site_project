@@ -1,5 +1,5 @@
 import { useState, React } from "react";
-import { DataContext } from "../components/Context";
+import { DataContext } from "./Context";
 
 function Context(props) {
     const [propertiesList, setPropertiesList] = useState([]);

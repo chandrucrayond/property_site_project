@@ -12,11 +12,11 @@ import CreatePropertySection4 from "../CreatePropertySection4";
 import CreatePropertySection5 from "../CreatePropertySection5";
 import CreatePropertySectionEnd from "../CreatePropertySectionEnd";
 import { useContext } from 'react';
-import { DataContext } from "../Context";
+import { DataContext } from "../../Context";
 
 
 const CreateProperty = ({ formData, handleChange, open, setOpen, context }) => {
-  debugger
+  // debugger
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
   const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));

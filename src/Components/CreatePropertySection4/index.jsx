@@ -68,9 +68,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         value={address_details.dno}
                                         onChange={(event) => handleAddressDetailsChange(event, 'dno')}
                                         fullWidth
-                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-                                        className={classes.numberInput}
-
+                                        className={`${classes.InputStyling} ${classes.numberInput}`}
                                     />
                                 </FormControl>
                             </Grid>
@@ -84,7 +82,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         value={address_details.aline1}
                                         onChange={(event) => handleAddressDetailsChange(event, 'aline1')}
                                         fullWidth
-                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                        className={`${classes.InputStyling}`}
 
                                     />
                                 </FormControl>
@@ -100,8 +98,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         value={address_details.aline2}
                                         onChange={(event) => handleAddressDetailsChange(event, 'aline2')}
                                         fullWidth
-                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-
+                                        className={`${classes.InputStyling}`}
                                     />
                                 </FormControl>
                             </Grid>
@@ -116,8 +113,8 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         value={address_details.landmark}
                                         onChange={(event) => handleAddressDetailsChange(event, 'landmark')}
                                         fullWidth
-                                        style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-                                    />
+                                        className={`${classes.InputStyling}`}
+                                   />
                                 </FormControl>
                             </Grid>
 
@@ -129,10 +126,11 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                     <Select
                                         value={address_details.area}
                                         onChange={(event) => handleAddressDetailsChange(event, 'area')}
+                                        className={`${classes.SelectStyling}`}
                                     >
-                                        <MenuItem value={'Pallavaram'}>Pallavaram</MenuItem>
-                                        <MenuItem value={'Neelankarai'}>Neelankarai</MenuItem>
-                                        <MenuItem value={'Adyar'}>Adyar</MenuItem>
+                                        <MenuItem value={'Pallavaram'}><Typography variant='h2'>Pallavaram</Typography></MenuItem>
+                                        <MenuItem value={'Neelankarai'}><Typography variant='h2'>Neelankarai</Typography></MenuItem>
+                                        <MenuItem value={'Adyar'}><Typography variant='h2'>Adyar</Typography></MenuItem>
 
                                     </Select>
                                 </FormControl>
@@ -147,10 +145,11 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                     <Select
                                         value={address_details.city}
                                         onChange={(event) => handleAddressDetailsChange(event, 'city')}
+                                        className={`${classes.SelectStyling}`}
                                     >
-                                        <MenuItem value={'Chennai'}>Chennai</MenuItem>
-                                        <MenuItem value={'Kanchipuram'}>Kanchipuram</MenuItem>
-                                        <MenuItem value={'Kanyakumari'}>Kanyakumari</MenuItem>
+                                        <MenuItem value={'Chennai'}><Typography variant='h2'>Chennai</Typography></MenuItem>
+                                        <MenuItem value={'Kanchipuram'}><Typography variant='h2'>Kanchipuram</Typography></MenuItem>
+                                        <MenuItem value={'Kanyakumari'}><Typography variant='h2'>Kanyakumari</Typography></MenuItem>
 
                                     </Select>
                                 </FormControl>
@@ -165,10 +164,11 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                     <Select
                                         value={address_details.state}
                                         onChange={(event) => handleAddressDetailsChange(event, 'state')}
+                                        className={`${classes.SelectStyling}`}
                                     >
-                                        <MenuItem value={'Tamilnadu'}>Tamilnadu</MenuItem>
-                                        <MenuItem value={'Kerala'}>Kerala</MenuItem>
-                                        <MenuItem value={'AdKarnatakayar'}>Karnataka</MenuItem>
+                                        <MenuItem value={'Tamilnadu'}><Typography variant='h2'>Tamilnadu</Typography></MenuItem>
+                                        <MenuItem value={'Kerala'}><Typography variant='h2'>Kerala</Typography></MenuItem>
+                                        <MenuItem value={'AdKarnatakayar'}><Typography variant='h2'>Karnataka</Typography></MenuItem>
 
                                     </Select>
                                 </FormControl>
@@ -182,10 +182,11 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                     <Select
                                         value={address_details.country}
                                         onChange={(event) => handleAddressDetailsChange(event, 'country')}
+                                        className={`${classes.SelectStyling}`}
                                     >
-                                        <MenuItem value={'India'}>India</MenuItem>
-                                        <MenuItem value={'USA'}>USA</MenuItem>
-                                        <MenuItem value={'Poland'}>Poland</MenuItem>
+                                        <MenuItem value={'India'}><Typography variant='h2'>India</Typography></MenuItem>
+                                        <MenuItem value={'USA'}><Typography variant='h2'>USA</Typography></MenuItem>
+                                        <MenuItem value={'Poland'}><Typography variant='h2'>Poland</Typography></MenuItem>
 
                                     </Select>
                                 </FormControl>
@@ -203,7 +204,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         onChange={(event) => handleAddressDetailsChange(event, 'pincode')}
                                         fullWidth
                                         style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
-                                        className={classes.numberInput}
+                                        className={`${classes.InputStyling} ${classes.numberInput}`}
                                     />
                                 </FormControl>
                             </Grid>

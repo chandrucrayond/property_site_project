@@ -1,11 +1,11 @@
-import ActivePropertiesIcon from "../../src/icons/Dashboard/S1ActivePropertiesIcon.jsx";
-import ActiveUnitIcon from "../../src/icons/Dashboard/S1ActiveUnitIcon.jsx";
-import BlockIcon from "../../src/icons/Dashboard/S1BlockIcon.jsx";
-import FloorsIcon from "../../src/icons/Dashboard/S1FloorsIcon.jsx";
-import OccupiedIcon from "../../src/icons/Dashboard/S1OccupiedIcon.jsx";
-import ReservedIcon from "../../src/icons/Dashboard/S1ReservedIcon.jsx";
-import ResidentsIcon from "../../src/icons/Dashboard/S1Residents.jsx";
-import VacantIcon from "../../src/icons/Dashboard/S1VacantIcon.jsx";
+import ActivePropertiesIcon from "../../icons/Dashboard/S1ActivePropertiesIcon.jsx";
+import ActiveUnitIcon from "../../icons/Dashboard/S1ActiveUnitIcon.jsx";
+import BlockIcon from "../../icons/Dashboard/S1BlockIcon.jsx";
+import FloorsIcon from "../../icons/Dashboard/S1FloorsIcon.jsx";
+import OccupiedIcon from "../../icons/Dashboard/S1OccupiedIcon.jsx";
+import ReservedIcon from "../../icons/Dashboard/S1ReservedIcon.jsx";
+import ResidentsIcon from "../../icons/Dashboard/S1Residents.jsx";
+import VacantIcon from "../../icons/Dashboard/S1VacantIcon.jsx";
 
 export const dashboardSection1Data = [
     {
