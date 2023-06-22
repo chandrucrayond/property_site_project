@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Dashboard from '../components/Dashboard/index';
@@ -14,63 +14,63 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { createContext } from 'react';
 import ViewProperties from '../components/ViewProperties';
 import { DataContext } from '../components/Context';
+import Context from './app.context';
 
-// export const MyContext = createContext([]);
 // export const MyContext = createContext({
 //   state:[],
 //   setState:()=>null,
 // });
 
 
-const App = () => {
-  
-const [formData, setFormData] = useState({
+const App = (props) => {
+  debugger
+  const context = useContext(DataContext)
+  const [formData, setFormData] = useState({
 
-  property_details: {
-    cname: "Company Name",
-    pname: "",
-    pperiod: "Daily",
-    status: "Active",
-    pdesc: "",
-  },
+    property_details: {
+      cname: "Company Name",
+      pname: "",
+      pperiod: "Daily",
+      status: "Active",
+      pdesc: "",
+    },
 
-  property_details2: {
-    ptype: "Apartment",
-    ppurp: "Residential",
-    rtype: "Lease",
-    munit: "Sq.ft",
-    carea: "",
-    tarea: "",
-    ybuilt: "2020-01-01",
-    hdate: "2023-01-01",
-    plist: "",
-    pets: "false",
-  },
+    property_details2: {
+      ptype: "Apartment",
+      ppurp: "Residential",
+      rtype: "Lease",
+      munit: "Sq.ft",
+      carea: "",
+      tarea: "",
+      ybuilt: "2020-01-01",
+      hdate: "2023-01-01",
+      plist: "",
+      pets: "false",
+    },
 
-  address_details: {
-    lang: "",
-    lat: "",
-    dno: "",
-    aline1: "",
-    aline2: "",
-    landmark: "",
-    area: "Neelankarai",
-    city: "Chennai",
-    state: "Tamilnadu",
-    country: "",
-    pincode: "",
-  },
+    address_details: {
+      lang: "",
+      lat: "",
+      dno: "",
+      aline1: "",
+      aline2: "",
+      landmark: "",
+      area: "Neelankarai",
+      city: "Chennai",
+      state: "Tamilnadu",
+      country: "",
+      pincode: "",
+    },
 
-  contact_details: {
-    bphone: "",
-    stdcode: "044",
-    mphone: "",
-    ccode: "+91",
-    website: "",
-    email: "",
-  },
-});
- const { propertiesList, setPropertiesList } = React.useContext(DataContext);
+    contact_details: {
+      bphone: "",
+      stdcode: "044",
+      mphone: "",
+      ccode: "+91",
+      website: "",
+      email: "",
+    },
+  });
 
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [open, setOpen] = React.useState(false);
@@ -92,10 +92,7 @@ const [formData, setFormData] = useState({
         [element]: event.target.value,
       },
     }));
-  
   };
-
- 
 
 
   const router = createBrowserRouter([
@@ -103,7 +100,7 @@ const [formData, setFormData] = useState({
       path: "/login",
       element: (
         // <Protected isSignedIn={isSignedIn}>
-          <CreateAccount onLogin={handleLogin} />
+        <CreateAccount onLogin={handleLogin} />
         // </Protected>
       )
     },
@@ -126,11 +123,11 @@ const [formData, setFormData] = useState({
         },
         {
           path: "createProperty",
-          element: <CreateProperty formData={formData} handleChange={handleChange}  open={open} setOpen={setOpen}/>
+          element: <CreateProperty context={context} formData={formData} handleChange={handleChange} open={open} setOpen={setOpen} />
         },
         {
           path: "viewProperties",
-          element: <ViewProperties/>
+          element: <ViewProperties />
         },
       ],
     },
@@ -143,14 +140,16 @@ const [formData, setFormData] = useState({
   ]);
 
   return (
-    <DataContext.Provider value={{ propertiesList, setPropertiesList }}>
     <ThemeProvider theme={theme}>
-    <RouterProvider
-      router={router}
-    />
+      <RouterProvider
+        router={router}
+      />
     </ThemeProvider>
-    </DataContext.Provider>
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <Context>
+    <App />
+  </Context>
+);

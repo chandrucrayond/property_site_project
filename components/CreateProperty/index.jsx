@@ -15,7 +15,8 @@ import { useContext } from 'react';
 import { DataContext } from "../Context";
 
 
-const CreateProperty = ({ formData, handleChange, open, setOpen }) => {
+const CreateProperty = ({ formData, handleChange, open, setOpen, context }) => {
+  debugger
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
   const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
@@ -39,7 +40,10 @@ const CreateProperty = ({ formData, handleChange, open, setOpen }) => {
 
   function handleClickingCreate() {
     setOpen(true);
-    setPropertiesList(formData, () => console.log(propertiesList));
+    context.setPropertiesList({
+      ...context.propertiesList,
+      ...formData
+    });
   }
 
 
@@ -96,5 +100,7 @@ const CreateProperty = ({ formData, handleChange, open, setOpen }) => {
     </>
   );
 };
+
+CreateProperty.contextType = DataContext;
 
 export default CreateProperty;
