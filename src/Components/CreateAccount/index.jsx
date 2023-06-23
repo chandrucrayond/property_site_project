@@ -25,21 +25,12 @@ function CreateAccount({ onLogin }) {
 
 
     const [loading, setLoading] = useState(false);
-    const [openSnackBar, setOpenSnackBar] = React.useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const handleTogglePassword = () => {
         setShowPassword(!showPassword);
     };
 
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-    const handleCloseSnackBar = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setOpenSnackBar(false);
-    };
 
     const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
 
@@ -55,10 +46,7 @@ function CreateAccount({ onLogin }) {
             setLoading(true);
 
             setTimeout(function () {
-                var successMessage = document.getElementById("successMessage");
-                successMessage.classList.add("show");
                 setTimeout(function () {
-                    setOpenSnackBar(true);
                     setLoading(false);
                     onLogin();
                     navigate("/dashboard");

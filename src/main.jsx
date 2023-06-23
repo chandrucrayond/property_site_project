@@ -118,10 +118,6 @@ const App = (props) => {
           element: <Dashboard />,
         },
         {
-          path: "checking",
-          element: <p>Hello world of the product, this is entered in main.jsx</p>,
-        },
-        {
           path: "createProperty",
           element: <CreateProperty context={context} formData={formData} setFormData={setFormData} handleChange={handleChange} open={open} setOpen={setOpen} />
         },
