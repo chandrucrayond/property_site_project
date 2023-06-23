@@ -1,9 +1,9 @@
 import React from 'react';
-
+import VacantImage from './Leads-1.png'
 const VacantIcon = () => {
 
     return (
-        <img src="../../src/icons/Dashboard/Leads-1.png"
+        <img src={VacantImage}
         alt="Vacant_icon"
         />
     );

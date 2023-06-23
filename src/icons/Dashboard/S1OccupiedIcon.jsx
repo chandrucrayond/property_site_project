@@ -1,10 +1,8 @@
 import React from 'react';
+import OccupiedImage from './Leads-2.png';
 
 const OccupiedIcon = () => {
+  return <img src={OccupiedImage} alt="Occupied" />;
+};
 
-    return (
-        <img src="../../src/icons/Dashboard/Leads-2.png"
-            alt="Occupied_icon" />
-    );
-}
 export default OccupiedIcon;
