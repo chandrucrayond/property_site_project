@@ -1,61 +1,185 @@
 {
-    "propauto": {
-      "cards":[
-        {
-            "title": "Active Properties",
-            "image": "<ActivePropertiesIcon />",
-            "count": 14
-        },
-        {
-            "title": "Blocks",
-            "image": "<BlockIcon />",
-            "count": 14
-        },
-        {
-            "title": "Floors",
-            "image": "<FloorsIcon />",
-            "count": 14
-        },
-        {
-            "title": "Residents",
-            "image": "<ResidentsIcon />",
-            "count": 14
-        },
-        {
-            "title": "Active Unit",
-            "image": "<ActiveUnitIcon />",
-            "count": 14
-        },
-        {
-            "title": "Vacant",
-            "image": "<VacantIcon />",
-            "count": 14
-        },
-        {
-            "title": "Reserved",
-            "image": "<ReservedIcon />",
-            "count": 14
-        },
-        {
-            "title": "Occupied",
-            "image": "<OccupiedIcon />",
-            "count": 14
-        }
+  "propauto": {
+
+
+    "cards": [
+      {
+        "title": "Active Properties",
+        "image": "ActivePropertiesIcon",
+        "count": 14
+      },
+      {
+        "title": "Blocks",
+        "image": "BlockIcon",
+        "count": 8
+      },
+      {
+        "title": "Floors",
+        "image": "FloorsIcon",
+        "count": 15
+      },
+      {
+        "title": "Residents",
+        "image": "ResidentsIcon",
+        "count": 20
+      },
+      {
+        "title": "Active Unit",
+        "image": "ActiveUnitIcon",
+        "count": 13
+      },
+      {
+        "title": "Vacant",
+        "image": "VacantIcon",
+        "count": 3
+      },
+      {
+        "title": "Reserved",
+        "image": "ReservedIcon",
+        "count": 1
+      },
+      {
+        "title": "Occupied",
+        "image": "OccupiedIcon",
+        "count": 11
+      }
     ],
-      "charts": {
-        "chart1": {
-          "vacant": 50,
-          "reserved": 35,
-          "occupied": 25,
-          "listed": 45
-        },
+
+
+    "charts": {
+        "chart1": [
+          {
+            "name": "Vacant",
+            "value": 50,
+            "fill": "#58D0E0",
+            "color": "#58D0E0"
+          },
+          {
+            "name": "Occupied",
+            "value": 25,
+            "fill": "#5AC782",
+            "color": "#5AC782"
+          },
+          {
+            "name": "Reserved",
+            "value": 35,
+            "fill": "#F3E137",
+            "color": "#F3E137"
+          },
+          {
+            "name": "Listed",
+            "value": 45,
+            "fill": "#FF9340",
+            "color": "#FF9340"
+          }
+        ],
         "chart2": {
           "vacant": 50,
           "reserved": 35,
           "occupied": 25,
           "listed": 45
+        },
+        "chart4": [
+            { "name": "Residential", "value": 200, "fill": "#5AC782", "color": "#5AC782" },
+            { "name": "Commercial", "value": 300, "fill": "#F3E137", "color": "#F3E137" }
+        ]
+      },
+   
+    
+    "general": {
+        "number": 12,
+        "request":[
+            {
+               "id": "K-F01-U277" ,
+               "date": "22 Jan 21",
+               "category": "Maintenance",
+               "name": "Water Leakage Repair"
+            },
+            {
+                "id": "A-B01-M097" ,
+                "date": "15 Mar 22",
+                "category": "Maintenance",
+                "name": "Electricity Voltage Drop"
+             },
+             {
+                "id": "L-D01-G342" ,
+                "date": "6 Nov 21",
+                "category": "Maintenance",
+                "name": "Install Insect Nets"
+             }
+        ]
+    },
+
+
+    "maintenance": {
+        "number": 15,
+        "request":[
+            {
+               "id": "K-F01-U277" ,
+               "date": "22 Jan 21",
+               "category": "Maintenance",
+               "name": "Water Leakage Repair"
+            },
+            {
+                "id": "A-B01-M097" ,
+                "date": "15 Mar 22",
+                "category": "Maintenance",
+                "name": "Electricity Voltage Drop"
+             },
+             {
+                "id": "L-D01-G342" ,
+                "date": "6 Nov 21",
+                "category": "Maintenance",
+                "name": "Install Insect Nets"
+             }
+        ]
+    },
+
+    "occupancy" : [
+        {
+            "propertyId": "Prop 013",
+            "propertyName": "Tysons",
+            "totalUnits": 23,
+            "occupiedUnits": 12
+        },
+
+        {
+            "propertyId": "Prop 045",
+            "propertyName": "Rubix",
+            "totalUnits": 56,
+            "occupiedUnits": 38
+        },
+
+        {
+            "propertyId": "Prop 007",
+            "propertyName": "Phoenix",
+            "totalUnits": 45,
+            "occupiedUnits": 20
+        },
+
+        {
+            "propertyId": "Prop 074",
+            "propertyName": "Thapar",
+            "totalUnits": 33,
+            "occupiedUnits": 7
+        },
+
+        {
+            "propertyId": "Prop 099",
+            "propertyName": "Marian",
+            "totalUnits": 78,
+            "occupiedUnits": 19
         }
-      }
+    ]
+  
+   
     }
   }
+ 
+  
+  
+  
+  
+  
+  
   

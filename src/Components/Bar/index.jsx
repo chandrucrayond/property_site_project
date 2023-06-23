@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
+import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
@@ -29,9 +29,9 @@ import { useMediaQuery } from "@mui/material";
 import theme from "../ThemeProvider";
 
 const drawerWidth = 240;
-
+const drawerHeight = 100;
 const openedMixin = (theme) => ({
-    width: drawerWidth,
+    width: '100%',
     transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -70,7 +70,8 @@ const AppBar = styled(MuiAppBar, {
     }),
     ...(open && {
         marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
+        width: '100%',
+        height: `${drawerHeight}`,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
@@ -78,26 +79,16 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-        width: drawerWidth,
-        flexShrink: 0,
-        whiteSpace: 'nowrap',
-        boxSizing: 'border-box',
-        ...(open && {
-            ...openedMixin(theme),
-            '& .MuiDrawer-paper': openedMixin(theme),
-        }),
-        ...(!open && {
-            ...closedMixin(theme),
-            '& .MuiDrawer-paper': closedMixin(theme),
-        }),
-    }),
-);
+// const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+//     ({ theme, open }) => ({
+//         width: '100%',
+//         height: drawerHeight,
+//     }),
+// );
 
   
 
-const SideBar = () => {
+const Bar = () => {
     const classes = SideBarStyle();
     const [open, setOpen] = React.useState(false);
 
@@ -119,50 +110,22 @@ const SideBar = () => {
         setSelected('viewProperties');
         navigate("/viewProperties");
     }
-    const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
-    const [dPos, setDpos] = useState("left");
-    React.useEffect(() => {
-        if (isMdScreen) {
-            setDpos("bottom");
-        }
-        else {
-            setDpos("left");
-        }
-    }, [isMdScreen]);
 
     return (
-        <Drawer variant="permanent" open={open} className={classes.drawer}>
-            <DrawerHeader style={{ justifyContent: open ? 'end' : 'center' }}>
-
-                {open && <Typography variant='h3' className={classes.sideBarHeading}>Property Manager For Start up</Typography>}
-
-                <IconButton onClick={handleToggleOpen} className={classes.toggleIcon} >
-                    {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>
-            </DrawerHeader>
-            <Divider style={{ backgroundColor: '#666666', width: '60%', marginLeft: 'auto', marginRight: 'auto', }} />
-            <List>
+        <Drawer anchor={"bottom"} variant="permanent" style={{position: 'fixed', height: '60px', display: 'flex', justifyContent: 'center'}}>
+           
+            <List style={{display: 'flex', justifyContent: 'center', height: '30px', backgroundColor: '#333333'}}>
                 {['Dashboard', 'Properties'].map((text, index) => (
                     <ListItem
                         key={text}
                         disablePadding
-                        sx={{ display: 'block' }}
+                        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                         onClick={index % 2 === 0 ? handleViewDashboard : handleViewProperties}
                     >
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    width: 10,
-                                    mr: open ? 3 : 0,
-                                    justifyContent: 'center',
-                                }}
-                            >
+                        <ListItemButton style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+
+                            <ListItemIcon style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                
                                 {index % 2 === 0 ? (
                                     selected === 'dashboard' ? (
                                         <DashboardIcon />
@@ -176,8 +139,9 @@ const SideBar = () => {
                                         <CustomerNotFocusedIcon />
                                     )
                                 )}
+
                             </ListItemIcon>
-                            <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                           
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -186,76 +150,4 @@ const SideBar = () => {
     );
 }
 
-export default SideBar;
-
-
-// import React, { useState, useEffect } from "react";
-// import { Drawer, Paper, Toolbar, List, ListItem, ListItemText } from "@mui/material";
-// import { useMediaQuery } from "@mui/material";
-// import theme from "../ThemeProvider";
-
-// const SideBar = () => {
-//   const [drawer, setDrawer] = useState(false);
-//   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
-//   const [dPos, setDpos] = useState("left");
-
-//   useEffect(() => {
-//    if(isMdScreen){
-//     setDpos("bottom");
-//    }
-//    else{
-//     setDpos("left");
-//    }
-//   }, [isMdScreen]);
-
-//   const handleDrawerOpen = () => {
-//     setDrawer(true);
-//   };
-
-//   const handleDrawerClose = () => {
-//     setDrawer(false);
-//   };
-
-//   const drawerStyles = {
-//     position: "fixed",
-//     bottom: 0,
-//     left: 0,
-//     width: "100%",
-//     height: "100vh",
-//     zIndex: 10,
-//   };
-
-//   const drawerOpen = isMdScreen ? false : true;
-
-//   return (
-//     <div>
-//       <Drawer
-//         open={drawer}
-//         onClose={handleDrawerClose}
-//         anchor={dPos}
-//         variant="permanent"
-//         style={drawerStyles}
-//       >
-//         <Paper>
-//           <Toolbar>
-//             <h2>Drawer</h2>
-//           </Toolbar>
-//           <List>
-//             <ListItem>
-//               <ListItemText>Item 1</ListItemText>
-//             </ListItem>
-//             <ListItem>
-//               <ListItemText>Item 2</ListItemText>
-//             </ListItem>
-//             <ListItem>
-//               <ListItemText>Item 3</ListItemText>
-//             </ListItem>
-//           </List>
-//         </Paper>
-//       </Drawer>
-//       <button onClick={handleDrawerOpen}>Open Drawer</button>
-//     </div>
-//   );
-// };
-
-// export default SideBar;
+export default Bar;

@@ -45,3 +45,11 @@ export const ViewCard = ({children}) => {
     <Box className={classes.ViewCard}>{children}</Box>
     );
 }
+
+
+export const AppHeaderCard = ({children}) => {
+    const classes = CreateCardStyle();
+    return(
+    <Box className={classes.AppHeaderCard}>{children}</Box>
+    );
+}

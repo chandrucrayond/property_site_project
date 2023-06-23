@@ -38,12 +38,15 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
     setOpen(false);
   };
 
-  React.useEffect(() => {
-    console.log(propertiesList);
-  }, [propertiesList]);
+  // React.useEffect(() => {
+  //   console.log(propertiesList);
+  // }, [propertiesList]);
 
   function handleClickingCreate() {
     setOpen(true);
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 2000);
     setPropertiesList((prevData) => [...prevData, formData])
     setFormData({
 
@@ -91,7 +94,9 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
         email: "",
       },
     });
+
   }
+  
 
 
   return (

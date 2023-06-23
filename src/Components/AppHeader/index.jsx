@@ -1,4 +1,4 @@
-import { AppBar, InputBase, Toolbar, Grid, Stack, Collapse } from "@mui/material";
+import { AppBar, InputBase, Toolbar, Grid, Stack, Collapse, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Outlet, useNavigate, Route, Routes } from "react-router-dom";
@@ -36,6 +36,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { AppHeaderCard } from "../CreateCard";
 // Inline styled mui elements
 
 const Logo = styled("img")({
@@ -48,11 +49,9 @@ const Title = styled(Typography)({
   flexGrow: 1,
 });
 
-const CusMenuItem = styled(MenuItem)({
-  // fontSize: "13px",
-  // fontFamily: "Montserrat , sans-serif",
-  // fontWeight: "500",
-});
+// const CusMenuItem = styled(MenuItem)({
+
+// });
 
 // Inline styled mui elements ending
 
@@ -134,9 +133,9 @@ function AppHeader() {
               </Grid>
               <Grid item xs={6} >
                 <Typography variant='h4' sx={{
-                  paddingLeft: '10px', 
+                  paddingLeft: '10px',
                 }}
-                className={` ${isSmScreen ? classes.headerParaMobile : ''}`}
+                  className={` ${isSmScreen ? classes.headerParaMobile : ''}`}
                 >
                   PROPERTY MANAGEMENT SOLUTIONS
                 </Typography>
@@ -145,40 +144,39 @@ function AppHeader() {
           </Grid>
 
 
-          <Grid item xs={6} sm={6} style={{ display: isSmScreen ? 'none' : 'flex',  }} >
-            <Grid container sx={{ alignItems: 'center', cursor: 'pointer' ,justifyContent: 'end',}} onClick={handleClick}>
-             
-                <NotificationIcon variant="dot"/>
-                <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', marginLeft: '20px', marginRight: '20px' }} />
-                 
-                    <Tooltip title="Account settings">
-                      <IconButton
-                        
-                        size="small"
-                        aria-controls={open ? "account-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        className={`${classes.profileButtonLogo}`}
-                      >
-                        <Avatar
-                          sx={{
-                            width: 32,
-                            height: 32,
-                            backgroundColor: "#1976d2",
-                            color: "white",
-                          }}
-                        ></Avatar>
-                      </IconButton>
-                    </Tooltip>
-               
-                    <Box>
-                      <Typography variant='h4' style={{color: 'white',}}>Bala Ganesh</Typography>
-                      <Typography variant='h5' >Super Admin</Typography>
-                    </Box>
-                
-               
-                    <KeyboardArrowDownIcon />
-                   
+          <Grid item xs={6} sm={6} style={{ display: isSmScreen ? 'none' : 'flex', }} >
+            <Grid container sx={{ alignItems: 'center', cursor: 'pointer', justifyContent: 'end', }} onClick={handleClick}>
+
+              <NotificationIcon variant="dot" />
+              <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', marginLeft: '20px', marginRight: '20px' }} />
+
+              <Tooltip title="Account settings">
+                <IconButton
+
+                  size="small"
+                  aria-controls={open ? "account-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  className={`${classes.profileButtonLogo}`}
+                >
+                  <Avatar
+                    sx={{
+                      width: 32,
+                      height: 32,
+                      backgroundColor: "#1976d2",
+                      color: "white",
+                    }}
+                  ></Avatar>
+                </IconButton>
+              </Tooltip>
+
+              <Box>
+                <Typography variant='h4' style={{ color: 'white', }}>Bala Ganesh</Typography>
+                <Typography variant='h5' >Super Admin</Typography>
+              </Box>
+
+              <KeyboardArrowDownIcon />
+
             </Grid>
 
             <Menu
@@ -190,63 +188,198 @@ function AppHeader() {
               PaperProps={{
                 elevation: 0,
                 sx: {
-                  overflow: "visible",
+                  // overflow: "visible",
                   filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                   mt: 1.5,
+                  width: '350px',
+                  height: 'auto',
                   "& .MuiAvatar-root": {
                     width: 32,
                     height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  "&:before": {
-                    content: '""',
-                    display: "block",
-                    position: "absolute",
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: "background.paper",
-                    transform: "translateY(-50%) rotate(45deg)",
-                    zIndex: 0,
+                    // ml: -0.5,
+                    // mr: 1,
                   },
                 },
               }}
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
-              <CusMenuItem onClick={handleClose}>
-                <Avatar sx={{ bgcolor: pink[500] }}>
-                  <Face />
-                </Avatar>{" "}
-                Profile
-              </CusMenuItem>
-              <CusMenuItem onClick={handleClose}>
-                <Avatar sx={{ bgcolor: green[500] }}>
-                  <Assignment />
-                </Avatar>{" "}
-                Order's
-              </CusMenuItem>
-              <Divider />
-              <CusMenuItem onClick={handleClose}>
-                <ListItemIcon>
-                  <PersonAdd fontSize="small" sx={{ color: "#1e88e5" }} />
-                </ListItemIcon>
-                24/7 Customer Care
-              </CusMenuItem>
-              <CusMenuItem onClick={handleClose}>
-                <ListItemIcon>
-                  <Settings fontSize="small" sx={{ color: "#212121" }} />
-                </ListItemIcon>
-                Settings
-              </CusMenuItem>
-              <CusMenuItem onClick={handleLogout}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Logout
-              </CusMenuItem>
+
+
+              <MenuItem onClick={handleClose} className={classes.AvatarMenu}>
+                <Avatar
+                  sx={{
+                    backgroundColor: "#1976d2",
+                    color: "white",
+                  }}
+                ></Avatar>{" "}
+                <Box style={{ marginLeft: '10px', }}>
+                  <Typography variant='h2' style={{ color: '091B29', fontWeight: '700', fontSize: '16px' }}>Bala Ganesh</Typography>
+                  <Typography variant='h5' style={{ fontSize: '11px' }}>BalaGanesh@gmail.com</Typography>
+                  <Button variant="contained" className={classes.roles} style={{ marginTop: '5px', textTransform: 'none' }}>Super Admin</Button>
+                </Box>
+              </MenuItem>
+
+
+              {/* <MenuItem className={classes.roleSelectionContainer}> */}
+
+
+                <Grid container spacing={1} style={{padding: '10px',}}>
+                 
+                  <Grid item xs={12}>
+                    <Typography variant='h5' style={{ fontSize: '10px', }} >Roles</Typography>
+                  </Grid>
+
+
+                  <Grid item xs={4}>
+                    <AppHeaderCard>
+                      <Grid container>
+                        <Grid item xs={12}  className={classes.subRoleContainer}>
+                          <Avatar
+                            sx={{
+                              backgroundColor: "#FEEAEA",
+                              color: "#F17360",
+                            }}
+                          >
+                            <Typography variant='h3'>A</Typography>
+                          </Avatar>
+                        </Grid>
+                        <Grid item xs={12} className={classes.subRoleContainer}>
+                          <Typography variant='h2' style={{ marginTop: '10px',  }} >Super Admin</Typography>
+                        </Grid>
+                      </Grid>
+                    </AppHeaderCard>
+                  </Grid>
+
+
+                  <Grid item xs={4} >
+                    <AppHeaderCard>
+                      <Grid container>
+                        <Grid item xs={12} className={classes.subRoleContainer}>
+                          <Avatar
+                            sx={{
+                              backgroundColor: "#DBF0F1",
+                              color: "#119DA4",
+                            }}
+                          >
+                            <Typography variant='h3'>CM</Typography>
+                          </Avatar>
+                        </Grid>
+                        <Grid item xs={12} style={{ marginTop: '10px', }} className={classes.subRoleContainer}>
+                          <Typography variant='h2'>Community Manager</Typography>
+                        </Grid>
+                      </Grid>
+                    </AppHeaderCard>
+                  </Grid>
+
+
+
+                  <Grid item xs={4} >
+                    <AppHeaderCard>
+                      <Grid container>
+                        <Grid item xs={12} className={classes.subRoleContainer}>
+                          <Avatar
+                            sx={{
+                              backgroundColor: "#FFF2CE ",
+                              color: "#D49200",
+                            }}
+                          >
+                            <Typography variant='h3'>SM</Typography>
+                          </Avatar>
+                        </Grid>
+                        <Grid item xs={12} style={{ marginTop: '10px' }} className={classes.subRoleContainer}>
+                          <Typography variant='h2'>Security Manager</Typography>
+                        </Grid>
+                      </Grid>
+                    </AppHeaderCard>
+                  </Grid>
+
+                  
+                  <Grid item xs={4} >
+                  <AppHeaderCard>
+                    <Grid container>
+                      <Grid item xs={12} className={classes.subRoleContainer}>
+                        <Avatar
+                          sx={{
+                            backgroundColor: "#D9E9FF",
+                            color: "#4991F2",
+                          }}
+                        >
+                          <Typography variant='h3'>PM</Typography>
+                        </Avatar>
+                      </Grid>
+                      <Grid item xs={12} style={{ marginTop: '10px' }} className={classes.subRoleContainer}>
+                        <Typography variant='h2'>Property Manager</Typography>
+                      </Grid>
+                    </Grid>
+                  </AppHeaderCard>
+                </Grid>
+
+
+                <Grid item xs={4} >
+                  <AppHeaderCard>
+                    <Grid container>
+                      <Grid item xs={12} className={classes.subRoleContainer}>
+                        <Avatar
+                          sx={{
+                            backgroundColor: "#DFF1DB",
+                            color: "#11A442",
+                          }}
+                        >
+                          <Typography variant='h3'>ZM</Typography>
+                        </Avatar>
+                      </Grid>
+                      <Grid item xs={12} style={{ marginTop: '10px', }} className={classes.subRoleContainer}>
+                        <Typography variant='h2'>Zonal Manager</Typography>
+                      </Grid>
+                    </Grid>
+                  </AppHeaderCard>
+                </Grid>
+
+
+
+                <Grid item xs={4} >
+                  <AppHeaderCard>
+                    <Grid container>
+                      <Grid item xs={12} className={classes.subRoleContainer}>
+                        <Avatar
+                          sx={{
+                            backgroundColor: "#FFEACE ",
+                            color: "#D47100",
+                          }}
+                        >
+                          <Typography variant='h3'>CC</Typography>
+                        </Avatar>
+                      </Grid>
+                      <Grid item xs={12} style={{ marginTop: '10px' }} className={classes.subRoleContainer}>
+                        <Typography variant='h2'>Customer Care</Typography>
+                      </Grid>
+                    </Grid>
+                  </AppHeaderCard>
+                </Grid>
+
+
+                </Grid>
+              {/* </MenuItem> */}
+
+              <MenuItem onClick={handleClose}>
+                <Typography variant='h2' style={{ color: ' #4E5A6B' }} >My Profile</Typography>
+
+              </MenuItem>
+
+
+              <MenuItem onClick={handleClose}>
+                <Typography variant='h2' style={{ color: ' #4E5A6B' }} >Privacy Policy</Typography>
+              </MenuItem>
+
+              <MenuItem onClick={handleClose}>
+                <Typography variant='h2' style={{ color: ' #4E5A6B' }} >Terms and conditions</Typography>
+              </MenuItem>
+
+              <MenuItem onClick={handleLogout}>
+                <Button variant="outlined" style={{ textTransform: 'none', color: '#FF4B4B', borderColor: '#FF4B4B', borderRadius: '8px' }}>Sign Out</Button>
+              </MenuItem>
+
             </Menu>
 
           </Grid>
@@ -254,45 +387,6 @@ function AppHeader() {
 
 
       </Toolbar>
-
-      <Collapse in={menuItemClicked} sx={{}}>
-        <Grid item xs={12}>
-          <Typography
-            variant="h4"
-            className={`${classes.appHeaderPara} ${classes.menuButtonPara} ${clickedButton === 'Home' ? classes.clicked : ''}`}
-            onClick={() => handleButtonClick('Home')}
-          >
-            Home
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography
-            variant="h4"
-            className={`${classes.appHeaderPara} ${classes.menuButtonPara} ${clickedButton === 'Products' ? classes.clicked : ''}`}
-            onClick={() => handleButtonClick('Products')}
-          >
-            Products
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography
-            variant="h4"
-            className={`${classes.appHeaderPara} ${classes.menuButtonPara} ${clickedButton === 'Services' ? classes.clicked : ''}`}
-            onClick={() => handleButtonClick('Services')}
-          >
-            Services
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography
-            variant="h4"
-            className={`${classes.appHeaderPara} ${classes.menuButtonPara} ${clickedButton === 'About' ? classes.clicked : ''}`}
-            onClick={() => handleButtonClick('About')}
-          >
-            About us
-          </Typography>
-        </Grid>
-      </Collapse>
 
     </AppBar >
   );

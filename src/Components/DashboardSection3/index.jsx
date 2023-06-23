@@ -8,19 +8,19 @@ import Typography from '@mui/material/Typography';
 import DashboardSection_3_SS_1 from "../DashboardSection3_SS_1/index.jsx";
 import DashboardSection_3_SS_2 from "../DashboardSection3_SS_2/index.jsx";
 
-export default function DashboardSection3() {
+export default function DashboardSection3({dashData}) {
     const classes = DashboardSection3Style();
 
     return (
         <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
                 <Card className={classes.GraphCard} >
-                <DashboardSection_3_SS_1 />
+                <DashboardSection_3_SS_1 dashData={dashData}/>
                 </Card>
             </Grid>
             <Grid item xs={12} md={6}>
                 <Card className={classes.GraphCard} >
-                    <DashboardSection_3_SS_2 />
+                    <DashboardSection_3_SS_2 dashData={dashData}/>
                 </Card>
             </Grid>
         </Grid>

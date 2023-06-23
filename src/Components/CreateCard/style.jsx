@@ -48,4 +48,16 @@ export const CreateCardStyle = makeStyles((theme) => ({
         padding: '5px',
     },
 
+    AppHeaderCard: {
+        font: 'normal normal 600 12px/16px Nunito Sans !important',
+        color: ' #091B29 !important',
+        background: '#FFFFFF 0% 0% no-repeat padding-box !important',
+        border: '1px solid #E4E8EE !important',
+        borderRadius: '12px !important',
+        padding: '10px !important',
+        // display: 'flex !important',
+        // justifyContent: 'center !important',
+        // alignItems: 'center !important',
+    },
+
 }));

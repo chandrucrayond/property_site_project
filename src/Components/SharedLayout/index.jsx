@@ -8,6 +8,7 @@ import { jsonData } from '../Json';
 import { SharedLayoutStyle } from "./style";
 import theme from "../ThemeProvider/index.jsx";
 import SideBar from "../SideBar/index.jsx";
+import Bar from '../Bar';
 
 function SharedLayout() {
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
@@ -25,8 +26,8 @@ function SharedLayout() {
               <Outlet />
           </Grid>
           
-          <Grid item xs={12} className={classes.sideBarStyle} sx={{display : isMdScreen ? 'none' : 'block'}}>
-                <SideBar />
+          <Grid item xs={12} className={classes.sideBarStyle} >
+            {isMdScreen  ? <Bar /> : <SideBar />} 
           </Grid> 
 
         </Grid>

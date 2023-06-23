@@ -26,12 +26,12 @@ import CircleIcon from "@mui/icons-material/Circle";
 import EyeIcon from "../../icons/Dashboard/S1EyeIcon";
 import PenIcon from "../../icons/Dashboard/S1PenIcon";
 
-function GeneralRequests() {
+function GeneralRequests({ dashData }) {
     return (
         <Grid container spacing={3}>
             <Grid item xs={6}>
                 <Typography variant="h3" sx={{ color: "#4E5A6B" }}>
-                    General Requests (12)
+                    General Requests ({dashData.number})
                 </Typography>
             </Grid>
             <Grid item xs={6} justifyContent="end" sx={{ display: "flex" }}>
@@ -56,130 +56,58 @@ function GeneralRequests() {
                 />
             </Grid>
             <Grid item xs={12} >
-                <Grid container style={{ alignItems: "center" }}>
-                    <Grid item xs={8}>
-                        <Typography
-                            variant="h2"
-                            sx={{ color: "#4E5A6B", fontWeight: "500" }}
-                        >
-                            Water Leakage Repair
-                        </Typography>
-                        <Typography variant="body2" style={{ fontSize: "12px" }}>
-                            Maintenance{" "}
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            22 Jan 21
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            K-F01-U277
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                        <Typography variant="body2" style={{ marginRight: "20px" }}>
-                            <PenIcon />
-                        </Typography>
-                        <Typography variant="body2">
-                            <EyeIcon />
-                        </Typography>
-                    </Grid>
-                </Grid>
 
-                <Grid container style={{ alignItems: "center", marginTop: "20px" }}>
-                    <Grid item xs={8}>
-                        <Typography
-                            variant="h2"
-                            sx={{ color: "#4E5A6B", fontWeight: "500" }}
-                        >
-                            Electricity Voltage Drop
-                        </Typography>
-                        <Typography variant="body2" style={{ fontSize: "12px" }}>
-                            Maintenance{" "}
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            22 Jan 21
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            K-F01-U277
-                        </Typography>
+                {dashData.request.map((item, index) => (
+                    <Grid container key={index} style={{ alignItems: "center", marginBottom: "20px" }}>
+                        <Grid item xs={8}>
+                            <Typography
+                                variant="h2"
+                                sx={{ color: "#4E5A6B", fontWeight: "500" }}
+                            >
+                                {item.name}
+                            </Typography>
+                            <Typography variant="body2" style={{ fontSize: "12px" }}>
+                                {item.category}{" "}
+                                <CircleIcon
+                                    style={{
+                                        fontSize: "6px",
+                                        marginLeft: "10px",
+                                        marginRight: "10px",
+                                    }}
+                                />
+                                {item.date}
+                                <CircleIcon
+                                    style={{
+                                        fontSize: "6px",
+                                        marginLeft: "10px",
+                                        marginRight: "10px",
+                                    }}
+                                />
+                                {item.id}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
+                            <Typography variant="body2" style={{ marginRight: "20px" }}>
+                                <PenIcon />
+                            </Typography>
+                            <Typography variant="body2">
+                                <EyeIcon />
+                            </Typography>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                        <Typography variant="body2" style={{ marginRight: "20px" }}>
-                            <PenIcon />
-                        </Typography>
-                        <Typography variant="body2">
-                            <EyeIcon />
-                        </Typography>
-                    </Grid>
-                </Grid>
+                ))}
 
-                <Grid container style={{ alignItems: "center", marginTop: "20px" }}>
-                    <Grid item xs={8}>
-                        <Typography
-                            variant="h2"
-                            sx={{ color: "#4E5A6B", fontWeight: "500" }}
-                        >
-                            Water Leakage Repair
-                        </Typography>
-                        <Typography variant="body2" style={{ fontSize: "12px" }}>
-                            Maintenance{" "}
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            22 Jan 21
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            K-F01-U277
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                        <Typography variant="body2" style={{ marginRight: "20px" }}>
-                            <PenIcon />
-                        </Typography>
-                        <Typography variant="body2">
-                            <EyeIcon />
-                        </Typography>
-                    </Grid>
-                </Grid>
             </Grid>
         </Grid>
     );
 }
 
-function Maintenance() {
+function Maintenance({dashData}) {
     return (
         <Grid container spacing={3}>
             <Grid item xs={6}>
                 <Typography variant="h3" sx={{ color: "#4E5A6B" }}>
-                    Maintenance (15)
+                    Maintenance ({dashData.number})
                 </Typography>
             </Grid>
             <Grid item xs={6} justifyContent="end" sx={{ display: "flex" }}>
@@ -204,125 +132,52 @@ function Maintenance() {
                 />
             </Grid>
             <Grid item xs={12}>
-                <Grid container style={{ alignItems: "center" }}>
-                    <Grid item xs={8}>
-                        <Typography
-                            variant="h2"
-                            sx={{ color: "#4E5A6B", fontWeight: "500" }}
-                        >
-                            Water Leakage Repair
-                        </Typography>
-                        <Typography variant="body2" style={{ fontSize: "12px" }}>
-                            Maintenance{" "}
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            22 Jan 21
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            K-F01-U277
-                        </Typography>
+            {dashData.request.map((item, index) => (
+                    <Grid container key={index} style={{ alignItems: "center", marginBottom: "20px" }}>
+                        <Grid item xs={8}>
+                            <Typography
+                                variant="h2"
+                                sx={{ color: "#4E5A6B", fontWeight: "500" }}
+                            >
+                                {item.name}
+                            </Typography>
+                            <Typography variant="body2" style={{ fontSize: "12px" }}>
+                                {item.category}{" "}
+                                <CircleIcon
+                                    style={{
+                                        fontSize: "6px",
+                                        marginLeft: "10px",
+                                        marginRight: "10px",
+                                    }}
+                                />
+                                {item.date}
+                                <CircleIcon
+                                    style={{
+                                        fontSize: "6px",
+                                        marginLeft: "10px",
+                                        marginRight: "10px",
+                                    }}
+                                />
+                                {item.id}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
+                            <Typography variant="body2" style={{ marginRight: "20px" }}>
+                                <PenIcon />
+                            </Typography>
+                            <Typography variant="body2">
+                                <EyeIcon />
+                            </Typography>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                        <Typography variant="body2" style={{ marginRight: "20px" }}>
-                            <PenIcon />
-                        </Typography>
-                        <Typography variant="body2">
-                            <EyeIcon />
-                        </Typography>
-                    </Grid>
-                </Grid>
+                ))}
 
-                <Grid container style={{ alignItems: "center", marginTop: "20px" }}>
-                    <Grid item xs={8}>
-                        <Typography
-                            variant="h2"
-                            sx={{ color: "#4E5A6B", fontWeight: "500" }}
-                        >
-                            Electricity Voltage Drop
-                        </Typography>
-                        <Typography variant="body2" style={{ fontSize: "12px" }}>
-                            Maintenance{" "}
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            22 Jan 21
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            K-F01-U277
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                        <Typography variant="body2" style={{ marginRight: "20px" }}>
-                            <PenIcon />
-                        </Typography>
-                        <Typography variant="body2">
-                            <EyeIcon />
-                        </Typography>
-                    </Grid>
-                </Grid>
-
-                <Grid container style={{ alignItems: "center", marginTop: "20px" }}>
-                    <Grid item xs={8}>
-                        <Typography
-                            variant="h2"
-                            sx={{ color: "#4E5A6B", fontWeight: "500" }}
-                        >
-                            Water Leakage Repair
-                        </Typography>
-                        <Typography variant="body2" style={{ fontSize: "12px" }}>
-                            Maintenance{" "}
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            22 Jan 21
-                            <CircleIcon
-                                style={{
-                                    fontSize: "6px",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                }}
-                            />
-                            K-F01-U277
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                        <Typography variant="body2" style={{ marginRight: "20px" }}>
-                            <PenIcon />
-                        </Typography>
-                        <Typography variant="body2">
-                            <EyeIcon />
-                        </Typography>
-                    </Grid>
-                </Grid>
             </Grid>
         </Grid>
     );
 }
 
-function SelectTabs() {
+function SelectTabs({ dashData }) {
     const [value, setValue] = React.useState(1);
 
     const handleChange = (event, newValue) => {
@@ -347,16 +202,16 @@ function SelectTabs() {
                 />
             </TabList>
             <TabPanel value={1}>
-                <GeneralRequests />
+                <GeneralRequests dashData={dashData.general} />
             </TabPanel>
             <TabPanel value={2}>
-                <Maintenance />
+                <Maintenance dashData={dashData.maintenance} />
             </TabPanel>
         </TabContext>
     );
 }
 
-const DashboardSection_3_SS_1 = () => {
+const DashboardSection_3_SS_1 = ({ dashData }) => {
     const classes = DashboardSection3_SS_1_Style();
     return (
         <>
@@ -375,7 +230,7 @@ const DashboardSection_3_SS_1 = () => {
                         General Requests
                     </Typography>
                     <Typography variant="h4" className={classes.no_of_req}>
-                        12
+                        {dashData.general.number}
                     </Typography>
                 </Grid>
                 <Divider
@@ -395,12 +250,12 @@ const DashboardSection_3_SS_1 = () => {
                         Maintenance
                     </Typography>
                     <Typography variant="h4" className={classes.no_of_main}>
-                        15
+                    {dashData.maintenance.number}
                     </Typography>
                 </Grid>
             </Grid>
 
-            <SelectTabs />
+            <SelectTabs dashData={dashData} />
         </>
     );
 };

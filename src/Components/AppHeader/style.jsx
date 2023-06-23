@@ -10,7 +10,7 @@ export const appHeaderStyle = makeStyles((theme) => ({
         width: 130,
         height: 25,
         borderInlineEnd: "1px solid #98A0AC",
-        paddingRight: '10px',    
+        paddingRight: '10px',
     },
 
     logoMobile: {
@@ -23,10 +23,10 @@ export const appHeaderStyle = makeStyles((theme) => ({
     },
 
     username: {
-        fontWeight: "bold !important", 
-        display: "inline !important", 
+        fontWeight: "bold !important",
+        display: "inline !important",
         textAlign: "right !important",
-        color: "black !important", 
+        color: "black !important",
     },
 
     logoImageSection: {
@@ -51,14 +51,14 @@ export const appHeaderStyle = makeStyles((theme) => ({
         cursor: "pointer !important",
     },
     appHeaderParaSelected: {
-    //   position: 'relative',
-      top: '3px',
-    //   content: '\2022',
-      color: '#219ebc',
-      fontSize: '2em',
-      lineHeight: '0.5',
-      marginRight: '3px',
-      fontWeight: '600',
+        //   position: 'relative',
+        top: '3px',
+        //   content: '\2022',
+        color: '#219ebc',
+        fontSize: '2em',
+        lineHeight: '0.5',
+        marginRight: '3px',
+        fontWeight: '600',
     },
     menuButtonPara: {
         marginBottom: '10px !important',
@@ -72,6 +72,42 @@ export const appHeaderStyle = makeStyles((theme) => ({
     notClicked: {
         display: 'block',
     },
-   
-   
+
+    AvatarMenu: {
+        '& .MuiAvatar-root': {
+            width: '60px !important',
+            height: '60px !important',
+        }
+    },
+
+    roles: {
+        fontFamily: 'Nunito Sans !important',
+        fontWeight: 'bold !important',
+        fontSize: '11px !important',
+        lineHeight: '14px !important',
+        letterSpacing: '-0.08px !important',
+        color: '#F17360 !important',
+        padding: '5px !important',
+        background: '#FEEAEA 0% 0% no-repeat padding-box !important',
+        borderRadius: '4px !important',
+        boxShadow: 'none !important',
+    },
+
+    roleSelectionContainer: {
+        border: '2px solid #F5F7FA !important',
+        borderLeft: 'none !important',
+        borderRight: 'none !important',  
+        padding: '10px !important',   
+        paddingTop: 'none !important',
+    },
+
+    subRoleContainer: {
+        display: 'flex !important',
+        justifyContent: 'center !important',
+        alignItems: 'center !important',
+        textAlign: 'center',
+        cursor: 'pointer',
+    },
+
+
 }));

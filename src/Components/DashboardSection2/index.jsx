@@ -11,11 +11,13 @@ import Graph3 from "../DashboardSection2Graphs/Graph3.jsx";
 import Graph4 from "../DashboardSection2Graphs/Graph4.jsx";
 import EnlargeIcon from "../../icons/Dashboard/icons8-enlarge-48-1.png";
 
-export default function DashboardSection2() {
+export default function DashboardSection2({dashData}) {
   const classes = DashboardSection2Style();
 
   return (
     <Grid container spacing={2}>
+
+      {/* Graph 1  */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <Card className={classes.GraphCard}>
           <Grid container>
@@ -30,10 +32,12 @@ export default function DashboardSection2() {
               <img src={EnlargeIcon} alt="enlarge icon" />
             </Grid>
           </Grid>
-          <Graph1 />
+          <Graph1 dashData={dashData.charts}/>
         </Card>
       </Grid>
 
+
+        {/* Graph 2  */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <Card className={classes.GraphCard}>
           <Grid container sx={{ marginBottom: "20px" }}>
@@ -52,6 +56,8 @@ export default function DashboardSection2() {
         </Card>
       </Grid>
 
+
+        {/* Graph 3  */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <Card className={classes.GraphCard}>
           <Grid container sx={{ marginBottom: "20px" }}>
@@ -70,6 +76,8 @@ export default function DashboardSection2() {
         </Card>
       </Grid>
 
+
+      {/* Graph 4 */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <Card className={classes.GraphCard}>
           <Grid container sx={{ marginBottom: "20px" }}>
@@ -84,7 +92,7 @@ export default function DashboardSection2() {
               <img src={EnlargeIcon} alt="enlarge icon" />
             </Grid>
           </Grid>
-          <Graph4 />
+          <Graph4 dashData={dashData.charts}/>
         </Card>
       </Grid>
     </Grid>

@@ -13,16 +13,9 @@ import { DashboardSection3_SS_2_Style } from "./style";
 function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
   }
+
   
-  const rows = [
-    createData('Prop 012', 'Tysons', '23', '02', '40%'),
-    createData('Prop 012', 'Rubix', '56', '15', '25%'),
-    createData('Prop 012', 'Phoenix', '45', '15', '25%'),
-    createData('Prop 012', 'Thapar', '33', '45', '25%'),
-    createData('Prop 012', 'Marian', '45', '78', '56%'),
-  ];
-  
-    function BasicTable() {
+    function BasicTable({dashData}) {
       const classes = DashboardSection3_SS_2_Style();
     return (
       <TableContainer className={classes.table}>
@@ -37,18 +30,18 @@ function createData(name, calories, fat, carbs, protein) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {dashData.map((row) => (
               <TableRow
-                key={row.name}
+                key={row.propertyId}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  {row.propertyId}
                 </TableCell>
-                <TableCell >{row.calories}</TableCell>
-                <TableCell >{row.fat}</TableCell>
-                <TableCell >{row.carbs}</TableCell>
-                <TableCell >{row.protein}</TableCell>
+                <TableCell >{row.propertyName}</TableCell>
+                <TableCell >{row.totalUnits}</TableCell>
+                <TableCell >{row.occupiedUnits}</TableCell>
+                <TableCell>{`${Math.floor((row.occupiedUnits / row.totalUnits) * 100)}%`}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -57,12 +50,12 @@ function createData(name, calories, fat, carbs, protein) {
     );
   }
 
-const DashboardSection_3_SS_2 = () => {
+const DashboardSection_3_SS_2 = ({dashData}) => {
  
     return(
         <>
         <Typography variant="h2" sx={{paddingTop:'10px',}}>Occupancy By Property</Typography>
-        <BasicTable />
+        <BasicTable dashData={dashData.occupancy}/>
         </>
     );
 }
