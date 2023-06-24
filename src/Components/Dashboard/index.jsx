@@ -102,10 +102,10 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
+ 
   if (loading) {
     return <div>Loading...</div>;
   }
-
   return (
     <>
       <Grid container className={`${classes.dashboardContainer}`} spacing={2}>

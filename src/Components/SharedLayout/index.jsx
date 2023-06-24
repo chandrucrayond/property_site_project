@@ -1,10 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Container, Box, Grid, Fab, Popover, Collapse, Fade, Slide } from '@mui/material';
+import { Grid, } from '@mui/material';
 import AppHeader from '../AppHeader';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
-import React, { useRef, useState } from 'react';
-import { jsonData } from '../Json';
+import React from 'react';
 import { SharedLayoutStyle } from "./style";
 import theme from "../ThemeProvider/index.jsx";
 import SideBar from "../SideBar/index.jsx";

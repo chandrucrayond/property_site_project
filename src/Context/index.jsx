@@ -4,5 +4,4 @@ import {data} from '../components/PreGeneratedFormData/index'
 export let DataContext = React.createContext({
   propertiesList: [],
   setPropertiesList: () => null,
-  // setPropertiesList: {data}
 });

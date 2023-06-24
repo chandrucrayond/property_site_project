@@ -16,14 +16,8 @@ import Context from './app.context';
 import ViewProperties from '../src/components/ViewProperties';
 import theme from './components/ThemeProvider';
 import {data} from './components/PreGeneratedFormData/index';
-// export const MyContext = createContext({
-//   state:[],
-//   setState:()=>null,
-// });
-
 
 const App = (props) => {
-  // debugger
   const context = useContext(DataContext)
   const [formData, setFormData] = useState({
 

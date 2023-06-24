@@ -38,10 +38,6 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
     setOpen(false);
   };
 
-  // React.useEffect(() => {
-  //   console.log(propertiesList);
-  // }, [propertiesList]);
-
   function handleClickingCreate() {
     setOpen(true);
     setTimeout(() => {
@@ -96,12 +92,12 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
     });
 
   }
-  
+
 
 
   return (
     <>
-     
+
       <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
         <IconButton className={classes.toggleIcon} onClick={handleClickingToggle}> <ChevronLeftIcon /></IconButton> <Typography variant="h2" color={"black"} className={classes.togglePara}>Create New Property</Typography>
       </AppBar>
@@ -147,13 +143,11 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
           </Grid>
         </Grid>
 
-
-
       </div>
     </>
   );
 };
 
-// CreateProperty.contextType = DataContext;
+
 
 export default CreateProperty;

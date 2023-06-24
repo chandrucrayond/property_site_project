@@ -102,7 +102,7 @@ function GeneralRequests({ dashData }) {
     );
 }
 
-function Maintenance({dashData}) {
+function Maintenance({ dashData }) {
     return (
         <Grid container spacing={3}>
             <Grid item xs={6}>
@@ -132,7 +132,7 @@ function Maintenance({dashData}) {
                 />
             </Grid>
             <Grid item xs={12}>
-            {dashData.request.map((item, index) => (
+                {dashData.request.map((item, index) => (
                     <Grid container key={index} style={{ alignItems: "center", marginBottom: "20px" }}>
                         <Grid item xs={8}>
                             <Typography
@@ -213,6 +213,8 @@ function SelectTabs({ dashData }) {
 
 const DashboardSection_3_SS_1 = ({ dashData }) => {
     const classes = DashboardSection3_SS_1_Style();
+
+    console.log(dashData.general.number, 'dashData.general.number   ')
     return (
         <>
             <Grid
@@ -250,7 +252,7 @@ const DashboardSection_3_SS_1 = ({ dashData }) => {
                         Maintenance
                     </Typography>
                     <Typography variant="h4" className={classes.no_of_main}>
-                    {dashData.maintenance.number}
+                        {dashData.maintenance.number}
                     </Typography>
                 </Grid>
             </Grid>
