@@ -23,7 +23,7 @@ import SideBarStyle from '../SideBar/style';
 import DashboardIcon from '../../icons/Dashboard/DashboardIcon';
 import CustomerNotFocusedIcon from '../../icons/Dashboard/CustomerNotFocusedIcon';
 import CustomerIcon from '../../icons/Dashboard/CustomerIcon';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import DashboardNotIcon from '../../icons/Dashboard/DashboardNotIcon';
 import { useMediaQuery } from "@mui/material";
 import theme from "../ThemeProvider";
@@ -86,7 +86,7 @@ const AppBar = styled(MuiAppBar, {
 //     }),
 // );
 
-  
+
 
 const Bar = () => {
     const classes = SideBarStyle();
@@ -95,6 +95,15 @@ const Bar = () => {
     const handleToggleOpen = () => {
         setOpen((open) => !open);
     };
+    // const location = useLocation();
+    // function handleURLParams() {
+    //     const searchParams = new URLSearchParams(location.search);
+    //     const paramValue = searchParams.get('paramName');
+    //     setSelected(paramValue === 'dashboard' ? 'dashboard' : 'viewProperties');
+    // }
+    // React.useEffect(() => {
+    //     handleURLParams();
+    //   }, [location.search]);
 
     let navigate = useNavigate();
     const [selected, setSelected] = React.useState('dashboard');
@@ -112,9 +121,9 @@ const Bar = () => {
     }
 
     return (
-        <Drawer anchor={"bottom"} variant="permanent" style={{position: 'fixed', height: '60px', display: 'flex', justifyContent: 'center'}}>
-           
-            <List style={{display: 'flex', justifyContent: 'center', height: '30px', backgroundColor: '#333333'}}>
+        <Drawer anchor={"bottom"} variant="permanent" style={{ position: 'fixed', height: '60px', display: 'flex', justifyContent: 'center' }}>
+
+            <List style={{ display: 'flex', justifyContent: 'center', height: '30px', backgroundColor: '#333333' }}>
                 {['Dashboard', 'Properties'].map((text, index) => (
                     <ListItem
                         key={text}
@@ -122,10 +131,10 @@ const Bar = () => {
                         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                         onClick={index % 2 === 0 ? handleViewDashboard : handleViewProperties}
                     >
-                        <ListItemButton style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <ListItemButton style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 
-                            <ListItemIcon style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                
+                            <ListItemIcon style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+
                                 {index % 2 === 0 ? (
                                     selected === 'dashboard' ? (
                                         <DashboardIcon />
@@ -141,7 +150,7 @@ const Bar = () => {
                                 )}
 
                             </ListItemIcon>
-                           
+
                         </ListItemButton>
                     </ListItem>
                 ))}

@@ -8,8 +8,8 @@ export const data = [
       country: "India",
       dno: "12",
       landmark: "Madhya Kailash",
-      lang: "",
-      lat: "",
+      lang: "77.4977° E",
+      lat: "27.2046° N",
       pincode: "600020",
       state: "Tamilnadu",
     },
@@ -23,7 +23,8 @@ export const data = [
     },
     property_details: {
       cname: "Organization Name",
-      pdesc: "",
+      pdesc:
+        "This property is located in the heart of the city. As this property is compact in size and well furnished, it is suitable for small families. It is currently in good condition",
       pname: "Casagrande",
       pperiod: "Monthly",
       status: "Active",
@@ -33,7 +34,7 @@ export const data = [
       hdate: "2023-01-01",
       munit: "Sq.ft",
       pets: "false",
-      plist: "",
+      plist: "Public",
       ppurp: "Residential",
       ptype: "Apartment",
       rtype: "Rent",
@@ -41,8 +42,6 @@ export const data = [
       ybuilt: "2020-01-01",
     },
   },
-
-
 
   {
     address_details: {
@@ -53,8 +52,8 @@ export const data = [
       country: "India",
       dno: "12",
       landmark: "Hanuman temple",
-      lang: "",
-      lat: "",
+      lang: "77.4977° E",
+      lat: "27.2046° N",
       pincode: "600020",
       state: "Tamilnadu",
     },
@@ -68,7 +67,8 @@ export const data = [
     },
     property_details: {
       cname: "Organization Name",
-      pdesc: "",
+      pdesc:
+        "This property is located in the heart of the city. As this property is compact in size and well furnished, it is suitable for small families. It is currently in good condition",
       pname: "Rubix",
       pperiod: "Daily",
       status: "InActive",
@@ -78,7 +78,7 @@ export const data = [
       hdate: "2023-01-01",
       munit: "Sq.ft",
       pets: "false",
-      plist: "",
+      plist: "Public",
       ppurp: "Residential",
       ptype: "Apartment",
       rtype: "Lease",
@@ -86,7 +86,6 @@ export const data = [
       ybuilt: "2020-01-01",
     },
   },
-
 
   {
     address_details: {
@@ -97,8 +96,8 @@ export const data = [
       country: "India",
       dno: "12",
       landmark: "Madhya Kailash",
-      lang: "",
-      lat: "",
+      lang: "77.4977° E",
+      lat: "27.2046° N",
       pincode: "600020",
       state: "Tamilnadu",
     },
@@ -112,7 +111,8 @@ export const data = [
     },
     property_details: {
       cname: "Company Name",
-      pdesc: "",
+      pdesc:
+        "This property is located in the heart of the city. As this property is compact in size and well furnished, it is suitable for small families. It is currently in good condition",
       pname: "Shanthi Illam",
       pperiod: "Monthly",
       status: "Active",
@@ -122,7 +122,7 @@ export const data = [
       hdate: "2023-01-01",
       munit: "Sq.ft",
       pets: "false",
-      plist: "",
+      plist: "Public",
       ppurp: "Residential",
       ptype: "Individual house",
       rtype: "Lease",
@@ -130,6 +130,4 @@ export const data = [
       ybuilt: "2020-01-01",
     },
   },
-
-
 ];

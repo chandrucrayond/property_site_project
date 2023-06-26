@@ -104,7 +104,7 @@ function CreateAccount({ onLogin }) {
             isValid = false;
             return false;
         }
-        else if (password.length < 8) {
+        else if (password.length < 7) {
             setPasswordError('Password must be at least 8 characters long');
             isValid = false;
             return false;
@@ -175,7 +175,7 @@ function CreateAccount({ onLogin }) {
                         }}>
 
                             {/* sign in para  */}
-                            <Typography variant="h1" className={`${classes.headingWelcome}`}> Sign in </Typography>
+                            <Typography variant="h1" className={`${classes.headingWelcome}`}> Sign In </Typography>
 
 
                             {/* mob no and email section without putting it in container */}
@@ -254,10 +254,8 @@ function CreateAccount({ onLogin }) {
                             {/* Log in button  */}
                             <button className={`${classes.loginButton}`} onClick={handleFormSubmit}><Typography variant='h3'>{loading ? 'Logging in...' : ' Log in'}</Typography></button>
 
-
                         </Card>
                     </Grid>
-
 
 
                 </Grid >

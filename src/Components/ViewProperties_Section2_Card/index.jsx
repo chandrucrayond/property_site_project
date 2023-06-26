@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import { ViewProperties_Section2_Card_Style } from './style';
 import { DataContext } from '../../Context';
 import { ViewCard } from '../CreateCard';
+import { useNavigate } from "react-router-dom";
 
 function createData(pid, pname, cname, location, rtype, ptype, status) {
     return { pid, pname, cname, location, rtype, ptype, status };
@@ -33,12 +34,20 @@ function ViewProperties_Section2_Card({ searchQuery, setSearchQuery }) {
     const filteredRows = rows.filter(row =>
         row.pname.toLowerCase().includes(searchQuery.toLowerCase())
     );
+    
+    let navigate = useNavigate();
+    const handleIndividualClick = (row) => {
+        let index = row?.pid?.split(" ")[1]-1;
+        console.log("Index is " + index + ", value is ");
+        console.log( propertiesList[index]);
+        navigate("/viewProperties/"+index);
+    }
 
     return (
         <Grid container spacing={2}>
             {filteredRows.map((row) => (
-                <Grid item xs={12} sm={6} md={4} key={row.pname}>
-                    <ViewCard>
+                <Grid item xs={12} sm={6} md={4} key={row.pname} onClick={() => {handleIndividualClick(row)}}>
+                    <ViewCard >
 
                         <Grid container spacing={2}>
 
@@ -92,13 +101,6 @@ function ViewProperties_Section2_Card({ searchQuery, setSearchQuery }) {
                                     {row.location}
                                 </Typography>
                             </Grid>
-
-
-
-
-
-
-
 
                         </Grid>
 

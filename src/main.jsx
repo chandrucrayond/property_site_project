@@ -15,7 +15,8 @@ import { DataContext } from '../src/Context';
 import Context from './app.context';
 import ViewProperties from '../src/components/ViewProperties';
 import theme from './components/ThemeProvider';
-import {data} from './components/PreGeneratedFormData/index';
+import { data } from './components/PreGeneratedFormData/index';
+import IndividualProperty from './components/IndividualProperty';
 
 const App = (props) => {
   const context = useContext(DataContext)
@@ -93,18 +94,18 @@ const App = (props) => {
     {
       path: "/login",
       element: (
-        <Protected isSignedIn={isSignedIn}>
+        // <Protected isSignedIn={isSignedIn}>
         <CreateAccount onLogin={handleLogin} />
-         </Protected>
+        //  </Protected>
       )
     },
     {
       path: "/",
       errorElement: <ErrorPage />,
       element: (
-        <Protected isSignedIn={isSignedIn}>
+        // <Protected isSignedIn={isSignedIn}>
         <SharedLayout />
-       </Protected>
+        //  </Protected>
       ),
       children: [
         {
@@ -117,8 +118,12 @@ const App = (props) => {
         },
         {
           path: "viewProperties",
-          element: <ViewProperties />
+          element: <ViewProperties />,
         },
+        {
+          path: "viewProperties/:propertyId",
+          element:   <IndividualProperty />,
+        }
       ],
     },
     {

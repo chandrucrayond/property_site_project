@@ -10,6 +10,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ViewProperties_Section2_Table_Style } from "./style";
 import { DataContext } from "../../Context";
+import { useNavigate } from "react-router-dom";
+import IndividualProperty from "../IndividualProperty";
 
 function createData(pid, pname, cname, location, rtype, ptype, status) {
     return { pid, pname, cname, location, rtype, ptype, status };
@@ -40,6 +42,16 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
     const filteredRows = rows.filter(row =>
         row.pname.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+
+    let navigate = useNavigate();
+
+    const handleIndividualClick = (row) => {
+        let index = row.pid.split(" ")[1]-1;
+        console.log("Index is " + index + ", value is ");
+        console.log( propertiesList[index]);
+        navigate("/viewProperties/"+index);
+    }
     return (
         <TableContainer className={classes.table}>
             <Table>
@@ -61,6 +73,8 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
                         <TableRow
                             key={row.pname}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => {handleIndividualClick(row)}}
                         >
                             <TableCell component="th" scope="row">
                                 <Typography variant='h2' className={classes.tableBody}>{row.pid}</Typography>

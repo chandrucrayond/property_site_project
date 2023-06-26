@@ -53,3 +53,11 @@ export const AppHeaderCard = ({children}) => {
     <Box className={classes.AppHeaderCard}>{children}</Box>
     );
 }
+
+
+export const IndividualCard = ({children}) => {
+    const classes = CreateCardStyle();
+    return(
+    <Box className={classes.IndividualCard}>{children}</Box>
+    );
+}

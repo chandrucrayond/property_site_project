@@ -148,7 +148,7 @@ export const createAccountStyle = makeStyles((theme) => ({
     display: 'flex !important',
     justifyContent: 'end !important',
     position: 'relative !important',
-    bottom: '30px !important',
+    bottom: '25px !important',
   },
 
   propAutomateSection: {
@@ -187,6 +187,7 @@ export const createAccountStyle = makeStyles((theme) => ({
     boxShadow: '0px 6px 10px #00000014 !important',
     borderRadius: '12px !important',
     border: '1px solid transparent',
+    marginTop: '10px !important',
   },
 
   successCard: {
@@ -215,6 +216,8 @@ export const createAccountStyle = makeStyles((theme) => ({
   headingWelcome: {
     color: "#091b29 !important",
     marginBottom: '15px !important',
+    fontWeight: 800,
+    fontSize: '24px',
   },
 
   headingRegister: {
@@ -281,7 +284,7 @@ export const createAccountStyle = makeStyles((theme) => ({
   },
 
   propAutomateText: {
-    color:' #4E5A6B',
+    color:' #4E5A6B !important',
   },
 
   PropIcon: {

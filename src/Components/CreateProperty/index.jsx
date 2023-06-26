@@ -90,7 +90,6 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
         email: "",
       },
     });
-
   }
 
 
@@ -147,7 +146,6 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
     </>
   );
 };
-
 
 
 export default CreateProperty;

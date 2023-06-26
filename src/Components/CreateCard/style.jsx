@@ -41,8 +41,6 @@ export const CreateCardStyle = makeStyles((theme) => ({
         padding: '20px',
     },
 
-
-
     styleCardNoRadius: {
         backgroundColor: '#FFFFFF !important',
         padding: '5px',
@@ -55,9 +53,13 @@ export const CreateCardStyle = makeStyles((theme) => ({
         border: '1px solid #E4E8EE !important',
         borderRadius: '12px !important',
         padding: '10px !important',
-        // display: 'flex !important',
-        // justifyContent: 'center !important',
-        // alignItems: 'center !important',
+    },
+
+    IndividualCard: {
+        border: '1px solid #E4E8EE !important',
+        borderRadius: '8px !important',
+        padding: '10px !important',
+        minHeight: '190px',
     },
 
 }));

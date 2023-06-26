@@ -63,6 +63,7 @@ export const ViewPropertiesStyle = makeStyles((theme) => ({
   createContainerTablet: {
     position: 'relative',
     top: '0px !important',
+    marginBottom: '10px !important',
   },
 
   createContainerMobile: {
