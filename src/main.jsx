@@ -94,18 +94,18 @@ const App = (props) => {
     {
       path: "/login",
       element: (
-        // <Protected isSignedIn={isSignedIn}>
-        <CreateAccount onLogin={handleLogin} />
-        //  </Protected>
+        <Protected isSignedIn={isSignedIn}>
+          <CreateAccount onLogin={handleLogin} />
+        </Protected>
       )
     },
     {
       path: "/",
       errorElement: <ErrorPage />,
       element: (
-        // <Protected isSignedIn={isSignedIn}>
-        <SharedLayout />
-        //  </Protected>
+        <Protected isSignedIn={isSignedIn}>
+          <SharedLayout />
+        </Protected>
       ),
       children: [
         {
@@ -122,7 +122,7 @@ const App = (props) => {
         },
         {
           path: "viewProperties/:propertyId",
-          element:   <IndividualProperty />,
+          element: <IndividualProperty />,
         }
       ],
     },
