@@ -94,18 +94,18 @@ const App = (props) => {
     {
       path: "/login",
       element: (
-        <Protected isSignedIn={isSignedIn}>
+        // <Protected isSignedIn={isSignedIn}>
           <CreateAccount onLogin={handleLogin} />
-        </Protected>
+        // </Protected>
       )
     },
     {
       path: "/",
       errorElement: <ErrorPage />,
       element: (
-        <Protected isSignedIn={isSignedIn}>
+        // <Protected isSignedIn={isSignedIn}>
           <SharedLayout />
-        </Protected>
+        // </Protected>
       ),
       children: [
         {

@@ -3,6 +3,8 @@ import { makeStyles } from "@mui/styles";
 export const appHeaderStyle = makeStyles((theme) => ({
     header: {
         backgroundColor: '#1C1C1C !important',
+        boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.2) !important',
+
     },
 
     logoImage: {

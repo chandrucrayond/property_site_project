@@ -3,35 +3,36 @@ import { makeStyles } from "@mui/styles";
 export const ViewPropertiesStyle = makeStyles((theme) => ({
 
   appBar: {
-    position: 'fixed',
-    height: '40px',
-    width: '100%',
+    position: 'fixed !important',
+    height: '40px !important',
+    width: '100% !important',
     top: '64px !important',
     display: 'grid !important',
-    justifyContent: 'start',
-    alignItems: 'center',
+    justifyContent: 'start !important',
+    alignItems: 'center !important',
     gridTemplateColumns: 'auto auto !important',
     gridTemplateRows: 'auto !important',
     backgroundColor: '#FFFFFF !important',
-    paddingLeft: '90px',
+    paddingLeft: '90px !important',
+    boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.2) !important',
   },
 
   appBarTablet: {
     top: '63px !important',
-    paddingLeft: '15px',
+    paddingLeft: '15px !important',
   },
 
   appBarMobile: {
     top: '47px !important',
-    paddingLeft: '15px',
+    paddingLeft: '15px !important',
   },
 
   toggleIcon: {
     backgroundColor: "#E4E8EE !important",
     width: '26px !important',
     height: '26px !important',
-    display: 'inline',
-    position: 'relative',
+    display: 'flex !important',
+    position: 'relative !important',
     marginRight: '10px !important',
     // zIndex: '2 !important',
     '&:focus-visible': {
