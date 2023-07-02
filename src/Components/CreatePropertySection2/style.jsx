@@ -22,4 +22,13 @@ export const CreatePropertySection2Style = makeStyles((theme) => ({
         paddingLeft: '0 !important',
     },
 
+    quillContainer: {
+        maxHeight: '110px', /* Set the desired maximum height */
+        overflowY: 'auto', /* Add a vertical scrollbar when the content exceeds the height */ 
+        // border: '1px solid #bdbdbd !important',
+        // borderRadius: '10px !important',
+        border:'none',
+     },
+    
+
 }));

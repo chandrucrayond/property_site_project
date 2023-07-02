@@ -67,4 +67,7 @@ export const ViewProperties_Section2_Table_Style = makeStyles((theme) => ({
         color: '#E4E8EE !important',
         margin: '0 auto !important'
     },
+    editListText: {
+        color: '#071741 !important'
+    },
 }));

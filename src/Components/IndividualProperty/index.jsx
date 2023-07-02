@@ -45,10 +45,13 @@ export default function IndividualProperty() {
                     <Grid item xs={12}>
                         <NormalCard>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} md={2} className={classes.ImageSection}>
+                                <Grid item xs={12} md={1.75} className={classes.ImageSection}>
                                     <PropImage />
                                     <Box ><Typography variant="h5" className={classes.IdSection} >ID-PG2PRP{propertyId}</Typography></Box>
+                                </Grid>
 
+                                <Grid item xs={12} md={0.25} className={`${classes.dividerContainer}`}>
+                                <Divider orientation="vertical" variant="middle" className={`${classes.divider}`} />
                                 </Grid>
 
                                 <Grid item xs={12} md={10}>
@@ -176,7 +179,7 @@ export default function IndividualProperty() {
                                             <Grid item xs={12} style={{}} className={classes.mapLocated}>
                                                 <MapLocated />
                                             </Grid>
-                                            <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', marginLeft: '20px', marginRight: '20px' }} />
+
                                             <Grid item xs={6} className={classes.mapCo_ordinates}>
                                                 <Coordinate />
                                                 <Typography variant='h2' className={classes.mapCo_ordinates_Text}>{property.address_details?.lat} {property.address_details?.lang}</Typography>
@@ -203,7 +206,7 @@ export default function IndividualProperty() {
                                             {property.address_details?.area}, {property.address_details?.city}, {property.address_details?.state}, {property.address_details?.country} - {property.address_details?.pincode}
                                         </Typography>
                                         <Grid item container spacing={1}>
-                                            <Grid item>
+                                            <Grid item style={{ position: 'relative', top: '2px' }}>
                                                 <Typography variant='h5'>Longitude : </Typography>
                                             </Grid>
                                             <Grid item>
@@ -211,7 +214,7 @@ export default function IndividualProperty() {
                                             </Grid>
                                         </Grid>
                                         <Grid item container spacing={1}>
-                                            <Grid item>
+                                            <Grid item style={{ position: 'relative', top: '2px' }}>
                                                 <Typography variant='h5'>Latitude : </Typography>
                                             </Grid>
                                             <Grid item>

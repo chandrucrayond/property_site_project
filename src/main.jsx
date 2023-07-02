@@ -17,6 +17,7 @@ import ViewProperties from '../src/components/ViewProperties';
 import theme from './components/ThemeProvider';
 import { data } from './components/PreGeneratedFormData/index';
 import IndividualProperty from './components/IndividualProperty';
+import EditProperty from "./components/EditProperty/index";
 
 const App = (props) => {
   const context = useContext(DataContext)
@@ -68,7 +69,6 @@ const App = (props) => {
   });
 
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [open, setOpen] = React.useState(false);
 
   const handleLogin = () => {
     setIsSignedIn(true);
@@ -114,7 +114,7 @@ const App = (props) => {
         },
         {
           path: "createProperty",
-          element: <CreateProperty context={context} formData={formData} setFormData={setFormData} handleChange={handleChange} open={open} setOpen={setOpen} />
+          element: <CreateProperty formData={formData} setFormData={setFormData} handleChange={handleChange} />
         },
         {
           path: "viewProperties",
@@ -123,6 +123,10 @@ const App = (props) => {
         {
           path: "viewProperties/:propertyId",
           element: <IndividualProperty />,
+        },
+        {
+          path: "editProperty/:propertyId",
+          element: <EditProperty  handleChange={handleChange}/>,
         }
       ],
     },

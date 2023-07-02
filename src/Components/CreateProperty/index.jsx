@@ -16,8 +16,9 @@ import { DataContext } from "../../Context";
 
 
 
-const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, context }) => {
+const CreateProperty = ({ formData, setFormData, handleChange }) => {
   // debugger
+  const [open, setOpen] = React.useState(false);
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
   const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
@@ -31,18 +32,12 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
     navigate("/dashboard");
   }
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
+  const handleClose = (event) => {
     setOpen(false);
   };
 
   function handleClickingCreate() {
     setOpen(true);
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 2000);
     setPropertiesList((prevData) => [...prevData, formData])
     setFormData({
 
@@ -90,6 +85,7 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
         email: "",
       },
     });
+    navigate("/viewProperties");
   }
 
 
@@ -100,13 +96,6 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
       <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
         <IconButton className={classes.toggleIcon} onClick={handleClickingToggle}> <ChevronLeftIcon /></IconButton> <Typography variant="h2" color={"black"} className={classes.togglePara}>Create New Property</Typography>
       </AppBar>
-
-      <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert variant="filled" onClose={handleClose} autoHideDuration={3000} severity="success" sx={{ width: '100%', backgroundColor: '#5AC782', color: '#FFFFFF' }}>
-          Property Created Successfully
-        </Alert>
-      </Snackbar>
-
 
       <div className={`${classes.createContainer}
        ${isMdScreen ? classes.createContainerTablet : ''} 
@@ -138,11 +127,18 @@ const CreateProperty = ({ formData, setFormData, handleChange, open, setOpen, co
 
 
           <Grid item xs={12} >
-            <CreatePropertySectionEnd data={formData} setData={handleChange} onCancel={handleClickingToggle} onCreate={handleClickingCreate} />
+            <CreatePropertySectionEnd type="Create" data={formData} setData={handleChange} onCancel={handleClickingToggle} onCreate={handleClickingCreate} />
           </Grid>
+          
         </Grid>
 
-      </div>
+      </div >
+
+      <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} autoHideDuration={1000} open={open} onClose={handleClose}>
+        <Alert variant="filled" onClose={handleClose} severity="success" sx={{ width: '100%', backgroundColor: '#5AC782', color: '#FFFFFF' }}>
+          Property Created Successfully
+        </Alert>
+      </Snackbar>
     </>
   );
 };

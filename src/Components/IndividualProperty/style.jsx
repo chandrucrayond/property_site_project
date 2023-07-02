@@ -84,8 +84,8 @@ export const IndividualProperty_Style = makeStyles((theme) => ({
     backgroundColor: "#E4E8EE !important",
     width: '26px !important',
     height: '26px !important',
-    display: 'inline',
-    position: 'relative',
+    display: 'flex !important',
+    position: 'relative !important',
     marginRight: '10px !important',
     // zIndex: '2 !important',
     '&:focus-visible': {
@@ -107,4 +107,18 @@ export const IndividualProperty_Style = makeStyles((theme) => ({
       backgroundColor: "#E4E8EE !important",
     },
   },
+
+  divider: {
+    borderColor: '#E4E8EE !important',
+     backgroundColor: '#E4E8EE !important',
+      height: '150px !important', 
+      width:'0.01px !important', 
+      margin: 'auto !important',
+    },
+
+    dividerContainer: {
+      display: 'flex !important',
+      justifyContent: 'center !important',
+      alignItems: 'center !important',
+    },
 }));

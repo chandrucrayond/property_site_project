@@ -21,7 +21,6 @@ import { Loader } from '@googlemaps/js-api-loader';
 ));
 
 
-
 const CreatePropertySection4 = ({ data, setData }) => {
 
     const classes = CreatePropertySection4Style();
@@ -45,9 +44,9 @@ const CreatePropertySection4 = ({ data, setData }) => {
                         <MyMapComponent
                             isMarkerShown
                             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YkaEhzqTBfhFWKDNs1QXjQtTiFSkUJ4&v=3.exp&libraries=geometry,drawing,places"
-                            loadingElement={<div style={{ height: `100%` }} />}
-                            containerElement={<div style={{ height: `300px` }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
+                            loadingElement={<div style={{ height: `100%`, borderRadius:'10px'}} />}
+                            containerElement={<div style={{ height: `230px`, borderRadius:'10px' }} />}
+                            mapElement={<div style={{ height: `100%`, borderRadius:'10px' }} />}
                             onLoad={props => {
                                 // Perform any necessary actions after the Google Maps API is loaded
                                 console.log('Google Maps API loaded:', props);

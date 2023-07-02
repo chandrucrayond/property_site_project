@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import IndividualProperty from "../IndividualProperty";
 import EditIcon from "../../icons/View-Properties/EditIcon";
 import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Popover } from "@mui/material";
+import EditIconHovered from "../../icons/View-Properties/EditIconHovered";
+
 
 function createData(pid, pname, cname, location, rtype, ptype, status) {
     return { pid, pname, cname, location, rtype, ptype, status };
@@ -21,29 +23,72 @@ function createData(pid, pname, cname, location, rtype, ptype, status) {
 
 
 function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
+    const[openPopover,setOpenPopover]=React.useState(null);
+    const[currentStatus, setCurrentStatus] = React.useState('');
     const classes = ViewProperties_Section2_Table_Style();
     const { propertiesList, setPropertiesList } = React.useContext(DataContext);
 
     // Managing the state of the popover
     const [anchorElement, setAnchorElement] = React.useState(null);
-
-
     const handleClose = () => {
         setAnchorElement(null);
     };
-
     const open = Boolean(anchorElement);
     const id = open ? 'simple-popover' : undefined;
-
     //End of managing the state of the popover
 
-    const handleEditClick = (row, e) => {
+
+    //Start of the section OnMouseOver for the edit icon
+    // Use an array of booleans to track the hover state for each row
+    const [isRowHovered, setIsRowHovered] = React.useState(
+        Array(propertiesList.length).fill(false)
+    );
+
+    const handleMouseOver = (index) => {
+        setIsRowHovered((prevState) => {
+            const newState = [...prevState];
+            newState[index] = true;
+            return newState;
+        });
+    };
+
+    const handleMouseOut = (index) => {
+        setIsRowHovered((prevState) => {
+            const newState = [...prevState];
+            newState[index] = false;
+            return newState;
+        });
+    };
+    //End of the section OnMouseOver for the edit icon
+
+
+    const handleEditIconClick = (row, e) => {
         // debugger
         let index = row.pid.split(" ")[1] - 1;
         console.log("Index is " + index + ", value is ");
         console.log(propertiesList[index]);
+        setOpenPopover(index);
+        setCurrentStatus(propertiesList[index].property_details.status==='Active' ?  'InActive' : 'Active');
         setAnchorElement(e.currentTarget); // Pass a function as the anchorEl prop
     };
+
+   const handleEditClick = () => {
+        console.log(openPopover+" Edit clicked");
+        navigate("/editProperty/" + openPopover);
+    }
+
+    const handleActiveClick = () => {
+        console.log(openPopover+" Active clicked");
+        propertiesList[openPopover].property_details.status = currentStatus;
+        handleClose();
+    }
+
+    const handleDeleteClick = () => {
+        console.log(openPopover+" Delete clicked");
+        propertiesList.splice(openPopover,1);
+        handleClose();
+    }
+
 
     let rows = [];
 
@@ -93,12 +138,11 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredRows.map((row) => (
+                        {filteredRows.map((row, index) => (
                             <TableRow
-                                key={row.pname}
+                                key={row.pid}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 style={{ cursor: 'pointer' }}
-
                             >
 
                                 <TableCell component="th" scope="row" onClick={() => { handleIndividualClick(row) }}>
@@ -125,9 +169,14 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
                                         {row.status}
                                     </Typography>
                                     <Box
-                                        onClick={(e) => { handleEditClick(row, e) }} 
-                                        className={`${classes.editIconContainer}`}>
-                                        <EditIcon />
+                                        onClick={(e) => {
+                                            handleEditIconClick(row, e);
+                                        }}
+                                        className={`${classes.editIconContainer}`}
+                                        onMouseOver={() => handleMouseOver(index)} // Pass the index to the event handlers
+                                        onMouseOut={() => handleMouseOut(index)} // Pass the index to the event handlers
+                                    >
+                                        {isRowHovered[index] ? <EditIconHovered /> : <EditIcon />}
                                     </Box>
                                 </TableCell>
 
@@ -152,27 +201,27 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
                 }}
                 className={`${classes.popoverContainer}`}
             >
-                <List style={{padding: '0'}}>
+                <List style={{ padding: '0' }}>
                     <ListItem disablePadding>
-                        <ListItemButton className={`${classes.listItemButton}`}>
-                            <ListItemText primary="Edit" />
+                        <ListItemButton className={`${classes.listItemButton}`} onClick={handleEditClick}>
+                            <ListItemText><Typography variant="h2" className={`${classes.editListText}`}>Edit</Typography></ListItemText>
                         </ListItemButton>
                     </ListItem>
-                    <Divider className={`${classes.dividerInEdit}`}/>
+                    <Divider className={`${classes.dividerInEdit}`} />
                     <ListItem disablePadding>
-                        <ListItemButton className={`${classes.listItemButton}`}>
-                            <ListItemText primary="Inactive" />
+                        <ListItemButton className={`${classes.listItemButton}`} onClick={handleActiveClick}>
+                            <ListItemText><Typography variant="h2" className={`${classes.editListText}`}>{currentStatus}</Typography></ListItemText>
                         </ListItemButton>
                     </ListItem>
-                    <Divider  className={`${classes.dividerInEdit}`}/>
+                    <Divider className={`${classes.dividerInEdit}`} />
                     <ListItem disablePadding>
-                        <ListItemButton className={`${classes.listItemButton}`}>
-                            <ListItemText primary="Delete" />
+                        <ListItemButton className={`${classes.listItemButton}`} onClick={handleDeleteClick}>
+                            <ListItemText><Typography variant="h2" className={`${classes.editListText}`}>Delete</Typography></ListItemText>
                         </ListItemButton>
                     </ListItem>
                 </List>
-             
-              
+
+
 
             </Popover>
         </div>

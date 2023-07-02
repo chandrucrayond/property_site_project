@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function EditIcon(props) {
+    
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="3" height="15" viewBox="0 0 3 15" {...props}>
             <g id="Group_96333" data-name="Group 96333" transform="translate(-1266 -261)">
