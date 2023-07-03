@@ -59,5 +59,12 @@ export const CreatePropertySection3Style = makeStyles((theme) => ({
         padding: '10px !important',
         paddingLeft: '0 !important',
     },
+    toggleButtonListing: {
+        height: '39px !important',
+        marginRight: '10px !important',
+        textTransform: 'none !important',
+        borderRadius: '10px !important',
+        border: '1px solid #bdbdbd',
+    },
     
 }));

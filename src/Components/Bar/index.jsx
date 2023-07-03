@@ -123,7 +123,7 @@ const Bar = () => {
     return (
         <Drawer anchor={"bottom"} variant="permanent" style={{ position: 'fixed', height: '60px', display: 'flex', justifyContent: 'center' }}>
 
-            <List style={{ display: 'flex', justifyContent: 'center', height: '30px', backgroundColor: '#333333' }}>
+            <List style={{ display: 'flex', justifyContent: 'center', height: '30px', backgroundColor: '#333333', }}>
                 {['Dashboard', 'Properties'].map((text, index) => (
                     <ListItem
                         key={text}
@@ -131,7 +131,13 @@ const Bar = () => {
                         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                         onClick={index % 2 === 0 ? handleViewDashboard : handleViewProperties}
                     >
-                        <ListItemButton style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <ListItemButton
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: index % 2 === 0 ? 'end' : 'start',
+                            }}
+                        >
 
                             <ListItemIcon style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
 

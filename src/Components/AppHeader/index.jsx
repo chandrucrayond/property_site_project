@@ -33,10 +33,11 @@ import LogoImage from "../../icons/Dashboard/DNT Logo White-04@2x.png"
 import theme from "../ThemeProvider/index.jsx";
 import Badge from '@mui/material/Badge';
 import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+// import NotificationsIcon from '@mui/icons-material/Notifications';
+// import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { AppHeaderCard } from "../CreateCard";
+import NotificationIcon from "../../icons/Dashboard/NotificationIcon";
 // Inline styled mui elements
 
 const Logo = styled("img")({
@@ -147,7 +148,7 @@ function AppHeader() {
           <Grid item xs={6} sm={6} style={{ display: isSmScreen ? 'none' : 'flex', }} >
             <Grid container sx={{ alignItems: 'center', cursor: 'pointer', justifyContent: 'end', }} onClick={handleClick}>
 
-              <NotificationIcon variant="dot" />
+              <NotificationIcon/>
               <Divider orientation="vertical" variant="middle" style={{ borderColor: '#E4E8EE', backgroundColor: '#E4E8EE', height: '25px', marginLeft: '20px', marginRight: '20px' }} />
 
               <Tooltip title="Account settings">
@@ -392,12 +393,12 @@ function AppHeader() {
   );
 }
 
-const NotificationIcon = () => {
-  return (
-    <Badge variant="dot" color="primary">
-      <Notifications />
-    </Badge>
-  );
-}
+// const NotificationIcon = () => {
+//   return (
+    // <Badge variant="dot" color="primary">
+    //   <Notifications />
+    // </Badge>  
+//   );
+// }
 
 export default AppHeader;

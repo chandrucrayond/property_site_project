@@ -11,6 +11,7 @@ import Coordinate from "../../icons/Individual-Property/Coordinate";
 import PropImage from "../../icons/Individual-Property/PropImage";
 import theme from "../ThemeProvider/index.jsx";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import parse from 'html-react-parser';
 
 export default function IndividualProperty() {
     const classes = IndividualProperty_Style();
@@ -32,6 +33,8 @@ export default function IndividualProperty() {
         navigate("/viewProperties");
     }
 
+
+
     return (
         <>
             <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
@@ -46,12 +49,22 @@ export default function IndividualProperty() {
                         <NormalCard>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} md={1.75} className={classes.ImageSection}>
-                                    <PropImage />
+                                    {/* <PropImage /> */}
+                                    {property.property_details?.image ? (<img
+                                        src={property.property_details.image}
+                                        alt="Uploaded"
+                                        width={120}
+                                        height={120}
+                                        style={{
+                                            borderRadius: "50%",
+                                            boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                                        }}
+                                    />) : (<PropImage />)}
                                     <Box ><Typography variant="h5" className={classes.IdSection} >ID-PG2PRP{propertyId}</Typography></Box>
                                 </Grid>
 
                                 <Grid item xs={12} md={0.25} className={`${classes.dividerContainer}`}>
-                                <Divider orientation="vertical" variant="middle" className={`${classes.divider}`} />
+                                    {isMdScreen ? <Divider className={`${classes.dividerSmallScreen}`} /> : <Divider orientation="vertical" variant="middle" className={`${classes.divider}`} flexItem />}
                                 </Grid>
 
                                 <Grid item xs={12} md={10}>
@@ -94,7 +107,9 @@ export default function IndividualProperty() {
 
                                         <Grid item xs={12}>
                                             <Typography variant='h5' className={classes.propDetailsSubHeading}>Property Description</Typography>
-                                            <Typography variant='h2'>{property.property_details?.pdesc}</Typography>
+                                            <Typography variant='h2' className={classes.propDescription}>
+                                                {parse(`${property.property_details.pdesc}`)}
+                                            </Typography>
                                         </Grid>
 
                                     </Grid>

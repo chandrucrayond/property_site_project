@@ -9,33 +9,39 @@ import { OutlinedInput } from '@mui/material';
 import { Input } from '@mui/material';
 import { InputBase } from '@mui/material';
 import ReactQuill from 'react-quill';
-// import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.snow.css';
 
-const CreatePropertySection2 = ({ data, setData }) => {
+const CreatePropertySection2 = ({ data, setData, setFormData, createdQuillValue }) => {
     const classes = CreatePropertySection2Style();
     const { property_details } = data;
 
-      const handlePropertyDetailsChange = (event, element) => {
-          setData(event, "property_details", element);
-      };
+    const handlePropertyDetailsChange = (event, element) => {
+        setData(event, "property_details", element);
+    };
 
-    // const handlePropertyDetailsChange = (event, element) => {
-    //     if (element === "pdesc") {
-    //         setData({ ...property_details, pdesc: quillValue });
-    //     } else {
-    //         setData({ ...property_details, [element]: event.target.value });
-    //     }
-    // };
+    const toolbarOptions = {
+        toolbar: [
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ list: 'ordered' }, { list: 'bullet' }]
+        ]
+    };
 
-
-    // const toolbarOptions = {
-    //     toolbar: [
-    //         ['bold', 'italic', 'underline', 'strike'],
-    //         [{ list: 'ordered' }, { list: 'bullet' }]
-    //     ]
-    // };
-
-    // const [quillValue, quillSetValue] = React.useState('');
+    const [quillValue, setQuillValue] = React.useState('');
+   if(createdQuillValue)   {
+    setQuillValue(createdQuillValue);
+    }
+    
+    const handleQuillChange = (value) => {
+      setQuillValue(value);
+      setFormData((prevState) => ({
+        ...prevState,
+        property_details: {
+          ...prevState.property_details,
+          pdesc: value,
+        },
+      }));    
+    };
+    
 
     return (
         <Grid container>
@@ -44,8 +50,8 @@ const CreatePropertySection2 = ({ data, setData }) => {
             </Grid>
             <Grid item xs={12}>
                 <Grid container spacing={3}>
-                    
-                    
+
+
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Company Name</Typography>
                         <FormControl fullWidth>
@@ -60,8 +66,8 @@ const CreatePropertySection2 = ({ data, setData }) => {
                             </Select>
                         </FormControl>
                     </Grid>
-                   
-                   
+
+
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Name</Typography>
                         <FormControl fullWidth>
@@ -74,8 +80,8 @@ const CreatePropertySection2 = ({ data, setData }) => {
                             />
                         </FormControl>
                     </Grid>
-                    
-                    
+
+
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Payment Period</Typography>
                         <FormControl fullWidth>
@@ -90,8 +96,8 @@ const CreatePropertySection2 = ({ data, setData }) => {
                             </Select>
                         </FormControl>
                     </Grid>
-                    
-                    
+
+
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Status</Typography>
                         <FormControl fullWidth>
@@ -105,19 +111,20 @@ const CreatePropertySection2 = ({ data, setData }) => {
                             </Select>
                         </FormControl>
                     </Grid>
-                    
-                    
-                    {/* <Grid item xs={12}>
+
+
+                    <Grid item xs={12}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Description</Typography>
+
                         <div className={classes.quillContainer}>
                             <ReactQuill
-                                theme="snow"
+                                // theme="snow"
                                 value={quillValue}
-                                onChange={quillSetValue}
+                                onChange={handleQuillChange}
                                 modules={toolbarOptions}
                             />
                         </div>
-                    </Grid> */}
+                    </Grid>
 
 
                 </Grid>

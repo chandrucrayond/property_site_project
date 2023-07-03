@@ -17,16 +17,11 @@ export const CreatePropertySection1Style = makeStyles((theme) => ({
         marginBottom: '20px !important',
     },
     imageWrapper: {
-        display: "flex !important",
-        justifyContent: "center !important",
-        alignItems: "center !important",
-        height: "100px !important",
-        width: "100px !important",
-        borderRadius: "50% !important",
+       
     },
     uploadButton: {
         border: '1px solid #E4E8EE !important',
         borderRadius: '10px !important',
-        padding: '10px 15px !important',
+        padding: '5px !important',
     },
 }));

@@ -42,6 +42,7 @@ const App = (props) => {
       hdate: "2023-01-01",
       plist: "",
       pets: "false",
+      image: "",
     },
 
     address_details: {
@@ -126,7 +127,7 @@ const App = (props) => {
         },
         {
           path: "editProperty/:propertyId",
-          element: <EditProperty  handleChange={handleChange}/>,
+          element: <EditProperty  setFormData={setFormData}/>,
         }
       ],
     },

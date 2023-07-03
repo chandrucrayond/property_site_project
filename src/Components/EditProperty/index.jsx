@@ -16,7 +16,7 @@ import { DataContext } from "../../Context";
 
 
 
-const EditProperty = () => {
+const EditProperty = ({setFormData}) => {
   // debugger
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
@@ -93,11 +93,11 @@ const EditProperty = () => {
           <Grid container spacing={2}>
 
             <Grid item xs={12} md={2}>
-              <CreateCard> <CreatePropertySection1 /></CreateCard>
+              <CreateCard> <CreatePropertySection1 data={property} setFormData={setFormData} /></CreateCard>
             </Grid>
 
             <Grid item xs={12} md={10}>
-              <CreateCard> <CreatePropertySection2 data={property} setData={handleChange} /></CreateCard>
+              <CreateCard> <CreatePropertySection2 data={property} setData={handleChange} setFormData={setFormData} createdQuillValue={property?.properties_details?.pdesc}/></CreateCard>
             </Grid>
 
             <Grid item xs={12} >

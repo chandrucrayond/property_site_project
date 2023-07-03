@@ -23,12 +23,31 @@ export const CreatePropertySection2Style = makeStyles((theme) => ({
     },
 
     quillContainer: {
-        maxHeight: '110px', /* Set the desired maximum height */
-        overflowY: 'auto', /* Add a vertical scrollbar when the content exceeds the height */ 
-        // border: '1px solid #bdbdbd !important',
-        // borderRadius: '10px !important',
+      
         border:'none',
+        '& .quill': {
+            border: '1px solid #bdbdbd !important',
+            borderRadius: '10px !important',
+            display: 'flex !important',
+            flexDirection: 'column-reverse !important',
+           
+        },
+        '& .ql-toolbar': {
+            border: 'none !important',
+            borderTop: '1px solid #bdbdbd !important',
+        },
+        '& .ql-container': {
+            border: 'none !important',
+            maxHeight: '65px', /* Set the desired maximum height */
+            height: '65px !important',
+            overflowY: 'auto', /* Add a vertical scrollbar when the content exceeds the height */ 
+        },
+
+        '& .ql-formats': {
+            opacity: '40% !important',
+        },
      },
-    
+
+     
 
 }));

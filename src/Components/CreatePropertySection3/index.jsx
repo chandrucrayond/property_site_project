@@ -10,7 +10,7 @@ import { Input } from '@mui/material';
 import { InputBase } from '@mui/material';
 import { ToggleButton, ToggleButtonGroup, } from '@mui/material';
 import theme from "../ThemeProvider";
-
+import TickMark from "../../icons/Create-Property/TickMark";
 
 
 const CreatePropertySection3 = ({ data, setData }) => {
@@ -29,7 +29,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
 
 
     const [selected, setSelected] = React.useState(1);
-    
+
     const [selectedPets, setSelectedPets] = React.useState("false");
     const handleClick = (value) => {
         if (selected === value) {
@@ -42,7 +42,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
     const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
     return (
         <Grid container>
-          <Grid item xs={12}  >
+            <Grid item xs={12}  >
                 <Grid container spacing={3}>
 
 
@@ -128,7 +128,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
                                     <InputAdornment position="end">
-                                         <Typography variant='h2'>{measure_unit}</Typography>
+                                        <Typography variant='h2'>{measure_unit}</Typography>
                                     </InputAdornment>
                                 }
                             />
@@ -198,14 +198,12 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             onClick={() => handleClick(1)}
                             color="primary"
                             style={{
-                                marginRight: '10px',
-                                textTransform: 'none',
-                                ...(selected === 1 && { backgroundColor: "#5078E1", color: 'white' }),
-                                borderRadius: '10px',
-                              }}
-                            
+                                ...(selected === 1 && { backgroundColor: "#5078E1", border: 'none', }),
+
+                            }}
+                            className={classes.toggleButtonListing}
                         >
-                            <Typography variant='h2'>Private</Typography>
+                            <Typography variant='h2' style={{ ...(selected === 1 && { color: 'white' }), }}>Private</Typography>
                         </ToggleButton>
                         <ToggleButton
                             value="check"
@@ -213,13 +211,11 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             onClick={() => handleClick(2)}
                             color="primary"
                             style={{
-                                marginRight: '10px',
-                                textTransform: 'none',
-                                ...(selected === 2 && { backgroundColor: "#5078E1", color: 'white' }),
-                                borderRadius: '10px',
-                              }}
+                                ...(selected === 2 && { backgroundColor: "#5078E1", border: 'none', }),
+                            }}
+                            className={classes.toggleButtonListing}
                         >
-                            <Typography variant='h2'>Public</Typography> 
+                            <Typography variant='h2' style={{ ...(selected === 2 && { color: 'white' }), }}>Public</Typography>
                         </ToggleButton>
                         <ToggleButton
                             value="check"
@@ -227,36 +223,40 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             onClick={() => handleClick(3)}
                             color="primary"
                             style={{
-                                
-                                textTransform: 'none',
-                                ...(selected === 3 && { backgroundColor: "#5078E1", color: 'white' }),
-                                borderRadius: '10px',
-                              }}
+                                // height: '50%',
+                                // textTransform: 'none',
+                                ...(selected === 3 && { backgroundColor: "#5078E1", border: 'none', }),
+                                // borderRadius: '10px',
+                            }}
+                            className={classes.toggleButtonListing}
                         >
-                            <Typography variant='h2'>None</Typography> 
+                            <Typography variant='h2' style={{ ...(selected === 3 && { color: 'white' }), }}>None</Typography>
                         </ToggleButton>
                     </Grid>
 
 
-                      {/* 10th grid item value not added in data */}
-                      <Grid item xs={12} sm={6} md={2} style={{ ...(isLgScreen && {position: 'relative', right: '50px',}),}}>
+                    {/* 10th grid item value not added in data */}
+                    <Grid item xs={12} sm={6} md={2} style={{ ...(isLgScreen && { position: 'relative', right: '50px', }), }}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Pets Allowed</Typography>
                         <ToggleButton
                             value="check"
                             selected={selectedPets}
-                            onClick={() => { setSelectedPets(!selectedPets);}}
+                            onClick={() => { setSelectedPets(!selectedPets); }}
                             color="primary"
                             style={{
                                 marginRight: '10px',
                                 textTransform: 'none',
-                                ...(selectedPets  && { backgroundColor: "#5078E1", color: 'white' }),
-                                borderRadius: '10px',
-                                height: '60%',
-                               
-                              }}
-                            
+                                ...(selectedPets && { backgroundColor: "#5078E1" }),
+                                borderRadius: '50%',
+                                height: '10px',
+                                width: '10px',
+                                color: '#98A0AC',
+                                position: 'relative',
+                                top: '5px',
+                            }}
+
                         >
-                          {selectedPets ? 'Yes' : 'No'}
+                            <TickMark style={selectedPets && { color: '#FFFFFF' }} />
                         </ToggleButton>
                     </Grid>
 

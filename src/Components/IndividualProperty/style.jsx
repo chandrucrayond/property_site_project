@@ -109,16 +109,29 @@ export const IndividualProperty_Style = makeStyles((theme) => ({
   },
 
   divider: {
-    borderColor: '#E4E8EE !important',
-     backgroundColor: '#E4E8EE !important',
+     borderColor: '#E4E8EE !important',
+      backgroundColor: '#E4E8EE !important',
       height: '150px !important', 
       width:'0.01px !important', 
       margin: 'auto !important',
     },
 
-    dividerContainer: {
-      display: 'flex !important',
-      justifyContent: 'center !important',
-      alignItems: 'center !important',
+    dividerSmallScreen: {
+      borderColor: '#E4E8EE !important',
+       backgroundColor: '#E4E8EE !important',
+       height: '0.1px !important', 
+       width:'60% !important', 
+       margin: 'auto !important',
+     },
+
+    // dividerContainer: {
+    //   display: 'flex !important',
+    //   justifyContent: 'center !important',
+    //   alignItems: 'center !important',
+    // },
+
+    propDescription: {
+      position: 'relative !important',
+      bottom: '10px !important',
     },
 }));

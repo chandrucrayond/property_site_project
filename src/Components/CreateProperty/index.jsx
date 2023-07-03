@@ -104,11 +104,11 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
         <Grid container spacing={2}>
 
           <Grid item xs={12} md={2}>
-            <CreateCard> <CreatePropertySection1 /></CreateCard>
+            <CreateCard> <CreatePropertySection1  data={formData} setFormData={setFormData} /></CreateCard>
           </Grid>
 
           <Grid item xs={12} md={10}>
-            <CreateCard> <CreatePropertySection2 data={formData} setData={handleChange} /></CreateCard>
+            <CreateCard> <CreatePropertySection2 data={formData} setData={handleChange} setFormData={setFormData}/></CreateCard>
           </Grid>
 
 

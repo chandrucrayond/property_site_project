@@ -6,7 +6,7 @@ export const CreateCardStyle = makeStyles((theme) => ({
         backgroundColor: '#FFFFFF !important',
         borderRadius: '8px !important',
         padding: '20px',
-        minHeight: '250px',
+        minHeight: '252px',
         margin: 'auto',
         display: 'flex',
     },
