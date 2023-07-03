@@ -45,8 +45,8 @@ const CreatePropertySection4 = ({ data, setData }) => {
                             isMarkerShown
                             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YkaEhzqTBfhFWKDNs1QXjQtTiFSkUJ4&v=3.exp&libraries=geometry,drawing,places"
                             loadingElement={<div style={{ height: `100%`, borderRadius:'10px'}} />}
-                            containerElement={<div style={{ height: `230px`, borderRadius:'10px' }} />}
-                            mapElement={<div style={{ height: `100%`, borderRadius:'10px' }} />}
+                            containerElement={<div style={{borderRadius:'10px',   minHeight: `230px`, maxHeight: '100%',height: `100%`, }} />}
+                            mapElement={<div style={{  minHeight: `230px`, maxHeight: '100%',height: `100%`, borderRadius:'10px' }} />}
                             onLoad={props => {
                                 // Perform any necessary actions after the Google Maps API is loaded
                                 console.log('Google Maps API loaded:', props);

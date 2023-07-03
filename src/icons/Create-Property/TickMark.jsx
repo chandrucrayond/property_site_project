@@ -3,6 +3,6 @@ import DoneIcon from '@mui/icons-material/Done';
 
 export default function TickMark({ style, ...otherProps }) {
     return (
-        <DoneIcon style={{ fontSize: '15px', ...style }} {...otherProps} />
+        <DoneIcon style={{ fontSize: '14px', ...style }} {...otherProps} />
     );
 }

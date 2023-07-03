@@ -4,14 +4,15 @@ import { CreatePropertySection1Style } from "./style";
 import UploadImage from "../../icons/Create-Property/UploadImage.jsx";
 import RoundedImage from "../../icons/Create-Property/RoundedImage";
 
-const CreatePropertySection1 = ({ data,  setFormData}) => {
+const CreatePropertySection1 = ({ data, setFormData }) => {
     const classes = CreatePropertySection1Style();
-    const [selectedImage, setSelectedImage] = React.useState(null);
+    const { property_details } = data;
+    const [selectedImage, setSelectedImage] = React.useState(property_details.image);
 
     const fileInputRef = React.useRef(null);
 
     const handleButtonClick = () => {
-      fileInputRef.current.click();
+        fileInputRef.current.click();
     };
 
     const handleImageUpload = (event) => {
@@ -22,19 +23,19 @@ const CreatePropertySection1 = ({ data,  setFormData}) => {
 
     const handleImageAdd = (value) => {
         setFormData((prevState) => ({
-          ...prevState,
-          property_details: {
-            ...prevState.property_details,
-            image: value,
-          },
-        }));    
-      };
-      
+            ...prevState,
+            property_details: {
+                ...prevState.property_details,
+                image: value,
+            },
+        }));
+    };
+
 
     return (
         <Grid container>
             <Grid item xs={12} className={classes.subContainer}>
-                <Typography variant='h4' style={{ color: '#4E5A6B', }}>PROPERTY IMAGE</Typography>
+                <Typography variant='h3' style={{ color: '#4E5A6B', }}>PROPERTY IMAGE</Typography>
             </Grid>
             <Grid item xs={12} className={classes.subContainer}>
 
@@ -42,27 +43,30 @@ const CreatePropertySection1 = ({ data,  setFormData}) => {
                     <img
                         src={selectedImage}
                         alt="Uploaded"
-                        width={120}
-                        height={120}
+                        width={130}
+                        height={130}
                         style={{
                             borderRadius: "50%",
                             boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                            maxWidth: "100%",
+                            maxHeight: "100%",
                         }}
                     />
                 ) : (
-                    <Box style={{ width: '120px', height: '120px', backgroundColor: "#F2F4F7", borderRadius: "50%", textAlign: "center", }}>
+                    <Box style={{
+                        width: '130px', height: '130px', backgroundColor: "#F2F4F7", borderRadius: "50%", textAlign: "center", maxWidth: "100%",
+                        maxHeight: "100%",
+                    }}>
                         <UploadImage />
                     </Box>
                 )}
 
             </Grid>
-            <Grid item xs={12} className={classes.subContainer}>
-                {/* <Button variant="outlined" className={classes.uploadButton}><Typography variant='h5' style={{ color: '#071741', textTransform: 'capitalize' }}>Upload Image</Typography></Button>
-                <input type="file" onChange={handleImageUpload} /> */}
+            <Grid item xs={12} style={{ textAlign: 'center' }} >
 
-                <Button variant="outlined" className={classes.uploadButton} onClick={handleButtonClick}>
-                    <Typography variant='h5' style={{ color: '#071741', textTransform: 'capitalize', padding:'none', margin:'none', }}>
-                        Upload Image
+                <Button variant="outlined" className={classes.uploadButton} onClick={handleButtonClick} >
+                    <Typography variant='h5' style={{ color: '#071741', textTransform: 'capitalize', padding: 0, margin: 0 }}>
+                        {selectedImage ? 'Change Image' : 'Upload Image'}
                     </Typography>
                 </Button>
                 <input type="file" ref={fileInputRef} onChange={handleImageUpload} style={{ display: 'none' }} />

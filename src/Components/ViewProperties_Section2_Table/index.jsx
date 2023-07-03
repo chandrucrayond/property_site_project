@@ -68,7 +68,7 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
         console.log("Index is " + index + ", value is ");
         console.log(propertiesList[index]);
         setOpenPopover(index);
-        setCurrentStatus(propertiesList[index].property_details.status==='Active' ?  'InActive' : 'Active');
+        setCurrentStatus(propertiesList[index].property_details.status==='Active' ?  'Inactive' : 'Active');
         setAnchorElement(e.currentTarget); // Pass a function as the anchorEl prop
     };
 

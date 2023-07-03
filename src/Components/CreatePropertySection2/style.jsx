@@ -35,12 +35,14 @@ export const CreatePropertySection2Style = makeStyles((theme) => ({
         '& .ql-toolbar': {
             border: 'none !important',
             borderTop: '1px solid #bdbdbd !important',
+            padding: '5px !important',
         },
         '& .ql-container': {
             border: 'none !important',
-            maxHeight: '65px', /* Set the desired maximum height */
-            height: '65px !important',
+            maxHeight: '50px', /* Set the desired maximum height */
+            height: '50px !important',
             overflowY: 'auto', /* Add a vertical scrollbar when the content exceeds the height */ 
+            fontFamily: 'Nunito Sans !important',
         },
 
         '& .ql-formats': {

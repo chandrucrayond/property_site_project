@@ -27,16 +27,18 @@ import EyeIcon from "../../icons/Dashboard/S1EyeIcon";
 import PenIcon from "../../icons/Dashboard/S1PenIcon";
 
 function GeneralRequests({ dashData }) {
+    const classes = DashboardSection3_SS_1_Style();
+
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className={classes.generalDataGrid}>
             <Grid item xs={6}>
-                <Typography variant="h3" sx={{ color: "#4E5A6B" }}>
+                <Typography variant="h2" sx={{ color: "#4E5A6B" }}>
                     General Requests ({dashData.number})
                 </Typography>
             </Grid>
             <Grid item xs={6} justifyContent="end" sx={{ display: "flex" }}>
                 <Link href="#" underline="none">
-                    <Typography variant="h3" sx={{ color: "#5078E1" }}>
+                    <Typography variant="h4" sx={{ color: "#5078E1" }}>
                         View All
                     </Typography>
                 </Link>
@@ -178,6 +180,7 @@ function Maintenance({ dashData }) {
 }
 
 function SelectTabs({ dashData }) {
+    const classes = DashboardSection3_SS_1_Style();
     const [value, setValue] = React.useState(1);
 
     const handleChange = (event, newValue) => {
@@ -189,15 +192,16 @@ function SelectTabs({ dashData }) {
             <TabList
                 onChange={handleChange}
                 sx={{ borderBottom: 1, borderColor: "divider" }}
+                className={classes.tabList}
             >
                 <Tab
                     label="General requests"
-                    sx={{ textTransform: "capitalize" }}
+                    sx={{ textTransform: "capitalize",}}
                     value={1}
                 />
                 <Tab
                     label="Maintenance"
-                    sx={{ textTransform: "capitalize" }}
+                    sx={{ textTransform: "capitalize", }}
                     value={2}
                 />
             </TabList>
@@ -224,10 +228,10 @@ const DashboardSection_3_SS_1 = ({ dashData }) => {
                 className={classes.firstBox}
                 justifyContent={"space-around"}
             >
-                <Grid item className={classes.firstSubBox}>
+                <Grid item xs={5.5} className={classes.firstSubBox}>
                     <Typography
                         variant="h3"
-                        sx={{ color: "#091B29", paddingBottom: "5px" }}
+                        sx={{ color: "#091B29" }}
                     >
                         General Requests
                     </Typography>
@@ -235,19 +239,24 @@ const DashboardSection_3_SS_1 = ({ dashData }) => {
                         {dashData.general.number}
                     </Typography>
                 </Grid>
-                <Divider
-                    orientation="vertical"
-                    variant="middle"
-                    style={{
-                        borderColor: "#E4E8EE",
-                        backgroundColor: "#E4E8EE",
-                        height: "auto",
-                    }}
-                />
-                <Grid item className={classes.firstSubBox}>
+
+                <Grid item xs={1} className={classes.dividerSection}>
+                    <Divider
+                        orientation="vertical"
+                        variant="middle"
+                        style={{
+                            borderColor: "#E4E8EE",
+                            backgroundColor: "#E4E8EE",
+                            height: "35px",
+                            width: '0.1px',
+                        }}
+                    />
+                </Grid>
+
+                <Grid item xs={3.5} className={classes.firstSubBox}>
                     <Typography
                         variant="h3"
-                        sx={{ color: "#091B29", paddingBottom: "5px" }}
+                        sx={{ color: "#091B29" }}
                     >
                         Maintenance
                     </Typography>

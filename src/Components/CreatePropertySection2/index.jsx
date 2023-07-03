@@ -46,7 +46,7 @@ const CreatePropertySection2 = ({ data, setData, setFormData, createdQuillValue 
     return (
         <Grid container>
             <Grid item xs={12}>
-                <Typography variant='h4' style={{ color: '#4E5A6B', marginBottom: '15px', }}>PROPERTY DETAILS</Typography>
+                <Typography variant='h3' style={{ color: '#4E5A6B', marginBottom: '15px', }}>PROPERTY DETAILS</Typography>
             </Grid>
             <Grid item xs={12}>
                 <Grid container spacing={3}>

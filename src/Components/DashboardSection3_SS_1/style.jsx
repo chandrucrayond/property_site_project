@@ -7,7 +7,7 @@ export const DashboardSection3_SS_1_Style = makeStyles((theme) => ({
         backgroundRepeat: "no-repeat",
         backgroundBox: "padding-box",
         border: "1px solid #FFFFFF",
-        padding: '20px',
+        padding: '6px',
     },
     no_of_req: {
         fontFamily: "Nunito Sans !important",
@@ -24,5 +24,35 @@ export const DashboardSection3_SS_1_Style = makeStyles((theme) => ({
         lineHeight: "27px !important",
         letterSpacing: "0px !important",
         color: "#091B29 !important",
-    }
+    },
+    dividerSection: {
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
+    },
+    tabList: {
+
+        '& .MuiButtonBase-root': {
+            paddingLeft: '0px',
+            paddingRight: '0px',
+            paddingBottom: '5px',
+        },
+
+        '& .Mui-selected': {
+            color: '#5078E1',
+            fontWeight: 'bold',
+        },
+
+        '& .MuiTabs-flexContainer': {
+            columnGap: '25px !important',
+        },
+
+    },
+
+
+    generalDataGrid: {
+        '& .MuiGrid-root': {
+            paddingLeft: '0px !important',
+        },
+    },
 }));

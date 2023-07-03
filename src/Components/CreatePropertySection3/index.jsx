@@ -128,7 +128,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
                                     <InputAdornment position="end">
-                                        <Typography variant='h2'>{measure_unit}</Typography>
+                                        <Typography variant='h2' style={{color: '#98A0AC',}}>{measure_unit}</Typography>
                                     </InputAdornment>
                                 }
                             />
@@ -149,7 +149,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
                                     <InputAdornment position="end">
-                                        <Typography variant='h2'>{measure_unit}</Typography>
+                                        <Typography variant='h2' style={{color: '#98A0AC',}}>{measure_unit}</Typography>
                                     </InputAdornment>
                                 }
                             />
@@ -211,7 +211,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             onClick={() => handleClick(2)}
                             color="primary"
                             style={{
-                                ...(selected === 2 && { backgroundColor: "#5078E1", border: 'none', }),
+                                ...(selected === 2 && { backgroundColor: "#5078E1", border: 'none !important', }),
                             }}
                             className={classes.toggleButtonListing}
                         >
@@ -248,8 +248,8 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 textTransform: 'none',
                                 ...(selectedPets && { backgroundColor: "#5078E1" }),
                                 borderRadius: '50%',
-                                height: '10px',
-                                width: '10px',
+                                height: '1px',
+                                width: '1px',
                                 color: '#98A0AC',
                                 position: 'relative',
                                 top: '5px',

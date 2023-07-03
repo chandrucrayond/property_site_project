@@ -21,7 +21,8 @@ export const CreatePropertySection1Style = makeStyles((theme) => ({
     },
     uploadButton: {
         border: '1px solid #E4E8EE !important',
-        borderRadius: '10px !important',
-        padding: '5px !important',
+        borderRadius: '8px !important',
+        padding: '7px !important',
+        marginTop: '30px !important',
     },
 }));

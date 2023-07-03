@@ -71,7 +71,7 @@ export const data = [
         "This property is located in the heart of the city. As this property is compact in size and well furnished, it is suitable for small families. It is currently in good condition",
       pname: "Rubix",
       pperiod: "Daily",
-      status: "InActive",
+      status: "Inactive",
     },
     property_details2: {
       carea: "434",
