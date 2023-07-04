@@ -40,28 +40,28 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
     setOpen(true);
     setPropertiesList((prevData) => [...prevData, formData])
     setFormData({
-
       property_details: {
-        cname: "Company Name",
+        cname: "",
         pname: "",
-        pperiod: "Daily",
-        status: "Active",
+        pperiod: "",
+        status: "",
         pdesc: "",
       },
-
+  
       property_details2: {
-        ptype: "Apartment",
-        ppurp: "Residential",
-        rtype: "Lease",
-        munit: "Sq.ft",
+        ptype: "",
+        ppurp: "",
+        rtype: "",
+        munit: "",
         carea: "",
         tarea: "",
-        ybuilt: "2020-01-01",
-        hdate: "2023-01-01",
+        ybuilt: "",
+        hdate: "",
         plist: "",
         pets: "false",
+        image: "",
       },
-
+  
       address_details: {
         lang: "",
         lat: "",
@@ -69,13 +69,13 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
         aline1: "",
         aline2: "",
         landmark: "",
-        area: "Neelankarai",
-        city: "Chennai",
-        state: "Tamilnadu",
+        area: "",
+        city: "",
+        state: "",
         country: "",
         pincode: "",
       },
-
+  
       contact_details: {
         bphone: "",
         stdcode: "044",

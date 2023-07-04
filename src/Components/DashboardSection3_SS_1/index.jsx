@@ -25,18 +25,25 @@ import SendIcon from "@mui/icons-material/Send";
 import CircleIcon from "@mui/icons-material/Circle";
 import EyeIcon from "../../icons/Dashboard/S1EyeIcon";
 import PenIcon from "../../icons/Dashboard/S1PenIcon";
+import { useMediaQuery } from "@mui/material";
+import theme from "../ThemeProvider/index.jsx";
+
+
 
 function GeneralRequests({ dashData }) {
     const classes = DashboardSection3_SS_1_Style();
 
+    const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
+    const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
+
     return (
         <Grid container spacing={3} className={classes.generalDataGrid}>
-            <Grid item xs={6}>
+            <Grid item xs={8}>
                 <Typography variant="h2" sx={{ color: "#4E5A6B" }}>
                     General Requests ({dashData.number})
                 </Typography>
             </Grid>
-            <Grid item xs={6} justifyContent="end" sx={{ display: "flex" }}>
+            <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
                 <Link href="#" underline="none">
                     <Typography variant="h4" sx={{ color: "#5078E1" }}>
                         View All
@@ -68,28 +75,30 @@ function GeneralRequests({ dashData }) {
                             >
                                 {item.name}
                             </Typography>
-                            <Typography variant="body2" style={{ fontSize: "12px" }}>
+                            <Typography variant="body2" style={{ fontSize : isSmScreen? "10px" : "12px" }}>
                                 {item.category}{" "}
                                 <CircleIcon
                                     style={{
                                         fontSize: "6px",
-                                        marginLeft: "10px",
-                                        marginRight: "10px",
+                                        marginLeft: "5px",
+                                        marginRight: "5px",
+                                        color: '#CED3DD',
                                     }}
                                 />
                                 {item.date}
                                 <CircleIcon
                                     style={{
                                         fontSize: "6px",
-                                        marginLeft: "10px",
-                                        marginRight: "10px",
+                                        marginLeft: "5px",
+                                        marginRight: "5px",
+                                        color: '#CED3DD',
                                     }}
                                 />
                                 {item.id}
                             </Typography>
                         </Grid>
                         <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                            <Typography variant="body2" style={{ marginRight: "20px" }}>
+                            <Typography variant="body2" style={{ marginRight : isSmScreen ? "4px" : "20px" }}>
                                 <PenIcon />
                             </Typography>
                             <Typography variant="body2">
@@ -104,17 +113,23 @@ function GeneralRequests({ dashData }) {
     );
 }
 
+
+
 function Maintenance({ dashData }) {
+    const classes = DashboardSection3_SS_1_Style();
+    const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
+    const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
+
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className={classes.MaintenanceDataGrid}>
             <Grid item xs={6}>
-                <Typography variant="h3" sx={{ color: "#4E5A6B" }}>
+                <Typography variant="h2" sx={{ color: "#4E5A6B" }}>
                     Maintenance ({dashData.number})
                 </Typography>
             </Grid>
             <Grid item xs={6} justifyContent="end" sx={{ display: "flex" }}>
                 <Link href="#" underline="none">
-                    <Typography variant="h3" sx={{ color: "#5078E1" }}>
+                    <Typography variant="h4" sx={{ color: "#5078E1" }}>
                         View All
                     </Typography>
                 </Link>
@@ -143,28 +158,30 @@ function Maintenance({ dashData }) {
                             >
                                 {item.name}
                             </Typography>
-                            <Typography variant="body2" style={{ fontSize: "12px" }}>
+                            <Typography variant="body2" style={{ fontSize : isSmScreen? "10px" : "12px" }}>
                                 {item.category}{" "}
                                 <CircleIcon
                                     style={{
                                         fontSize: "6px",
-                                        marginLeft: "10px",
-                                        marginRight: "10px",
+                                        marginLeft: "5px",
+                                        marginRight: "5px",
+                                        color: '#CED3DD',
                                     }}
                                 />
                                 {item.date}
                                 <CircleIcon
                                     style={{
                                         fontSize: "6px",
-                                        marginLeft: "10px",
-                                        marginRight: "10px",
+                                        marginLeft: "5px",
+                                        marginRight: "5px",
+                                        color: '#CED3DD',
                                     }}
                                 />
                                 {item.id}
                             </Typography>
                         </Grid>
                         <Grid item xs={4} justifyContent="end" sx={{ display: "flex" }}>
-                            <Typography variant="body2" style={{ marginRight: "20px" }}>
+                            <Typography variant="body2"  style={{ marginRight : isSmScreen ? "4px" : "20px" }}>
                                 <PenIcon />
                             </Typography>
                             <Typography variant="body2">
@@ -178,6 +195,8 @@ function Maintenance({ dashData }) {
         </Grid>
     );
 }
+
+
 
 function SelectTabs({ dashData }) {
     const classes = DashboardSection3_SS_1_Style();
@@ -196,7 +215,7 @@ function SelectTabs({ dashData }) {
             >
                 <Tab
                     label="General requests"
-                    sx={{ textTransform: "capitalize",}}
+                    sx={{ textTransform: "capitalize", }}
                     value={1}
                 />
                 <Tab
@@ -214,6 +233,8 @@ function SelectTabs({ dashData }) {
         </TabContext>
     );
 }
+
+
 
 const DashboardSection_3_SS_1 = ({ dashData }) => {
     const classes = DashboardSection3_SS_1_Style();

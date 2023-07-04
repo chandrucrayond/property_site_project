@@ -27,21 +27,21 @@ const CreatePropertySection2 = ({ data, setData, setFormData, createdQuillValue 
     };
 
     const [quillValue, setQuillValue] = React.useState('');
-   if(createdQuillValue)   {
-    setQuillValue(createdQuillValue);
+    if (createdQuillValue) {
+        setQuillValue(createdQuillValue);
     }
-    
+
     const handleQuillChange = (value) => {
-      setQuillValue(value);
-      setFormData((prevState) => ({
-        ...prevState,
-        property_details: {
-          ...prevState.property_details,
-          pdesc: value,
-        },
-      }));    
+        setQuillValue(value);
+        setFormData((prevState) => ({
+            ...prevState,
+            property_details: {
+                ...prevState.property_details,
+                pdesc: value,
+            },
+        }));
     };
-    
+
 
     return (
         <Grid container>
@@ -52,9 +52,32 @@ const CreatePropertySection2 = ({ data, setData, setFormData, createdQuillValue 
                 <Grid container spacing={3}>
 
 
-                    <Grid item xs={12} sm={6} md={3}>
+                    {/* <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Company Name</Typography>
+
                         <FormControl fullWidth>
+                            <InputLabel shrink={!property_details.cname} id="select-label">
+                                {property_details.cname ? '' : 'Select an option'}
+                            </InputLabel>
+                            <Select
+                                value={property_details.cname}
+                                onChange={(event) => handlePropertyDetailsChange(event, 'cname')}
+                                className={`${classes.SelectStyling}`}
+                            >
+
+                                <MenuItem value={'Company Name'}><Typography variant="h2">Company Name</Typography></MenuItem>
+                                <MenuItem value={'Organization Name'}><Typography variant="h2">Organization Name</Typography></MenuItem>
+                                <MenuItem value={'Retail Name'}><Typography variant="h2">Retail Name</Typography></MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Grid> */}
+
+                    <Grid item xs={12} sm={6} md={3}>
+                    <Typography variant='h5' style={{ marginBottom: '10px' }}>Company Name</Typography>
+                        <FormControl fullWidth>
+                            <InputLabel shrink={!property_details.cname} id="select-label" style={{top: '20px'}} className={classes.inputLabel}>     
+                                {property_details.cname ? '' : 'Company Name'}
+                            </InputLabel>
                             <Select
                                 value={property_details.cname}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'cname')}
@@ -66,6 +89,7 @@ const CreatePropertySection2 = ({ data, setData, setFormData, createdQuillValue 
                             </Select>
                         </FormControl>
                     </Grid>
+
 
 
                     <Grid item xs={12} sm={6} md={3}>
@@ -85,6 +109,9 @@ const CreatePropertySection2 = ({ data, setData, setFormData, createdQuillValue 
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Payment Period</Typography>
                         <FormControl fullWidth>
+                        <InputLabel shrink={!property_details.pperiod} id="select-label" style={{top: '20px'}} className={classes.inputLabel}>     
+                                {property_details.pperiod ? '' : 'Payment Period'}
+                            </InputLabel>
                             <Select
                                 value={property_details.pperiod}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'pperiod')}
@@ -101,6 +128,9 @@ const CreatePropertySection2 = ({ data, setData, setFormData, createdQuillValue 
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Status</Typography>
                         <FormControl fullWidth>
+                          <InputLabel shrink={!property_details.status} id="select-label" style={{top: '20px'}} className={classes.inputLabel}>     
+                                {property_details.status ? '' : 'Status'}
+                            </InputLabel>
                             <Select
                                 value={property_details.status}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'status')}

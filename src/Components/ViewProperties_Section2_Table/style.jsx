@@ -3,6 +3,7 @@ import { makeStyles } from "@mui/styles";
 export const ViewProperties_Section2_Table_Style = makeStyles((theme) => ({
     tableHead: {
         color: '#4E5A6B',
+        // fontSize: '13px !important',
     },
 
     activeStatus: {

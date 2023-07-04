@@ -24,9 +24,9 @@ function BasicTable({ dashData }) {
   return (
     <TableContainer className={classes.table}>
       <Table>
-        <TableHead>
-          <TableRow sx={{ backgroundColor: '#F2F4F7' }}>
-            <TableCell>Property Id</TableCell>
+        <TableHead >
+          <TableRow sx={{ backgroundColor: '#F2F4F7', fontSize: '10px' }} >
+            <TableCell >Property Id</TableCell>
             <TableCell >Property Name</TableCell>
             <TableCell >Total Units</TableCell>
             <TableCell >Occupied Units</TableCell>
@@ -58,7 +58,7 @@ const DashboardSection_3_SS_2 = ({ dashData }) => {
 
   return (
     <>
-      <Typography variant="h2" sx={{ paddingTop: '10px', }}>Occupancy By Property</Typography>
+      <Typography variant="h2" sx={{ paddingTop: '10px', fontWeight: '800', fontSize: '15px'}}>Occupancy By Property</Typography>
       <BasicTable dashData={dashData.occupancy} />
     </>
   );

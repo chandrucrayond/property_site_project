@@ -71,20 +71,25 @@ const data = [
 
 export default function Graph2() {
   return (
-    <ResponsiveContainer width={"100%"} height={"85%"}>
-      <BarChart data={data}>
+    <ResponsiveContainer width={"100%"} height={"85%"} >
+      <BarChart data={data} style={{position: 'relative', right: '20px'}}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name"  style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B', }}/>
-        <YAxis tickFormatter={(tick) => `${tick}%`} style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B', }}/>
+        <YAxis tickFormatter={(tick) => `${tick}%`} style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B',}}/>
         <Tooltip />
         <Legend
           width={"100%"}
           height={"auto"}
-          align="bottom"
-          verticalAlign="bottom"
-          layout="horizontal"
+          // align="end"
+          // verticalAlign="bottom"
+          // layout="horizontal"
           wrapperStyle={{ 
              paddingTop: '20px',
+             display: "flex",
+             alignItems: "center",
+             justifyContent: "end",
+            //  position: 'relative', 
+            //  left: '1%'
           }}
           payload={dumData}
           formatter={(value) => { 

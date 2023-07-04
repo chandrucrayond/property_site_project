@@ -58,17 +58,22 @@ export const CreatePropertyStyle = makeStyles((theme) => ({
   createContainer: {
     // position: 'relative',
    marginTop: '30px !important',
+   marginBottom: '50px !important',
   
   },
 
   createContainerTablet: {
     position: 'relative',
     top: '0px !important',
+    marginTop: '30px !important',
+    marginBottom: '20px !important',
   },
 
   createContainerMobile: {
     position: 'relative',
     top: '0px !important',
+    marginTop: '15px !important',
+    marginBottom: '10px !important',
   },
 
   gridSection: {

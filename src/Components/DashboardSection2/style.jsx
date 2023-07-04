@@ -7,6 +7,7 @@ export const DashboardSection2Style = makeStyles((theme) => ({
         borderRadius: '4px !important',
         height: '350px',
         padding: '15px',
+       
         "& .recharts-default-legend": { 
             display: "grid",
             alignItems: "center",
@@ -29,6 +30,8 @@ export const DashboardSection2Style = makeStyles((theme) => ({
             alignItems: 'end !important',
             position: "relative !important",
             bottom: '1px !important',
+            justifyContent: 'center !important',
+            // right: '10px !important',
         },
         "& .recharts-legend-item-text>h3": {
             position: "relative",
@@ -41,4 +44,7 @@ export const DashboardSection2Style = makeStyles((theme) => ({
     graphHeading: {
     
     },
+    GraphTitle: {
+        fontWeight: '800 !important',
+    }
 }));

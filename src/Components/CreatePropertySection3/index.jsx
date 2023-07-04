@@ -28,16 +28,14 @@ const CreatePropertySection3 = ({ data, setData }) => {
     }, [property_details2.munit]);
 
 
-    const [selected, setSelected] = React.useState(1);
+    const [selected, setSelected] = React.useState("None");
 
     const [selectedPets, setSelectedPets] = React.useState("false");
-    const handleClick = (value) => {
-        if (selected === value) {
-            setSelected(null);
-        } else {
-            setSelected(value);
-        }
-    };
+    const handleClick = (event, newSelected) => {
+        setSelected(newSelected);
+        console.log(newSelected);
+      };
+      
 
     const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
     return (
@@ -50,6 +48,9 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Type</Typography>
                         <FormControl fullWidth>
+                            <InputLabel shrink={!property_details2.ptype} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                {property_details2.ptype ? '' : 'Property Type'}
+                            </InputLabel>
                             <Select
                                 value={property_details2.ptype}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'ptype')}
@@ -67,6 +68,9 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Property Purpose</Typography>
                         <FormControl fullWidth>
+                            <InputLabel shrink={!property_details2.ppurp} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                {property_details2.ppurp ? '' : 'Property Purpose'}
+                            </InputLabel>
                             <Select
                                 value={property_details2.ppurp}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'ppurp')}
@@ -83,6 +87,9 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Revenue Type</Typography>
                         <FormControl fullWidth>
+                            <InputLabel shrink={!property_details2.rtype} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                {property_details2.rtype ? '' : 'Revenue Type'}
+                            </InputLabel>
                             <Select
                                 value={property_details2.rtype}
                                 onChange={(event) => {
@@ -102,6 +109,9 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Measurement unit</Typography>
                         <FormControl fullWidth>
+                            <InputLabel shrink={!property_details2.munit} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                {property_details2.munit ? '' : 'Measurement unit'}
+                            </InputLabel>
                             <Select
                                 value={property_details2.munit}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'munit')}
@@ -128,7 +138,7 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
                                     <InputAdornment position="end">
-                                        <Typography variant='h2' style={{color: '#98A0AC',}}>{measure_unit}</Typography>
+                                        <Typography variant='h2' style={{ color: '#98A0AC', }}>{measure_unit}</Typography>
                                     </InputAdornment>
                                 }
                             />
@@ -149,24 +159,32 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
                                     <InputAdornment position="end">
-                                        <Typography variant='h2' style={{color: '#98A0AC',}}>{measure_unit}</Typography>
+                                        <Typography variant='h2' style={{ color: '#98A0AC', }}>{measure_unit}</Typography>
                                     </InputAdornment>
                                 }
                             />
                         </FormControl>
                     </Grid>
 
+                    {/* <InputLabel shrink={!property_details2.ybuilt} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                {property_details2.ybuilt ? '' : '01 /01 /2020'}
+                            </InputLabel> */}
 
                     {/* 7th grid item */}
                     <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Year Built</Typography>
                         <FormControl fullWidth>
+                            {/* <InputLabel shrink={!property_details2.ybuilt} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                {property_details2.ybuilt ? '' : '01 /01 /2020'}
+                            </InputLabel> */}
                             <InputBase
                                 type="date"
+                                placeholder="01 /01 /2020"
                                 value={property_details2.ybuilt}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'ybuilt')}
                                 fullWidth
                                 className={`${classes.InputStyling}`}
+                                style={{ color: property_details2.ybuilt ? 'initial' : 'transparent' }}
                             />
                         </FormControl>
                     </Grid>
@@ -192,46 +210,93 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     {/* 9th grid item value not added in data */}
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Public Listing</Typography>
-                        <ToggleButton
-                            value="check"
-                            selected={selected === 1}
-                            onClick={() => handleClick(1)}
-                            color="primary"
-                            style={{
-                                ...(selected === 1 && { backgroundColor: "#5078E1", border: 'none', }),
+                        {/* <ToggleButtonGroup
+                            value={selected}
+                            onChange={handleClick}
+                        >
+                            <ToggleButton
+                                value="Private"
+                                // selected={selected === 1}
+                                // onClick={() => handleClick(1)}
+                                color="primary"
+                                style={{
+                                    ...(selected === 1 && { backgroundColor: "#5078E1", border: 'none', }),
 
-                            }}
-                            className={classes.toggleButtonListing}
+                                }}
+                                className={classes.toggleButtonListing}
+                            >
+                                <Typography variant='h2' style={{ ...(selected === 1 && { color: 'white' }), }}>Private</Typography>
+                            </ToggleButton>
+                            <ToggleButton
+                                value="Public"
+                                // selected={selected === 2}
+                                // onClick={() => handleClick(2)}
+                                color="primary"
+                                style={{
+                                    ...(selected === 2 && { backgroundColor: "#5078E1", border: 'none !important', }),
+                                }}
+                                className={classes.toggleButtonListing}
+                            >
+                                <Typography variant='h2' style={{ ...(selected === 2 && { color: 'white' }), }}>Public</Typography>
+                            </ToggleButton>
+                            <ToggleButton
+                                value="None"
+                                // selected={selected === 3}
+                                // onClick={() => handleClick(3)}
+                                color="primary"
+                                style={{
+                                    // height: '50%',
+                                    // textTransform: 'none',
+                                    ...(selected === 3 && { backgroundColor: "#5078E1", border: 'none', }),
+                                    // borderRadius: '10px',
+                                }}
+                                className={classes.toggleButtonListing}
+                            >
+                                <Typography variant='h2' style={{ ...(selected === 3 && { color: 'white' }), }}>None</Typography>
+                            </ToggleButton>
+                        </ToggleButtonGroup> */}
+                        <ToggleButtonGroup
+                            value={selected}
+                            onChange={handleClick}
                         >
-                            <Typography variant='h2' style={{ ...(selected === 1 && { color: 'white' }), }}>Private</Typography>
-                        </ToggleButton>
-                        <ToggleButton
-                            value="check"
-                            selected={selected === 2}
-                            onClick={() => handleClick(2)}
-                            color="primary"
-                            style={{
-                                ...(selected === 2 && { backgroundColor: "#5078E1", border: 'none !important', }),
-                            }}
-                            className={classes.toggleButtonListing}
-                        >
-                            <Typography variant='h2' style={{ ...(selected === 2 && { color: 'white' }), }}>Public</Typography>
-                        </ToggleButton>
-                        <ToggleButton
-                            value="check"
-                            selected={selected === 3}
-                            onClick={() => handleClick(3)}
-                            color="primary"
-                            style={{
-                                // height: '50%',
-                                // textTransform: 'none',
-                                ...(selected === 3 && { backgroundColor: "#5078E1", border: 'none', }),
-                                // borderRadius: '10px',
-                            }}
-                            className={classes.toggleButtonListing}
-                        >
-                            <Typography variant='h2' style={{ ...(selected === 3 && { color: 'white' }), }}>None</Typography>
-                        </ToggleButton>
+                            <ToggleButton
+                                value="Private"
+                                selected={selected === "Private"}
+                                onClick={() => handleClick("Private")}
+                                color="primary"
+                                style={{
+                                    ...(selected === "Private" && { backgroundColor: "#5078E1", border: 'none' }),
+                                }}
+                                className={classes.toggleButtonListing}
+                            >
+                                <Typography variant='h2' style={{ ...(selected === "Private" && { color: 'white' }) }}>Private</Typography>
+                            </ToggleButton>
+                            <ToggleButton
+                                value="Public"
+                                selected={selected === "Public"}
+                                onClick={() => handleClick("Public")}
+                                color="primary"
+                                style={{
+                                    ...(selected === "Public" && { backgroundColor: "#5078E1", border: 'none !important' }),
+                                }}
+                                className={classes.toggleButtonListing}
+                            >
+                                <Typography variant='h2' style={{ ...(selected === "Public" && { color: 'white' }) }}>Public</Typography>
+                            </ToggleButton>
+                            <ToggleButton
+                                value="None"
+                                selected={selected === "None"}
+                                onClick={() => handleClick("None")}
+                                color="primary"
+                                style={{
+                                    ...(selected === "None" && { backgroundColor: "#5078E1", border: 'none' }),
+                                }}
+                                className={classes.toggleButtonListing}
+                            >
+                                <Typography variant='h2' style={{ ...(selected === "None" && { color: 'white' }) }}>None</Typography>
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+
                     </Grid>
 
 
@@ -239,9 +304,10 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     <Grid item xs={12} sm={6} md={2} style={{ ...(isLgScreen && { position: 'relative', right: '50px', }), }}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Pets Allowed</Typography>
                         <ToggleButton
-                            value="check"
-                            selected={selectedPets}
+                            // value="check"
+                            checked={selectedPets}
                             onClick={() => { setSelectedPets(!selectedPets); }}
+                            onChange={(event) => handlePropertyDetailsChange(event, 'pets')}
                             color="primary"
                             style={{
                                 marginRight: '10px',

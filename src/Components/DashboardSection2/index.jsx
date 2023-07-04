@@ -11,7 +11,7 @@ import Graph3 from "../DashboardSection2Graphs/Graph3.jsx";
 import Graph4 from "../DashboardSection2Graphs/Graph4.jsx";
 import EnlargeIcon from "../../icons/Dashboard/icons8-enlarge-48-1.png";
 
-export default function DashboardSection2({dashData}) {
+export default function DashboardSection2({ dashData }) {
   const classes = DashboardSection2Style();
 
   return (
@@ -22,7 +22,7 @@ export default function DashboardSection2({dashData}) {
         <Card className={classes.GraphCard}>
           <Grid container>
             <Grid item xs={6}>
-              <Typography variant="h2">Property Types</Typography>
+              <Typography variant="h2"  className={classes.GraphTitle}>Property Types</Typography>
             </Grid>
             <Grid
               item
@@ -32,17 +32,17 @@ export default function DashboardSection2({dashData}) {
               <img src={EnlargeIcon} alt="enlarge icon" />
             </Grid>
           </Grid>
-          <Graph1 dashData={dashData.charts}/>
+          <Graph1 dashData={dashData.charts} />
         </Card>
       </Grid>
 
 
-        {/* Graph 2  */}
+      {/* Graph 2  */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <Card className={classes.GraphCard}>
           <Grid container sx={{ marginBottom: "20px" }}>
             <Grid item xs={6}>
-              <Typography variant="h2">Unit Category</Typography>
+              <Typography variant="h2" className={classes.GraphTitle}>Unit Category</Typography>
             </Grid>
             <Grid
               item
@@ -52,17 +52,19 @@ export default function DashboardSection2({dashData}) {
               <img src={EnlargeIcon} alt="enlarge icon" />
             </Grid>
           </Grid>
-          <Graph2 />
+          {/* <Box sx={{ height: "100%", width:'95%' }}> */}
+            <Graph2 />
+          {/* </Box> */}
         </Card>
       </Grid>
 
 
-        {/* Graph 3  */}
+      {/* Graph 3  */}
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <Card className={classes.GraphCard}>
           <Grid container sx={{ marginBottom: "20px" }}>
             <Grid item xs={10}>
-              <Typography variant="h2">Vacant Units By Property</Typography>
+              <Typography variant="h2"  className={classes.GraphTitle}>Vacant Units By Property</Typography>
             </Grid>
             <Grid
               item
@@ -82,7 +84,7 @@ export default function DashboardSection2({dashData}) {
         <Card className={classes.GraphCard}>
           <Grid container sx={{ marginBottom: "20px" }}>
             <Grid item xs={6}>
-              <Typography variant="h2">Total Area</Typography>
+              <Typography variant="h2"  className={classes.GraphTitle}>Total Area</Typography>
             </Grid>
             <Grid
               item
@@ -92,7 +94,7 @@ export default function DashboardSection2({dashData}) {
               <img src={EnlargeIcon} alt="enlarge icon" />
             </Grid>
           </Grid>
-          <Graph4 dashData={dashData.charts}/>
+          <Graph4 dashData={dashData.charts} />
         </Card>
       </Grid>
     </Grid>

@@ -47,10 +47,18 @@ export const DashboardSection3_SS_1_Style = makeStyles((theme) => ({
             columnGap: '25px !important',
         },
 
+      
+
     },
 
 
     generalDataGrid: {
+        '& .MuiGrid-root': {
+            paddingLeft: '0px !important',
+        },
+    },
+
+    MaintenanceDataGrid: {
         '& .MuiGrid-root': {
             paddingLeft: '0px !important',
         },

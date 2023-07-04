@@ -34,22 +34,29 @@ const data = [
 
 export default function Graph3() {
     return (
-        <ResponsiveContainer width={"100%"} height={'75%'} >
+        <ResponsiveContainer width={"100%"} height={'75%'}>
             <BarChart
                 data={data}
                 layout='vertical'
+                style={{ position: 'relative', right: '10px', }}
             >
-                <XAxis type="number" style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B', }}>
-                <Label value="No of vacants" offset={-4} position="insideBottom" />
+                <XAxis type="number" style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B' }}>
+                    {/* <Label
+                        value="No of vacants"
+                        offset={-4}
+                        position="insideBottom"
+                        dy={20}
+                    /> */}
                 </XAxis>
-               
-                <YAxis type="category" dataKey="name"   style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B', }}>
-                {/* <Label value="No of vacants" angle= {-90} /> */}
+
+                <YAxis type="category" dataKey="name" style={{ fontFamily: 'Nunito Sans', fontSize: '12px', fill: '#4E5A6B' }}>
+                    {/* <Label value="No of vacants" angle={-90} /> */}
                 </YAxis>
                 <Tooltip />
-             
+
                 <Bar dataKey="uv" fill="#58D0E0" />
             </BarChart>
         </ResponsiveContainer>
+
     );
 }

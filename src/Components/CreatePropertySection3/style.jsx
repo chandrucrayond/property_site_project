@@ -66,5 +66,12 @@ export const CreatePropertySection3Style = makeStyles((theme) => ({
         borderRadius: '10px !important',
         border: '1px solid #bdbdbd !important',
     },
+    inputLabel: {
+        fontSize: '18px !important',
+        fontWeight: '500 !important',
+        letterSpacing: 'inherit !important',
+        color: '#757575 !important',
+        opacity: '0.7 !important',
+     },
     
 }));

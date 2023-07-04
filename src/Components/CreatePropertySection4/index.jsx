@@ -11,12 +11,12 @@ import { InputBase } from '@mui/material';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { Loader } from '@googlemaps/js-api-loader';
 
- const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
         defaultZoom={8}
         defaultCenter={{ lat: 12.949060, lng: 80.254333 }}
     >
-         {props.isMarkerShown && <Marker position={{ lat: 12.949060, lng: 80.254333 }} />}
+        {props.isMarkerShown && <Marker position={{ lat: 12.949060, lng: 80.254333 }} />}
     </GoogleMap>
 ));
 
@@ -44,13 +44,13 @@ const CreatePropertySection4 = ({ data, setData }) => {
                         <MyMapComponent
                             isMarkerShown
                             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YkaEhzqTBfhFWKDNs1QXjQtTiFSkUJ4&v=3.exp&libraries=geometry,drawing,places"
-                            loadingElement={<div style={{ height: `100%`, borderRadius:'10px'}} />}
-                            containerElement={<div style={{borderRadius:'10px',   minHeight: `230px`, maxHeight: '100%',height: `100%`, }} />}
-                            mapElement={<div style={{  minHeight: `230px`, maxHeight: '100%',height: `100%`, borderRadius:'10px' }} />}
+                            loadingElement={<div style={{ height: `100%`, borderRadius: '10px' }} />}
+                            containerElement={<div style={{ borderRadius: '10px', minHeight: `230px`, maxHeight: '100%', height: `100%`, }} />}
+                            mapElement={<div style={{ minHeight: `230px`, maxHeight: '100%', height: `100%`, borderRadius: '10px' }} />}
                             onLoad={props => {
                                 // Perform any necessary actions after the Google Maps API is loaded
                                 console.log('Google Maps API loaded:', props);
-                              }}
+                            }}
                         />
                     </Grid>
 
@@ -113,7 +113,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         onChange={(event) => handleAddressDetailsChange(event, 'landmark')}
                                         fullWidth
                                         className={`${classes.InputStyling}`}
-                                   />
+                                    />
                                 </FormControl>
                             </Grid>
 
@@ -122,6 +122,9 @@ const CreatePropertySection4 = ({ data, setData }) => {
                             <Grid item xs={12} sm={6} md={3}>
                                 <Typography variant='h5' style={{ marginBottom: '10px', }}>Area</Typography>
                                 <FormControl fullWidth>
+                                    <InputLabel shrink={!address_details.area} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                        {address_details.area ? '' : 'Area'}
+                                    </InputLabel>
                                     <Select
                                         value={address_details.area}
                                         onChange={(event) => handleAddressDetailsChange(event, 'area')}
@@ -137,10 +140,13 @@ const CreatePropertySection4 = ({ data, setData }) => {
 
 
 
-                               {/* 7th grid item */}
-                               <Grid item xs={12} sm={6} md={3}>
+                            {/* 7th grid item */}
+                            <Grid item xs={12} sm={6} md={3}>
                                 <Typography variant='h5' style={{ marginBottom: '10px', }}>City</Typography>
                                 <FormControl fullWidth>
+                                    <InputLabel shrink={!address_details.city} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                        {address_details.city ? '' : 'City'}
+                                    </InputLabel>
                                     <Select
                                         value={address_details.city}
                                         onChange={(event) => handleAddressDetailsChange(event, 'city')}
@@ -156,10 +162,13 @@ const CreatePropertySection4 = ({ data, setData }) => {
 
 
 
-                             {/* 8th grid item */}
-                             <Grid item xs={12} sm={6} md={3}>
+                            {/* 8th grid item */}
+                            <Grid item xs={12} sm={6} md={3}>
                                 <Typography variant='h5' style={{ marginBottom: '10px', }}>State</Typography>
                                 <FormControl fullWidth>
+                                <InputLabel shrink={!address_details.state} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                        {address_details.state ? '' : 'State'}
+                                    </InputLabel>
                                     <Select
                                         value={address_details.state}
                                         onChange={(event) => handleAddressDetailsChange(event, 'state')}
@@ -174,10 +183,13 @@ const CreatePropertySection4 = ({ data, setData }) => {
                             </Grid>
 
 
-                             {/* 9th grid item */}
-                             <Grid item xs={12} sm={6} md={3}>
+                            {/* 9th grid item */}
+                            <Grid item xs={12} sm={6} md={3}>
                                 <Typography variant='h5' style={{ marginBottom: '10px', }}>Country</Typography>
                                 <FormControl fullWidth>
+                                <InputLabel shrink={!address_details.country} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
+                                        {address_details.country ? '' : 'Country'}
+                                    </InputLabel>
                                     <Select
                                         value={address_details.country}
                                         onChange={(event) => handleAddressDetailsChange(event, 'country')}
@@ -192,8 +204,8 @@ const CreatePropertySection4 = ({ data, setData }) => {
                             </Grid>
 
 
-                             {/* 10th grid item */}
-                             <Grid item xs={12} sm={6} md={2}>
+                            {/* 10th grid item */}
+                            <Grid item xs={12} sm={6} md={2}>
                                 <Typography variant='h5' style={{ marginBottom: '10px', }}>Pincode</Typography>
                                 <FormControl fullWidth>
                                     <InputBase

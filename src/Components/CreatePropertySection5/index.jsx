@@ -44,6 +44,7 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                         <Select
                                             value={contact_details.stdcode}
                                             onChange={(event) => handleContactDetailsChange(event, 'stdcode')}
+                                            
                                         >
                                             <MenuItem value="044"><Typography variant="h2">044</Typography></MenuItem>
                                             <MenuItem value="043"><Typography variant="h2">043</Typography></MenuItem>

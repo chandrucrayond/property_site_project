@@ -8,7 +8,7 @@ export const SharedLayoutStyle = makeStyles((theme) => ({
     width: "calc(100% - 100px) !important",
     marginLeft: "80px !important",
     marginRight: "20px !important",
-    marginBottom: "50px !important",
+    marginBottom: "15px !important",
   },
 
   outletStyleTablet: {
