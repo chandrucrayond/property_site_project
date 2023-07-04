@@ -56,6 +56,15 @@ export const CreatePropertySection2Style = makeStyles((theme) => ({
         letterSpacing: 'inherit !important',
         color: '#757575 !important',
         opacity: '0.7 !important',
+     },
+
+     helperText: {
+        position: 'absolute !important',
+        top: '37px !important',
+        // zIndex: '1000 !important',
+        left: '2px !important',
+        marginLeft: '0px !important',
+        color: 'Red !important',
      }
 
      

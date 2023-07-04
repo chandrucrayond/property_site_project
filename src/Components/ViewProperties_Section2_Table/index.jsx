@@ -23,8 +23,8 @@ function createData(pid, pname, cname, location, rtype, ptype, status) {
 
 
 function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
-    const[openPopover,setOpenPopover]=React.useState(null);
-    const[currentStatus, setCurrentStatus] = React.useState('');
+    const [openPopover, setOpenPopover] = React.useState(null);
+    const [currentStatus, setCurrentStatus] = React.useState('');
     const classes = ViewProperties_Section2_Table_Style();
     const { propertiesList, setPropertiesList } = React.useContext(DataContext);
 
@@ -68,24 +68,24 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
         console.log("Index is " + index + ", value is ");
         console.log(propertiesList[index]);
         setOpenPopover(index);
-        setCurrentStatus(propertiesList[index].property_details.status==='Active' ?  'Inactive' : 'Active');
+        setCurrentStatus(propertiesList[index].property_details.status === 'Active' ? 'Inactive' : 'Active');
         setAnchorElement(e.currentTarget); // Pass a function as the anchorEl prop
     };
 
-   const handleEditClick = () => {
-        console.log(openPopover+" Edit clicked");
+    const handleEditClick = () => {
+        console.log(openPopover + " Edit clicked");
         navigate("/editProperty/" + openPopover);
     }
 
     const handleActiveClick = () => {
-        console.log(openPopover+" Active clicked");
+        console.log(openPopover + " Active clicked");
         propertiesList[openPopover].property_details.status = currentStatus;
         handleClose();
     }
 
     const handleDeleteClick = () => {
-        console.log(openPopover+" Delete clicked");
-        propertiesList.splice(openPopover,1);
+        console.log(openPopover + " Delete clicked");
+        propertiesList.splice(openPopover, 1);
         handleClose();
     }
 
@@ -161,22 +161,24 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
                                     </Typography>
                                 </TableCell>
 
-                                <TableCell className={`${classes.statusContainer}`}>
-                                    <Typography
-                                        variant="h2"
-                                        className={`${classes.tableBody} ${row.status === 'Active' ? classes.activeStatus : classes.inactiveStatus}`}
-                                    >
-                                        {row.status}
-                                    </Typography>
-                                    <Box
-                                        onClick={(e) => {
-                                            handleEditIconClick(row, e);
-                                        }}
-                                        className={`${classes.editIconContainer}`}
-                                        onMouseOver={() => handleMouseOver(index)} // Pass the index to the event handlers
-                                        onMouseOut={() => handleMouseOut(index)} // Pass the index to the event handlers
-                                    >
-                                        {isRowHovered[index] ? <EditIconHovered /> : <EditIcon />}
+                                <TableCell >
+                                    <Box className={`${classes.statusContainer}`}>
+                                        <Typography
+                                            variant="h2"
+                                            className={`${classes.tableBody} ${row.status === 'Active' ? classes.activeStatus : classes.inactiveStatus}`}
+                                        >
+                                            {row.status}
+                                        </Typography>
+                                        <Box
+                                            onClick={(e) => {
+                                                handleEditIconClick(row, e);
+                                            }}
+                                            className={`${classes.editIconContainer}`}
+                                            onMouseOver={() => handleMouseOver(index)} // Pass the index to the event handlers
+                                            onMouseOut={() => handleMouseOut(index)} // Pass the index to the event handlers
+                                        >
+                                            {isRowHovered[index] ? <EditIconHovered /> : <EditIcon />}
+                                        </Box>
                                     </Box>
                                 </TableCell>
 

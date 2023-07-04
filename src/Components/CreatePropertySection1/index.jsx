@@ -4,10 +4,10 @@ import { CreatePropertySection1Style } from "./style";
 import UploadImage from "../../icons/Create-Property/UploadImage.jsx";
 import RoundedImage from "../../icons/Create-Property/RoundedImage";
 
-const CreatePropertySection1 = ({ data, setFormData }) => {
+const CreatePropertySection1 = ({ data, setFormData, mode, handleImageChange }) => {
     const classes = CreatePropertySection1Style();
-    const { property_details } = data;
-    const [selectedImage, setSelectedImage] = React.useState(property_details.image);
+    const {  property_details2 } = data;
+    const [selectedImage, setSelectedImage] = React.useState((mode === "edit") ? property_details2.image : '');
 
     const fileInputRef = React.useRef(null);
 
@@ -18,15 +18,20 @@ const CreatePropertySection1 = ({ data, setFormData }) => {
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         setSelectedImage(URL.createObjectURL(file));
+        if (mode === "edit") {
+            handleImageChange(URL.createObjectURL(file));
+        }
+        else{
         handleImageAdd(URL.createObjectURL(file));
+        }
     };
 
-    const handleImageAdd = (value) => {
+    const handleImageAdd = (fileURL) => {
         setFormData((prevState) => ({
             ...prevState,
-            property_details: {
-                ...prevState.property_details,
-                image: value,
+            property_details2: {
+                ...prevState.property_details2,
+                image: fileURL,
             },
         }));
     };
@@ -77,3 +82,4 @@ const CreatePropertySection1 = ({ data, setFormData }) => {
 }
 
 export default CreatePropertySection1;
+

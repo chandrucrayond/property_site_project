@@ -50,8 +50,8 @@ export default function IndividualProperty() {
                             <Grid container spacing={2}>
                                 <Grid item xs={12} md={1.75} className={classes.ImageSection}>
                                     {/* <PropImage /> */}
-                                    {property.property_details?.image ? (<img
-                                        src={property.property_details.image}
+                                    {property.property_details2?.image ? (<img
+                                        src={property.property_details2.image}
                                         alt="Uploaded"
                                         width={120}
                                         height={120}
@@ -176,7 +176,7 @@ export default function IndividualProperty() {
 
                                 <Grid item xs={6} md={1.714}>
                                     <Typography variant='h5' className={classes.propDetailsSubHeading}>Pets Allowed</Typography>
-                                    <Typography variant='h2' style={{ textTransform: 'capitalize' }}>{property.property_details2?.pets}</Typography>
+                                    <Typography variant='h2' style={{ textTransform: 'capitalize' }}>{property.property_details2?.pets.toString()}</Typography>
                                 </Grid>
 
                             </Grid>

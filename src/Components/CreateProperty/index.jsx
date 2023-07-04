@@ -26,7 +26,7 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
   let navigate = useNavigate();
 
 
-  const { propertiesList, setPropertiesList } = useContext(DataContext);
+  const { propertiesList, setPropertiesList, errorList, setErrorList } = useContext(DataContext);
 
   function handleClickingToggle() {
     navigate("/dashboard");
@@ -36,56 +36,148 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
     setOpen(false);
   };
 
+
+  React.useEffect(() => {
+    console.log(errorList?.property_details?.cname);
+  }, [errorList?.property_details?.cname]);
+
+  React.useEffect(() => {
+    console.log(errorList?.property_details?.pname);
+  }, [errorList?.property_details?.pname]);
+
+
+  function handleCompanyName_Validation() {
+    const cname = formData?.property_details?.cname.toString();
+
+    if (cname === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details: {
+          ...prevData.property_details,
+          cname: "Company name is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+
+  function handlePropertyName_Validation() {
+    const pname = formData?.property_details?.pname.toString();
+
+    if (pname === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details: {
+          ...prevData.property_details,
+          pname: "Property name is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function handlePaymentPeriod_Validation() {
+    const pperiod = formData?.property_details?.pperiod.toString();
+
+    if (pperiod === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details: {
+          ...prevData.property_details,
+          pperiod: "Payment period is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleStatus_Validation() {
+    const status = formData?.property_details?.status.toString();
+
+    if (status === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details: {
+          ...prevData.property_details,
+          status: "Status is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
   function handleClickingCreate() {
-    setOpen(true);
-    setPropertiesList((prevData) => [...prevData, formData])
-    setFormData({
-      property_details: {
-        cname: "",
-        pname: "",
-        pperiod: "",
-        status: "",
-        pdesc: "",
-      },
-  
-      property_details2: {
-        ptype: "",
-        ppurp: "",
-        rtype: "",
-        munit: "",
-        carea: "",
-        tarea: "",
-        ybuilt: "",
-        hdate: "",
-        plist: "",
-        pets: "false",
-        image: "",
-      },
-  
-      address_details: {
-        lang: "",
-        lat: "",
-        dno: "",
-        aline1: "",
-        aline2: "",
-        landmark: "",
-        area: "",
-        city: "",
-        state: "",
-        country: "",
-        pincode: "",
-      },
-  
-      contact_details: {
-        bphone: "",
-        stdcode: "044",
-        mphone: "",
-        ccode: "+91",
-        website: "",
-        email: "",
-      },
-    });
-    navigate("/viewProperties");
+    const cname = handleCompanyName_Validation();
+    const pname = handlePropertyName_Validation();
+    const pperiod = handlePaymentPeriod_Validation();
+    const status = handleStatus_Validation();
+    if ( cname && pname && pperiod && status) {
+      setOpen(true);
+      setPropertiesList((prevData) => [...prevData, formData])
+      setFormData({
+        property_details: {
+          cname: "",
+          pname: "",
+          pperiod: "",
+          status: "",
+          pdesc: "",
+        },
+
+        property_details2: {
+          ptype: "",
+          ppurp: "",
+          rtype: "",
+          munit: "",
+          carea: "",
+          tarea: "",
+          ybuilt: "",
+          hdate: "",
+          plist: "",
+          pets: "false",
+          image: "",
+        },
+
+        address_details: {
+          lang: "",
+          lat: "",
+          dno: "",
+          aline1: "",
+          aline2: "",
+          landmark: "",
+          area: "",
+          city: "",
+          state: "",
+          country: "",
+          pincode: "",
+        },
+
+        contact_details: {
+          bphone: "",
+          stdcode: "044",
+          mphone: "",
+          ccode: "+91",
+          website: "",
+          email: "",
+        },
+      });
+      navigate("/viewProperties");
+    }
   }
 
 
@@ -104,16 +196,16 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
         <Grid container spacing={2}>
 
           <Grid item xs={12} md={2}>
-            <CreateCard> <CreatePropertySection1  data={formData} setFormData={setFormData} /></CreateCard>
+            <CreateCard> <CreatePropertySection1 data={formData} setFormData={setFormData} mode={"create"} /></CreateCard>
           </Grid>
 
           <Grid item xs={12} md={10}>
-            <CreateCard> <CreatePropertySection2 data={formData} setData={handleChange} setFormData={setFormData}/></CreateCard>
+            <CreateCard> <CreatePropertySection2 data={formData} setData={handleChange} mode={"create"} setFormData={setFormData} /></CreateCard>
           </Grid>
 
 
           <Grid item xs={12} >
-            <NormalCard><CreatePropertySection3 data={formData} setData={handleChange} /></NormalCard>
+            <NormalCard><CreatePropertySection3 data={formData} setData={handleChange} mode={"create"} setFormData={setFormData} /></NormalCard>
           </Grid>
 
           <Grid item xs={12} >
@@ -129,7 +221,7 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
           <Grid item xs={12} >
             <CreatePropertySectionEnd type="Create" data={formData} setData={handleChange} onCancel={handleClickingToggle} onCreate={handleClickingCreate} />
           </Grid>
-          
+
         </Grid>
 
       </div >

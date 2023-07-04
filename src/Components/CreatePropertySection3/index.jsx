@@ -11,12 +11,15 @@ import { InputBase } from '@mui/material';
 import { ToggleButton, ToggleButtonGroup, } from '@mui/material';
 import theme from "../ThemeProvider";
 import TickMark from "../../icons/Create-Property/TickMark";
+import { useContext } from 'react';
+import { DataContext } from "../../Context";
 
 
-const CreatePropertySection3 = ({ data, setData }) => {
+const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublicListChange, handlePetsAllowed }) => {
 
     const classes = CreatePropertySection3Style();
     const { property_details2 } = data;
+    const { propertiesList, setPropertiesList } = useContext(DataContext);
 
     const handlePropertyDetailsChange = (event, element) => {
         setData(event, 'property_details2', element);
@@ -28,14 +31,44 @@ const CreatePropertySection3 = ({ data, setData }) => {
     }, [property_details2.munit]);
 
 
-    const [selected, setSelected] = React.useState("None");
+    const [selected, setSelected] = React.useState(property_details2.plist);
 
-    const [selectedPets, setSelectedPets] = React.useState("false");
     const handleClick = (event, newSelected) => {
         setSelected(newSelected);
         console.log(newSelected);
-      };
-      
+        if (mode === "edit") {
+            handlePublicListChange(newSelected);
+        }
+        else {
+            setFormData((prevState) => ({
+                ...prevState,
+                property_details2: {
+                    ...prevState.property_details2,
+                    plist: newSelected,
+                },
+            }));
+        }
+    };
+
+
+    const [selectedPets, setSelectedPets] = React.useState((mode === "edit") ? property_details2.pets : false);
+
+    const handlePetsClick = (petSelected) => {
+        console.log(petSelected);
+        if (mode === "edit") {
+            handlePetsAllowed(petSelected);
+        }
+        else {
+            setFormData((prevState) => ({
+                ...prevState,
+                property_details2: {
+                    ...prevState.property_details2,
+                    pets: petSelected,
+                },
+            }));
+        }
+    };
+
 
     const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
     return (
@@ -210,59 +243,13 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     {/* 9th grid item value not added in data */}
                     <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Public Listing</Typography>
-                        {/* <ToggleButtonGroup
-                            value={selected}
-                            onChange={handleClick}
-                        >
-                            <ToggleButton
-                                value="Private"
-                                // selected={selected === 1}
-                                // onClick={() => handleClick(1)}
-                                color="primary"
-                                style={{
-                                    ...(selected === 1 && { backgroundColor: "#5078E1", border: 'none', }),
-
-                                }}
-                                className={classes.toggleButtonListing}
-                            >
-                                <Typography variant='h2' style={{ ...(selected === 1 && { color: 'white' }), }}>Private</Typography>
-                            </ToggleButton>
-                            <ToggleButton
-                                value="Public"
-                                // selected={selected === 2}
-                                // onClick={() => handleClick(2)}
-                                color="primary"
-                                style={{
-                                    ...(selected === 2 && { backgroundColor: "#5078E1", border: 'none !important', }),
-                                }}
-                                className={classes.toggleButtonListing}
-                            >
-                                <Typography variant='h2' style={{ ...(selected === 2 && { color: 'white' }), }}>Public</Typography>
-                            </ToggleButton>
-                            <ToggleButton
-                                value="None"
-                                // selected={selected === 3}
-                                // onClick={() => handleClick(3)}
-                                color="primary"
-                                style={{
-                                    // height: '50%',
-                                    // textTransform: 'none',
-                                    ...(selected === 3 && { backgroundColor: "#5078E1", border: 'none', }),
-                                    // borderRadius: '10px',
-                                }}
-                                className={classes.toggleButtonListing}
-                            >
-                                <Typography variant='h2' style={{ ...(selected === 3 && { color: 'white' }), }}>None</Typography>
-                            </ToggleButton>
-                        </ToggleButtonGroup> */}
                         <ToggleButtonGroup
                             value={selected}
-                            onChange={handleClick}
                         >
                             <ToggleButton
                                 value="Private"
-                                selected={selected === "Private"}
-                                onClick={() => handleClick("Private")}
+                                // selected={selected === "Private"}
+                                onClick={(event) => handleClick(event, "Private")}
                                 color="primary"
                                 style={{
                                     ...(selected === "Private" && { backgroundColor: "#5078E1", border: 'none' }),
@@ -273,8 +260,8 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             </ToggleButton>
                             <ToggleButton
                                 value="Public"
-                                selected={selected === "Public"}
-                                onClick={() => handleClick("Public")}
+                                // selected={selected === "Public"}
+                                onClick={(event) => handleClick(event, "Public")}
                                 color="primary"
                                 style={{
                                     ...(selected === "Public" && { backgroundColor: "#5078E1", border: 'none !important' }),
@@ -285,8 +272,8 @@ const CreatePropertySection3 = ({ data, setData }) => {
                             </ToggleButton>
                             <ToggleButton
                                 value="None"
-                                selected={selected === "None"}
-                                onClick={() => handleClick("None")}
+                                // selected={selected === "None"}
+                                onClick={(event) => handleClick(event, "None")}
                                 color="primary"
                                 style={{
                                     ...(selected === "None" && { backgroundColor: "#5078E1", border: 'none' }),
@@ -303,11 +290,14 @@ const CreatePropertySection3 = ({ data, setData }) => {
                     {/* 10th grid item value not added in data */}
                     <Grid item xs={12} sm={6} md={2} style={{ ...(isLgScreen && { position: 'relative', right: '50px', }), }}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Pets Allowed</Typography>
+
                         <ToggleButton
-                            // value="check"
-                            checked={selectedPets}
-                            onClick={() => { setSelectedPets(!selectedPets); }}
-                            onChange={(event) => handlePropertyDetailsChange(event, 'pets')}
+                            value={selectedPets}
+                            selected={selectedPets}
+                            onChange={() => {
+                                setSelectedPets(!selectedPets);
+                                handlePetsClick(!selectedPets);
+                            }}
                             color="primary"
                             style={{
                                 marginRight: '10px',
@@ -320,8 +310,8 @@ const CreatePropertySection3 = ({ data, setData }) => {
                                 position: 'relative',
                                 top: '5px',
                             }}
-
                         >
+
                             <TickMark style={selectedPets && { color: '#FFFFFF' }} />
                         </ToggleButton>
                     </Grid>

@@ -16,7 +16,7 @@ import { DataContext } from "../../Context";
 
 
 
-const EditProperty = ({setFormData}) => {
+const EditProperty = ({ setFormData }) => {
   // debugger
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
@@ -55,74 +55,115 @@ const EditProperty = ({setFormData}) => {
     }));
   };
 
-  function handleClickingUpdate() {
-    setOpen(true);
-    const index = parseInt(propertyId);
-    console.log("Property id is " + propertyId);
-    console.log("Index is " + index);
-   
-    if(propertiesList[index]){
-    // propertyToUpdate.property_details.pname = 'New Property Name';
-    propertiesList[index] = property;
-    setPropertiesList(propertiesList);
-    navigate("/viewProperties");
-    console.log("Property Updated Successfully");
-    console.log(propertiesList);
-    }
-  
+  const handleImageChange = (newSelected) => {
+    setProperty((prevState) => ({
+      ...prevState,
+      property_details2: {
+        ...prevState.property_details2,
+        image: newSelected,
+      },
+    }));
   }
-  return (
-    <>
 
-      <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
-        <IconButton className={classes.toggleIcon} onClick={handleClickingToggle}> <ChevronLeftIcon /></IconButton> <Typography variant="h2" color={"black"} className={classes.togglePara}>Edit Property </Typography>
-      </AppBar>
+  const handlePropertyDescriptionChange = (newSelected) => {
+    setProperty((prevState) => ({
+      ...prevState,
+      property_details: {
+        ...prevState.property_details,
+        pdesc: newSelected,
+      },
+    }));
+  }
 
-      <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} autoHideDuration={1000} open={open} onClose={handleClose}>
-        <Alert variant="filled" onClose={handleClose} severity="success" sx={{ width: '100%', backgroundColor: '#5AC782', color: '#FFFFFF' }}>
-          Property Created Successfully
-        </Alert>
-      </Snackbar>
+  const handlePublicListChange = (newSelected) => {
+    setProperty((prevState) => ({
+      ...prevState,
+      property_details2: {
+        ...prevState.property_details2,
+        plist: newSelected,
+      },
+    }));
+  }
+
+  const handlePetsAllowed = (newSelected) => {
+    setProperty((prevState) => ({
+      ...prevState,
+      property_details2: {
+        ...prevState.property_details2,
+        pets: newSelected,
+      },
+    }));
+    
+  }
+
+    function handleClickingUpdate() {
+      setOpen(true);
+      const index = parseInt(propertyId);
+      console.log("Property id is " + propertyId);
+      console.log("Index is " + index);
+
+      if (propertiesList[index]) {
+        // propertyToUpdate.property_details.pname = 'New Property Name';
+        propertiesList[index] = property;
+        setPropertiesList(propertiesList);
+        navigate("/viewProperties");
+        console.log("Property Updated Successfully");
+        console.log(propertiesList);
+      }
+
+    }
+    return (
+      <>
+
+        <AppBar className={`${classes.appBar} ${isMdScreen ? classes.appBarTablet : ''} ${isSmScreen ? classes.appBarMobile : ''}`}>
+          <IconButton className={classes.toggleIcon} onClick={handleClickingToggle}> <ChevronLeftIcon /></IconButton> <Typography variant="h2" color={"black"} className={classes.togglePara}>Edit Property </Typography>
+        </AppBar>
+
+        <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} autoHideDuration={1000} open={open} onClose={handleClose}>
+          <Alert variant="filled" onClose={handleClose} severity="success" sx={{ width: '100%', backgroundColor: '#5AC782', color: '#FFFFFF' }}>
+            Property Created Successfully
+          </Alert>
+        </Snackbar>
 
 
-      <div className={`${classes.createContainer}
+        <div className={`${classes.createContainer}
        ${isMdScreen ? classes.createContainerTablet : ''} 
         ${isSmScreen ? classes.createContainerMobile : ''}`} >
 
-        {property && (
-          <Grid container spacing={2}>
+          {property && (
+            <Grid container spacing={2}>
 
-            <Grid item xs={12} md={2}>
-              <CreateCard> <CreatePropertySection1 data={property} setFormData={setFormData} /></CreateCard>
+              <Grid item xs={12} md={2}>
+                <CreateCard> <CreatePropertySection1 data={property} setFormData={setFormData} mode={"edit"} handleImageChange={handleImageChange}/></CreateCard>
+              </Grid>
+
+              <Grid item xs={12} md={10}>
+                <CreateCard> <CreatePropertySection2 data={property} setData={handleChange} mode={"edit"} setFormData={setFormData}  handlePropertyDescriptionChange={handlePropertyDescriptionChange}/></CreateCard>
+              </Grid>
+
+              <Grid item xs={12} >
+                <NormalCard><CreatePropertySection3 data={property} setData={handleChange} mode={"edit"} setFormData={setFormData} handlePublicListChange={handlePublicListChange} handlePetsAllowed={handlePetsAllowed}/></NormalCard>
+              </Grid>
+
+              <Grid item xs={12} >
+                <NormalCard><CreatePropertySection4 data={property} setData={handleChange} /></NormalCard>
+              </Grid>
+
+
+              <Grid item xs={12} >
+                <NormalCard><CreatePropertySection5 data={property} setData={handleChange} /></NormalCard>
+              </Grid>
+
+              <Grid item xs={12} >
+                <CreatePropertySectionEnd type="Update" data={property} setData={handleChange} onCancel={handleClickingToggle} onCreate={handleClickingUpdate} />
+              </Grid>
             </Grid>
+          )}
 
-            <Grid item xs={12} md={10}>
-              <CreateCard> <CreatePropertySection2 data={property} setData={handleChange} setFormData={setFormData} createdQuillValue={property?.properties_details?.pdesc}/></CreateCard>
-            </Grid>
-
-            <Grid item xs={12} >
-              <NormalCard><CreatePropertySection3 data={property} setData={handleChange} /></NormalCard>
-            </Grid>
-
-            <Grid item xs={12} >
-              <NormalCard><CreatePropertySection4 data={property} setData={handleChange} /></NormalCard>
-            </Grid>
+        </div>
+      </>
+    );
+  };
 
 
-            <Grid item xs={12} >
-              <NormalCard><CreatePropertySection5 data={property} setData={handleChange} /></NormalCard>
-            </Grid>
-
-            <Grid item xs={12} >
-              <CreatePropertySectionEnd type="Update" data={property} setData={handleChange} onCancel={handleClickingToggle} onCreate={handleClickingUpdate} />
-            </Grid>
-          </Grid>
-        )}
-
-      </div>
-    </>
-  );
-};
-
-
-export default EditProperty;
+  export default EditProperty;
