@@ -4,6 +4,11 @@ export const DashboardStyle = makeStyles((theme) => ({
     dashboardContainer: {
         backgroundColor: '#F5F7FA !important',
     },
+
+    dashboardContainerMobile: {
+        position: 'relative !important',
+        bottom: '15px !important',
+    },
     
     fabIcon: {
         position: 'fixed !important',

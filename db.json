@@ -168,7 +168,13 @@
             "propertyName": "Marian",
             "totalUnits": 78,
             "occupiedUnits": 19
-        }
+        },
+        {
+          "propertyId": "Prop 007",
+          "propertyName": "Phoenix",
+          "totalUnits": 45,
+          "occupiedUnits": 20
+      }
     ]
   
    
