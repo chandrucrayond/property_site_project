@@ -222,9 +222,6 @@ function ViewProperties_Section2_Table({ searchQuery, setSearchQuery }) {
                         </ListItemButton>
                     </ListItem>
                 </List>
-
-
-
             </Popover>
         </div>
 

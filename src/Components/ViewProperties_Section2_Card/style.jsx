@@ -40,4 +40,36 @@ export const ViewProperties_Section2_Card_Style = makeStyles((theme) => ({
     plotType: {
         backgroundColor: '#FF4B4B !important',
     },
+
+    popoverContainer: {
+        '& .MuiPaper-elevation': {
+            boxShadow: '0px 8px 24px #0717411F !important',
+          borderRadius: '12px !important',
+        },
+    },      
+
+    statusContainer: {
+        display: 'grid !important',
+        gridTemplateColumns: '1fr 10px !important',
+        alignItems: 'center !important',
+    },
+
+    editIconContainer: {
+        display: 'flex !important',
+        justifyContent: 'flex-end !important',
+    },
+
+    listItemButton: {
+        padding: '6px 30px !important',
+        paddingLeft: '10px !important',
+    },
+
+    dividerInEdit: {
+        width: '75% !important',
+        color: '#E4E8EE !important',
+        margin: '0 auto !important'
+    },
+    editListText: {
+        color: '#071741 !important'
+    },
 }));

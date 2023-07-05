@@ -14,7 +14,7 @@ export const ViewPropertiesStyle = makeStyles((theme) => ({
     gridTemplateRows: 'auto !important',
     backgroundColor: '#FFFFFF !important',
     paddingLeft: '90px !important',
-    boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.2) !important',
+    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.2) !important',
   },
 
   appBarTablet: {
@@ -64,12 +64,15 @@ export const ViewPropertiesStyle = makeStyles((theme) => ({
   createContainerTablet: {
     position: 'relative',
     top: '0px !important',
-    marginBottom: '10px !important',
+    marginBottom: '15px !important',
+    marginTop: '15px !important',
   },
 
   createContainerMobile: {
     position: 'relative',
     top: '0px !important',
+    marginBottom: '15px !important',
+    marginTop: '15px !important',
   },
 
   gridSection: {

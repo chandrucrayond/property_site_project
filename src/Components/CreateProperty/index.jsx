@@ -160,60 +160,6 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
     })
   }, []);
 
-  //setting validation function if the create button is clicked for the first time
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handlePropertyName_Validation()
-  //   }
-  // }, [formData?.property_details?.pname]);
-
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handleImage_Validation()
-  //   }
-  // }, [formData?.property_details2?.image]);
-
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handleCarpetArea_Validation()
-  //   }
-  // }, [formData?.property_details2?.carea]);
-
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handleTotalArea_Validation()
-  //   }
-  // }, [formData?.property_details2?.tarea]);
-
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handlePincode_Validation()
-  //   }
-  // }, [formData?.address_details?.pincode]);
-
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handlePhone_Validation()
-  //   }
-  // }, [formData?.contact_details?.bphone]);
-
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handleMobile_Validation()
-  //   }
-  // }, [formData?.contact_details?.mphone]);
-
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handleWebsite_Validation()
-  //   }
-  // }, [formData?.contact_details?.website]);
-  
-  // React.useEffect(() => {
-  //   if (handleCreateClicked) {
-  //     handleEmail_Validation()
-  //   }
-  // }, [formData?.contact_details?.email]);
 
   React.useEffect(() => {
     if (handleCreateClicked) {
