@@ -122,7 +122,7 @@ function ViewProperties_Section2_Card({ searchQuery, setSearchQuery }) {
 
                             <Grid item xs={6} onClick={() => { handleIndividualClick(row) }}>
                                 <Typography variant='h3' className={classes.tableHead}>Property Id</Typography>
-                                <Typography variant="h4">{row.pid}</Typography>
+                                <Typography variant="h4" className={`${classes.tableBody}`}>{row.pid}</Typography>
                             </Grid>
 
                             <Grid item xs={6}>
@@ -151,7 +151,7 @@ function ViewProperties_Section2_Card({ searchQuery, setSearchQuery }) {
 
                             <Grid item xs={6} onClick={() => { handleIndividualClick(row) }}>
                                 <Typography variant='h3' className={classes.tableHead}>Property Name</Typography>
-                                <Typography variant="h4">{row.pname}</Typography>
+                                <Typography variant="h4" className={`${classes.tableBody}`}>{row.pname}</Typography>
                             </Grid>
 
                             <Grid item xs={6} onClick={() => { handleIndividualClick(row) }}>
@@ -166,21 +166,21 @@ function ViewProperties_Section2_Card({ searchQuery, setSearchQuery }) {
 
                             <Grid item xs={6} onClick={() => { handleIndividualClick(row) }}>
                                 <Typography variant='h3' className={classes.tableHead}>Company Name</Typography>
-                                <Typography variant="h4">
+                                <Typography variant="h4" className={`${classes.tableBody}`}>
                                     {row.cname}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={6} onClick={() => { handleIndividualClick(row) }}>
                                 <Typography variant='h3' className={classes.tableHead}>Revenue Type</Typography>
-                                <Typography variant="h4" >
+                                <Typography variant="h4" className={`${classes.tableBody}`}>
                                     {row.rtype}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={6} onClick={() => { handleIndividualClick(row) }}>
                                 <Typography variant='h3' className={classes.tableHead}>Location</Typography>
-                                <Typography variant="h4" >
+                                <Typography variant="h4" className={`${classes.tableBody}`}>
                                     {row.location}
                                 </Typography>
                             </Grid>

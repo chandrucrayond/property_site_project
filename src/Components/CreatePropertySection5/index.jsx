@@ -92,6 +92,7 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                             value={contact_details.ccode}
                                             onChange={(event) => handleContactDetailsChange(event, 'ccode')}
                                             className={classes.ccodeStyling}
+                                            style={{ opacity: contact_details.ccode ? '1.0' : '0.6' }}
                                         >
                                             <MenuItem value="+91"><Typography variant="h2">+91</Typography></MenuItem>
                                             <MenuItem value="+02"><Typography variant="h2">+02</Typography></MenuItem>

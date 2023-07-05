@@ -23,7 +23,7 @@ const CreatePropertySection1 = ({ data, setFormData, mode, handleImageChange }) 
         const file = event.target.files[0];
         setSelectedImage(URL.createObjectURL(file));
         if (mode === "edit") {
-            handleImageChange(URL.createObjectURL(file));
+            handleImageChange(URL.createObjectURL(file), file);
         }
         else{
             handleImageAdd(URL.createObjectURL(file), file);

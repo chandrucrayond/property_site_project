@@ -14,7 +14,7 @@ export const CreatePropertyStyle = makeStyles((theme) => ({
     gridTemplateRows: 'auto !important',
     backgroundColor: '#FFFFFF !important',
     paddingLeft: '90px !important',
-    boxShadow: '0px 3px 8px rgba(0, 0, 0, 0.2) !important',
+    boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.2) !important',
   },
 
   appBarTablet: {

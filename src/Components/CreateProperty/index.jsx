@@ -16,7 +16,7 @@ import { DataContext } from "../../Context";
 
 
 
-const CreateProperty = ({ formData, setFormData, handleChange }) => {
+const CreateProperty = () => {
   // debugger
   const [open, setOpen] = React.useState(false);
   const [handleCreateClicked, setHandleCreateClicked] = useState(false);
@@ -28,6 +28,65 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
 
 
   const { propertiesList, setPropertiesList, errorList, setErrorList } = useContext(DataContext);
+  
+  const [formData, setFormData] = useState({
+
+    property_details: {
+      cname: "",
+      pname: "",
+      pperiod: "",
+      status: "",
+      pdesc: "",
+    },
+
+    property_details2: {
+      ptype: "",
+      ppurp: "",
+      rtype: "",
+      munit: "",
+      carea: "",
+      tarea: "",
+      ybuilt: "",
+      hdate: "",
+      plist: "",
+      pets: "false",
+      image: "",
+      imageName: "",
+    },
+
+    address_details: {
+      lang: "",
+      lat: "",
+      dno: "",
+      aline1: "",
+      aline2: "",
+      landmark: "",
+      area: "",
+      city: "",
+      state: "",
+      country: "",
+      pincode: "",
+    },
+
+    contact_details: {
+      bphone: "",
+      stdcode: "",
+      mphone: "",
+      ccode: "",
+      website: "",
+      email: "",
+    },
+  });
+
+  const handleChange = (event, section, element) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [section]: {
+        ...prevState[section],
+        [element]: event.target.value,
+      },
+    }));
+  };
 
   function handleClickingToggle() {
     navigate("/dashboard");
@@ -37,27 +96,33 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
         pname: "",
         status: "",
         pperiod: "",
+        pdesc: "",
       },
-
       property_details2: {
         ptype: "",
         ppurp: "",
         rtype: "",
+        munit: "",
+        carea: "",
+        tarea: "",
         plist: "",
         image: "",
+        ybuilt: "",
+        hdate: "",
       },
-
       address_details: {
         area: "",
         city: "",
         state: "",
+        country: "",
+        pincode: "",
       },
-
       contact_details: {
         bphone: "",
         stdcode: "",
         mphone: "",
         ccode: "",
+        website: "",
         email: "",
       },
     }));
@@ -210,7 +275,6 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
     else {
       return true;
     }
-
   }
 
   function handlePropertyName_Validation() {
@@ -845,16 +909,20 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
           pname: "",
           status: "",
           pperiod: "",
+          pdesc: "",
         },
-
         property_details2: {
           ptype: "",
           ppurp: "",
           rtype: "",
+          munit: "",
+          carea: "",
+          tarea: "",
           plist: "",
           image: "",
+          ybuilt: "",
+          hdate: "",
         },
-
         address_details: {
           area: "",
           city: "",
@@ -862,12 +930,12 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
           country: "",
           pincode: "",
         },
-
         contact_details: {
           bphone: "",
           stdcode: "",
           mphone: "",
           ccode: "",
+          website: "",
           email: "",
         },
       }));

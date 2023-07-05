@@ -21,54 +21,6 @@ import EditProperty from "./components/EditProperty/index";
 
 const App = (props) => {
   const context = useContext(DataContext)
-  const [formData, setFormData] = useState({
-
-    property_details: {
-      cname: "",
-      pname: "",
-      pperiod: "",
-      status: "",
-      pdesc: "",
-    },
-
-    property_details2: {
-      ptype: "",
-      ppurp: "",
-      rtype: "",
-      munit: "",
-      carea: "",
-      tarea: "",
-      ybuilt: "",
-      hdate: "",
-      plist: "",
-      pets: "false",
-      image: "",
-      imageName: "",
-    },
-
-    address_details: {
-      lang: "",
-      lat: "",
-      dno: "",
-      aline1: "",
-      aline2: "",
-      landmark: "",
-      area: "",
-      city: "",
-      state: "",
-      country: "",
-      pincode: "",
-    },
-
-    contact_details: {
-      bphone: "",
-      stdcode: "",
-      mphone: "",
-      ccode: "",
-      website: "",
-      email: "",
-    },
-  });
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
@@ -81,15 +33,7 @@ const App = (props) => {
     setIsSignedIn(false);
   };
 
-  const handleChange = (event, section, element) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [section]: {
-        ...prevState[section],
-        [element]: event.target.value,
-      },
-    }));
-  };
+ 
 
 
   const router = createBrowserRouter([
@@ -116,7 +60,7 @@ const App = (props) => {
         },
         {
           path: "createProperty",
-          element: <CreateProperty formData={formData} setFormData={setFormData} handleChange={handleChange} />
+          element: <CreateProperty  />
         },
         {
           path: "viewProperties",
@@ -128,7 +72,7 @@ const App = (props) => {
         },
         {
           path: "editProperty/:propertyId",
-          element: <EditProperty  setFormData={setFormData}/>,
+          element: <EditProperty />,
         }
       ],
     },

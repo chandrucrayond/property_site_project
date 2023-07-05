@@ -4,7 +4,11 @@ export const ViewProperties_Section2_Card_Style = makeStyles((theme) => ({
     tableHead: {
         color: '#4E5A6B',
         // marginBottom: '4px !important',
-        fontSize: '10px !important',
+        fontSize: '10.5px !important',
+    },
+
+    tableBody: {
+        fontSize: '12px !important',
     },
 
     activeStatus: {
