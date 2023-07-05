@@ -8,6 +8,9 @@ import InputLabel from '@mui/material/InputLabel';
 import { OutlinedInput } from '@mui/material';
 import { Input } from '@mui/material';
 import { InputBase } from '@mui/material';
+import { useContext } from 'react';
+import { DataContext } from "../../Context";
+import { FormHelperText } from "@mui/material";
 
 
 const CreatePropertySection5 = ({ data, setData }) => {
@@ -19,7 +22,7 @@ const CreatePropertySection5 = ({ data, setData }) => {
         setData(event, 'contact_details', element);
     };
 
-
+    const { propertiesList, setPropertiesList, errorList, setErrorList } = useContext(DataContext);
     return (
         <Grid container>
             <Grid item xs={12} >
@@ -34,9 +37,14 @@ const CreatePropertySection5 = ({ data, setData }) => {
                         <FormControl fullWidth>
                             <InputBase
                                 type="number"
-                                placeholder="Business Phone"
+                                placeholder="Phone"
                                 value={contact_details.bphone}
                                 onChange={(event) => handleContactDetailsChange(event, 'bphone')}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'e' || event.key === 'E') {
+                                        event.preventDefault();
+                                    }
+                                }}
                                 fullWidth
                                 className={`${classes.InputStyling} ${classes.numberInput} ${classes.InnerInputStyling}`}
                                 startAdornment={
@@ -44,7 +52,8 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                         <Select
                                             value={contact_details.stdcode}
                                             onChange={(event) => handleContactDetailsChange(event, 'stdcode')}
-                                            
+                                            style={{ opacity: contact_details.stdcode ? '1.0' : '0.6' }}
+
                                         >
                                             <MenuItem value="044"><Typography variant="h2">044</Typography></MenuItem>
                                             <MenuItem value="043"><Typography variant="h2">043</Typography></MenuItem>
@@ -56,12 +65,13 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                     </InputAdornment>
                                 }
                             />
+                            {(errorList?.contact_details?.bphone !== '') ? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.contact_details?.bphone}</FormHelperText> : ''}
                         </FormControl>
                     </Grid>
 
 
-                   {/* 2nd grid item */}
-                   <Grid item xs={12} sm={6} md={2}>
+                    {/* 2nd grid item */}
+                    <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Mobile Phone</Typography>
                         <FormControl fullWidth>
                             <InputBase
@@ -70,13 +80,18 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                 placeholder="Mobile Phone"
                                 value={contact_details.mphone}
                                 onChange={(event) => handleContactDetailsChange(event, 'mphone')}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'e' || event.key === 'E') {
+                                        event.preventDefault();
+                                    }
+                                }}
                                 fullWidth
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <Select
                                             value={contact_details.ccode}
                                             onChange={(event) => handleContactDetailsChange(event, 'ccode')}
-                                            style={{ minWidth: '60px', border: 'none'}}
+                                            className={classes.ccodeStyling}
                                         >
                                             <MenuItem value="+91"><Typography variant="h2">+91</Typography></MenuItem>
                                             <MenuItem value="+02"><Typography variant="h2">+02</Typography></MenuItem>
@@ -88,39 +103,42 @@ const CreatePropertySection5 = ({ data, setData }) => {
                                 }
 
                             />
+                            {(errorList?.contact_details?.mphone !== '') ? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.contact_details?.mphone}</FormHelperText> : ''}
                         </FormControl>
                     </Grid>
 
 
-                      {/* 3rd grid item */}
-                   <Grid item xs={12} sm={6} md={4}>
+                    {/* 3rd grid item */}
+                    <Grid item xs={12} sm={6} md={4}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Website</Typography>
                         <FormControl fullWidth>
                             <InputBase
-                                type= "url"
+                                type="url"
                                 placeholder="www. website. com"
                                 value={contact_details.website}
                                 onChange={(event) => handleContactDetailsChange(event, 'website')}
                                 fullWidth
                                 className={`${classes.InputStyling}`}
                             />
+                            {(errorList?.contact_details?.website !== '') ? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.contact_details?.website}</FormHelperText> : ''}
                         </FormControl>
                     </Grid>
 
 
-                    
-                      {/* 4th grid item */}
-                   <Grid item xs={12} sm={6} md={4}>
+
+                    {/* 4th grid item */}
+                    <Grid item xs={12} sm={6} md={4}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Email Address</Typography>
                         <FormControl fullWidth>
                             <InputBase
-                                type= "email"
+                                type="email"
                                 placeholder="mail-id @ org.com"
                                 value={contact_details.email}
                                 onChange={(event) => handleContactDetailsChange(event, 'email')}
                                 fullWidth
                                 className={`${classes.InputStyling}`}
                             />
+                            {(errorList?.contact_details?.email !== '') ? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.contact_details?.email}</FormHelperText> : ''}
                         </FormControl>
                     </Grid>
 

@@ -10,6 +10,9 @@ import { Input } from '@mui/material';
 import { InputBase } from '@mui/material';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import { Loader } from '@googlemaps/js-api-loader';
+import { useContext } from 'react';
+import { DataContext } from "../../Context";
+import {FormHelperText} from "@mui/material";
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
@@ -29,7 +32,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
     const handleAddressDetailsChange = (event, element) => {
         setData(event, 'address_details', element);
     };
-
+    const { propertiesList, setPropertiesList, errorList, setErrorList } = useContext(DataContext);
 
     return (
         <Grid container>
@@ -135,6 +138,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         <MenuItem value={'Adyar'}><Typography variant='h2'>Adyar</Typography></MenuItem>
 
                                     </Select>
+                                    {address_details?.area ? '': <FormHelperText className={classes.helperText}>{errorList?.address_details?.area}</FormHelperText>}
                                 </FormControl>
                             </Grid>
 
@@ -157,6 +161,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         <MenuItem value={'Kanyakumari'}><Typography variant='h2'>Kanyakumari</Typography></MenuItem>
 
                                     </Select>
+                                    {address_details?.city ? '': <FormHelperText className={classes.helperText}>{errorList?.address_details?.city}</FormHelperText>}
                                 </FormControl>
                             </Grid>
 
@@ -179,6 +184,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         <MenuItem value={'AdKarnatakayar'}><Typography variant='h2'>Karnataka</Typography></MenuItem>
 
                                     </Select>
+                                    {address_details?.state ? '': <FormHelperText className={classes.helperText}>{errorList?.address_details?.state}</FormHelperText>}
                                 </FormControl>
                             </Grid>
 
@@ -200,6 +206,7 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         <MenuItem value={'Poland'}><Typography variant='h2'>Poland</Typography></MenuItem>
 
                                     </Select>
+                                    {address_details?.country ? '': <FormHelperText className={classes.helperText}>{errorList?.address_details?.country}</FormHelperText>}
                                 </FormControl>
                             </Grid>
 
@@ -213,10 +220,16 @@ const CreatePropertySection4 = ({ data, setData }) => {
                                         placeholder="Pincode"
                                         value={address_details.pincode}
                                         onChange={(event) => handleAddressDetailsChange(event, 'pincode')}
+                                        onKeyDown={(event) => {
+                                            if (event.key === 'e' || event.key === 'E') {
+                                                event.preventDefault();
+                                            }
+                                        }}
                                         fullWidth
                                         style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
                                         className={`${classes.InputStyling} ${classes.numberInput}`}
                                     />
+                                       {(errorList?.address_details?.pincode!=='')? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.address_details?.pincode}</FormHelperText> : ''}
                                 </FormControl>
                             </Grid>
 

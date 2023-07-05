@@ -48,6 +48,7 @@ const CreatePropertySection2 = ({ data, setData, mode, setFormData, handleProper
             }));
         }
     };
+  
 
 
     return (
@@ -73,7 +74,7 @@ const CreatePropertySection2 = ({ data, setData, mode, setFormData, handleProper
                                 <MenuItem value={'Organization Name'}><Typography variant="h2">Organization Name</Typography></MenuItem>
                                 <MenuItem value={'Retail Name'}><Typography variant="h2">Retail Name</Typography></MenuItem>
                             </Select>
-                            {property_details.cname ? '':  <FormHelperText className={classes.helperText}>{errorList?.property_details?.cname}</FormHelperText>}
+                            {property_details.cname ? '':  <FormHelperText className={`${classes.helperText}`}>{errorList?.property_details?.cname}</FormHelperText>}
                         </FormControl>
                     </Grid>
 
@@ -89,6 +90,7 @@ const CreatePropertySection2 = ({ data, setData, mode, setFormData, handleProper
                                 fullWidth
                                 className={classes.InputStyling}
                             />
+                             {(errorList?.property_details?.pname!=='')? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.property_details?.pname}</FormHelperText> : ''}
                         </FormControl>
                        
                     </Grid>
@@ -144,7 +146,9 @@ const CreatePropertySection2 = ({ data, setData, mode, setFormData, handleProper
                                 onChange={handleQuillChange}
                                 modules={toolbarOptions}
                             />
+                              {(errorList?.property_details?.pdesc!=='')? <FormHelperText className={`${classes.helperText} ${classes.descriptionError}`}>{errorList?.property_details?.pdesc}</FormHelperText> : ''}
                         </div>
+                       
                     </Grid>
 
 

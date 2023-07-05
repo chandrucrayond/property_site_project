@@ -19,6 +19,7 @@ import { DataContext } from "../../Context";
 const CreateProperty = ({ formData, setFormData, handleChange }) => {
   // debugger
   const [open, setOpen] = React.useState(false);
+  const [handleCreateClicked, setHandleCreateClicked] = useState(false);
   const isMdScreen = useMediaQuery(() => theme.breakpoints.down('md'));
   const isSmScreen = useMediaQuery(() => theme.breakpoints.down('sm'));
   const isLgScreen = useMediaQuery(() => theme.breakpoints.up('md'));
@@ -30,20 +31,221 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
 
   function handleClickingToggle() {
     navigate("/dashboard");
+    setErrorList((prevData) => ({
+      property_details: {
+        cname: "",
+        pname: "",
+        status: "",
+        pperiod: "",
+      },
+
+      property_details2: {
+        ptype: "",
+        ppurp: "",
+        rtype: "",
+        plist: "",
+        image: "",
+      },
+
+      address_details: {
+        area: "",
+        city: "",
+        state: "",
+      },
+
+      contact_details: {
+        bphone: "",
+        stdcode: "",
+        mphone: "",
+        ccode: "",
+        email: "",
+      },
+    }));
+    setHandleCreateClicked(false);
   }
 
   const handleClose = (event) => {
     setOpen(false);
   };
 
+  //setting error list empty when the page loads
+  React.useEffect(() => {
+    setErrorList({
+      property_details: {
+        cname: "",
+        pname: "",
+        status: "",
+        pperiod: "",
+        pdesc: "",
+      },
+      property_details2: {
+        ptype: "",
+        ppurp: "",
+        rtype: "",
+        munit: "",
+        carea: "",
+        tarea: "",
+        plist: "",
+        image: "",
+        ybuilt: "",
+        hdate: "",
+      },
+      address_details: {
+        area: "",
+        city: "",
+        state: "",
+        country: "",
+        pincode: "",
+      },
+      contact_details: {
+        bphone: "",
+        stdcode: "",
+        mphone: "",
+        ccode: "",
+        website: "",
+        email: "",
+      },
+    });
+  }, []);
+
+
+  //setting input data empty when the page loads
+  React.useEffect(() => {
+    setFormData({
+      property_details: {
+        cname: "",
+        pname: "",
+        pperiod: "",
+        status: "",
+        pdesc: "",
+      },
+
+      property_details2: {
+        ptype: "",
+        ppurp: "",
+        rtype: "",
+        munit: "",
+        carea: "",
+        tarea: "",
+        ybuilt: "",
+        hdate: "",
+        plist: "",
+        pets: "false",
+        image: "",
+        ImageName: "",
+      },
+
+      address_details: {
+        lang: "",
+        lat: "",
+        dno: "",
+        aline1: "",
+        aline2: "",
+        landmark: "",
+        area: "",
+        city: "",
+        state: "",
+        country: "",
+        pincode: "",
+      },
+
+      contact_details: {
+        bphone: "",
+        stdcode: "",
+        mphone: "",
+        ccode: "",
+        website: "",
+        email: "",
+      },
+    })
+  }, []);
+
+  //setting validation function if the create button is clicked for the first time
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handlePropertyName_Validation()
+  //   }
+  // }, [formData?.property_details?.pname]);
+
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handleImage_Validation()
+  //   }
+  // }, [formData?.property_details2?.image]);
+
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handleCarpetArea_Validation()
+  //   }
+  // }, [formData?.property_details2?.carea]);
+
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handleTotalArea_Validation()
+  //   }
+  // }, [formData?.property_details2?.tarea]);
+
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handlePincode_Validation()
+  //   }
+  // }, [formData?.address_details?.pincode]);
+
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handlePhone_Validation()
+  //   }
+  // }, [formData?.contact_details?.bphone]);
+
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handleMobile_Validation()
+  //   }
+  // }, [formData?.contact_details?.mphone]);
+
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handleWebsite_Validation()
+  //   }
+  // }, [formData?.contact_details?.website]);
+  
+  // React.useEffect(() => {
+  //   if (handleCreateClicked) {
+  //     handleEmail_Validation()
+  //   }
+  // }, [formData?.contact_details?.email]);
 
   React.useEffect(() => {
-    console.log(errorList?.property_details?.cname);
-  }, [errorList?.property_details?.cname]);
-
-  React.useEffect(() => {
-    console.log(errorList?.property_details?.pname);
-  }, [errorList?.property_details?.pname]);
+    if (handleCreateClicked) {
+      const validationFunctions = [
+        handlePropertyName_Validation,
+        handleImage_Validation,
+        handleCarpetArea_Validation,
+        handleTotalArea_Validation,
+        handlePincode_Validation,
+        handlePhone_Validation,
+        handleMobile_Validation,
+        handleWebsite_Validation,
+        handleEmail_Validation
+      ];
+  
+      validationFunctions.forEach((validationFunction) => {
+        validationFunction();
+      });
+    }
+  }, [
+    handleCreateClicked,
+    formData?.property_details?.pname,
+    formData?.property_details2?.image,
+    formData?.property_details2?.carea,
+    formData?.property_details2?.tarea,
+    formData?.address_details?.pincode,
+    formData?.contact_details?.bphone,
+    formData?.contact_details?.mphone,
+    formData?.contact_details?.website,
+    formData?.contact_details?.email
+  ]);
+  
 
 
   function handleCompanyName_Validation() {
@@ -65,11 +267,10 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
 
   }
 
-
   function handlePropertyName_Validation() {
     const pname = formData?.property_details?.pname.toString();
 
-    if (pname === "") {
+    if (pname.trim() === "" || pname.trim() === null) {
       setErrorList((prevData) => ({
         ...prevData,
         property_details: {
@@ -78,11 +279,27 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
         },
       }));
       return false;
-    }
-    else {
+    } else if (pname.trim().length < 8) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details: {
+          ...prevData.property_details,
+          pname: "Property name should have at least 8 characters.",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details: {
+          ...prevData.property_details,
+          pname: "",
+        },
+      }));
       return true;
     }
   }
+
 
   function handlePaymentPeriod_Validation() {
     const pperiod = formData?.property_details?.pperiod.toString();
@@ -122,12 +339,592 @@ const CreateProperty = ({ formData, setFormData, handleChange }) => {
 
   }
 
+  // function handlePropertyDescription_Validation() {
+  //   const pdesc = formData?.property_details?.pdesc.toString();
+
+  //   if (pdesc.trim() === "" || pdesc.trim() === null) {
+  //     setErrorList((prevData) => ({
+  //       ...prevData,
+  //       property_details: {
+  //         ...prevData.property_details,
+  //         pdesc: "Property Description is required.",
+  //       },
+  //     }));
+  //     return false;
+  //   } else if (pdesc.trim().length < 8) {
+  //     setErrorList((prevData) => ({
+  //       ...prevData,
+  //       property_details: {
+  //         ...prevData.property_details,
+  //         pdesc: "Property Description should have at least 100 characters.",
+  //       },
+  //     }));
+  //     return false;
+  //   } else {
+  //     setErrorList((prevData) => ({
+  //       ...prevData,
+  //       property_details: {
+  //         ...prevData.property_details,
+  //         pdesc: "",
+  //       },
+  //     }));
+  //     return true;
+  //   }
+  // }
+
+  function handleImage_Validation() {
+    const image = formData?.property_details2?.imageName;
+    const allowedFormats = ["jpg", "jpeg", "png", "gif"];
+    const fileExtension = image?.name?.split(".").pop().toLowerCase();
+    if (!image) {
+
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          image: "Image is required.",
+        },
+      }));
+      return false;
+
+    } else if (!allowedFormats.includes(fileExtension)) {
+
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          image: "Invalid image format",
+        },
+      }));
+      return false;
+
+    }
+    else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          image: "",
+        },
+      }));
+      return true;
+    }
+  }
+
+  function handlePropertyType_Validation() {
+    const ptype = formData?.property_details2?.ptype.toString();
+
+    if (ptype === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          ptype: "Property type is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function handlePropertyPurpose_Validation() {
+    const ppurp = formData?.property_details2?.ppurp.toString();
+
+    if (ppurp === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          ppurp: "Purpose is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleRevenueType_Validation() {
+    const rtype = formData?.property_details2?.rtype.toString();
+
+    if (rtype === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          rtype: "Revenue type is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleMeasurementUnit_Validation() {
+    const munit = formData?.property_details2?.munit.toString();
+
+    if (munit === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          munit: "Unit is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function handleCarpetArea_Validation() {
+    const carea = formData?.property_details2?.carea.toString();
+
+    if (carea.trim() === "" || carea.trim() === null) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          carea: "Carpet area is required.",
+        },
+      }));
+      return false;
+    } else if (carea.trim().length < 3) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          carea: "Carpet area should have at least 3 characters.",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          carea: "",
+        },
+      }));
+      return true;
+    }
+  }
+
+
+  function handleTotalArea_Validation() {
+    const tarea = formData?.property_details2?.tarea.toString();
+
+    if (tarea.trim() === "" || tarea.trim() === null) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          tarea: "Total area is required.",
+        },
+      }));
+      return false;
+    } else if (tarea.trim().length < 3) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          tarea: "Total area should have at least 3 characters.",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          tarea: "",
+        },
+      }));
+      return true;
+    }
+  }
+
+  function handleYearBuilt_Validation() {
+    const ybuilt = formData?.property_details2?.ybuilt.toString();
+
+    if (ybuilt === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          ybuilt: "Year built is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleHandover_Validation() {
+    const hdate = formData?.property_details2?.hdate.toString();
+
+    if (hdate === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          hdate: "Handover date is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handlePublicListing_Validation() {
+    const plist = formData?.property_details2?.plist.toString();
+
+    if (plist === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        property_details2: {
+          ...prevData.property_details2,
+          plist: "Listing detail is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleArea_Validation() {
+    const area = formData?.address_details?.area.toString();
+
+    if (area === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        address_details: {
+          ...prevData.address_details,
+          area: "Area is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleCity_Validation() {
+    const city = formData?.address_details?.city.toString();
+
+    if (city === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        address_details: {
+          ...prevData.address_details,
+          city: "City is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleState_Validation() {
+    const state = formData?.address_details?.state.toString();
+
+    if (state === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        address_details: {
+          ...prevData.address_details,
+          state: "State is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+
+  }
+
+  function handleCountry_Validation() {
+    const country = formData?.address_details?.country.toString();
+
+    if (country === "") {
+      setErrorList((prevData) => ({
+        ...prevData,
+        address_details: {
+          ...prevData.address_details,
+          country: "Country is required.",
+        },
+      }));
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+
+  function handlePincode_Validation() {
+    const pincode = formData?.address_details?.pincode;
+
+    if (pincode.trim() === "" || pincode.trim() === null) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        address_details: {
+          ...prevData.address_details,
+          pincode: "Pincode is required.",
+        },
+      }));
+      return false;
+    } else if (pincode.trim().length < 6 || pincode.trim().length > 6) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        address_details: {
+          ...prevData.address_details,
+          pincode: "Pincode should be 6 digits.",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        address_details: {
+          ...prevData.address_details,
+          pincode: "",
+        },
+      }));
+      return true;
+    }
+  }
+
+  function handlePhone_Validation(){
+    const bphone = formData?.contact_details?.bphone;
+
+    if (bphone.trim() === "" || bphone.trim() === null) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          bphone: "Phone is required.",
+        },
+      }));
+      return false;
+    } else if (bphone.trim().length < 7 || bphone.trim().length > 7) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          bphone: "Phone should be 7 digits.",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          bphone: "",
+        },
+      }));
+      return true;
+    }
+  }
+
+  function handleMobile_Validation(){
+    const mphone = formData?.contact_details?.mphone;
+
+    if (mphone.trim() === "" || mphone.trim() === null) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          mphone: "Mobile is required.",
+        },
+      }));
+      return false;
+    } else if (mphone.trim().length < 10 || mphone.trim().length > 10) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          mphone: "Mobile should be 10 digits.",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          mphone: "",
+        },
+      }));
+      return true;
+    }
+  }
+
+  function isValidURL(url) {
+    const regex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+    const matches = url.match(regex);
+    return matches !== null;
+  }  
+
+  function handleWebsite_Validation(){
+    const website = formData?.contact_details?.website;
+
+    if (website.trim() === "" || website.trim() === null) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          website: "Website is required.",
+        },
+      }));
+      return false;
+    } else if (!isValidURL(website)){
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          website: "Enter a valid website URL.",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          website: "",
+        },
+      }));
+      return true;
+    }
+  }
+
+  function isValidEmail(email) {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+
+  function handleEmail_Validation(){
+    const email = formData?.contact_details?.email;
+
+    if (email.trim() === "" || email.trim() === null) {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          email: "Email is required.",
+        },
+      }));
+      return false;
+    } else if (!isValidEmail(email)){
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          email: "Enter a valid email",
+        },
+      }));
+      return false;
+    } else {
+      setErrorList((prevData) => ({
+        ...prevData,
+        contact_details: {
+          ...prevData.contact_details,
+          email: "",
+        },
+      }));
+      return true;
+    }
+  }
+
   function handleClickingCreate() {
+    setHandleCreateClicked(true);
     const cname = handleCompanyName_Validation();
     const pname = handlePropertyName_Validation();
     const pperiod = handlePaymentPeriod_Validation();
     const status = handleStatus_Validation();
-    if ( cname && pname && pperiod && status) {
+    const image = handleImage_Validation();
+    const ptype = handlePropertyType_Validation();
+    const ppurp = handlePropertyPurpose_Validation();
+    const rtype = handleRevenueType_Validation();
+    const munit = handleMeasurementUnit_Validation();
+    const carea = handleCarpetArea_Validation();
+    const tarea = handleTotalArea_Validation();
+    const ybuilt = handleYearBuilt_Validation();
+    const hdate = handleHandover_Validation();
+    const plist = handlePublicListing_Validation();
+    const area = handleArea_Validation();
+    const city = handleCity_Validation();
+    const state = handleState_Validation();
+    const country = handleCountry_Validation();
+    const pincode = handlePincode_Validation();
+    const bphone = handlePhone_Validation();
+    const mphone = handleMobile_Validation();
+    const website = handleWebsite_Validation();
+    const email = handleEmail_Validation();
+
+
+    if (cname && pname && pperiod && status && image && ptype &&
+      ppurp && rtype && munit && carea && tarea && ybuilt && hdate
+      && plist && area && city && state && country && pincode && 
+      bphone && mphone && website && email) {
+      setHandleCreateClicked(false);
+      setErrorList((prevData) => ({
+        property_details: {
+          cname: "",
+          pname: "",
+          status: "",
+          pperiod: "",
+        },
+
+        property_details2: {
+          ptype: "",
+          ppurp: "",
+          rtype: "",
+          plist: "",
+          image: "",
+        },
+
+        address_details: {
+          area: "",
+          city: "",
+          state: "",
+          country: "",
+          pincode: "",
+        },
+
+        contact_details: {
+          bphone: "",
+          stdcode: "",
+          mphone: "",
+          ccode: "",
+          email: "",
+        },
+      }));
       setOpen(true);
       setPropertiesList((prevData) => [...prevData, formData])
       setFormData({

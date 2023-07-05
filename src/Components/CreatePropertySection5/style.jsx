@@ -41,5 +41,24 @@ export const CreatePropertySection5Style = makeStyles((theme) => ({
 
     InnerInputStyling: {
       paddingLeft: '0 !important',
-    }
+    },
+
+    helperText: {
+      position: 'relative !important',
+      // top: '37px !important',
+      left: '2px !important',
+      marginLeft: '0px !important',
+      color: 'Red !important',
+   },
+
+   ccodeStyling: {
+      '& .MuiOutlinedInput-input': {
+          paddingRight: '27px !important',
+          paddingLeft: '10px !important',
+      },
+
+      '& .MuiOutlinedInput-notchedOutline': {
+        padding: '0px !important',
+      },
+   },
 }));

@@ -39,4 +39,13 @@ export const CreatePropertySection4Style = makeStyles((theme) => ({
       color: '#757575 !important',
       opacity: '0.7 !important',
    },
+
+   helperText: {
+    position: 'relative !important',
+    // top: '37px !important',
+    left: '2px !important',
+    marginLeft: '0px !important',
+    color: 'Red !important',
+ },
+ 
 }));

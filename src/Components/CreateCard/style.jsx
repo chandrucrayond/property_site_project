@@ -5,10 +5,11 @@ export const CreateCardStyle = makeStyles((theme) => ({
     styleCardWithHeight: {
         backgroundColor: '#FFFFFF !important',
         borderRadius: '8px !important',
-        padding: '20px',
-        minHeight: '252px',
-        margin: 'auto',
-        display: 'flex',
+        padding: '20px !important',
+        minHeight: '252px !important',
+        margin: 'auto !important',
+        display: 'flex !important',
+        height: 'auto !important',
     },
 
     styleCard: {

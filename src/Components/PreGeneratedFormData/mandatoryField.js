@@ -5,20 +5,29 @@ export const mandatoryField = [
         pname: "",
         status: "",
         pperiod: "",
+        pdesc: "",
       },
   
       property_details2: {
         ptype: "",
         ppurp: "",
         rtype: "",
+        munit: "",
+        carea: "",
+        tarea: "",
         plist: "",
         image: "",
+        ybuilt: "",
+        hdate: "",
+        plist: "",
       },
   
       address_details: {
         area: "",
         city: "",
         state: "",
+        country: "",
+        pincode: "",
       },
   
       contact_details: {
@@ -26,6 +35,7 @@ export const mandatoryField = [
         stdcode: "",
         mphone: "",
         ccode: "",
+        website: "",
         email: "",
       },
     }

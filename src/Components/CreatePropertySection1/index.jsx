@@ -3,10 +3,14 @@ import React from "react";
 import { CreatePropertySection1Style } from "./style";
 import UploadImage from "../../icons/Create-Property/UploadImage.jsx";
 import RoundedImage from "../../icons/Create-Property/RoundedImage";
+import { useContext } from 'react';
+import { DataContext } from "../../Context";
+import {FormHelperText} from "@mui/material";
 
 const CreatePropertySection1 = ({ data, setFormData, mode, handleImageChange }) => {
     const classes = CreatePropertySection1Style();
     const {  property_details2 } = data;
+    const { errorList, setErrorList } = useContext(DataContext);
     const [selectedImage, setSelectedImage] = React.useState((mode === "edit") ? property_details2.image : '');
 
     const fileInputRef = React.useRef(null);
@@ -22,19 +26,20 @@ const CreatePropertySection1 = ({ data, setFormData, mode, handleImageChange }) 
             handleImageChange(URL.createObjectURL(file));
         }
         else{
-        handleImageAdd(URL.createObjectURL(file));
+            handleImageAdd(URL.createObjectURL(file), file);
         }
     };
 
-    const handleImageAdd = (fileURL) => {
+    const handleImageAdd = (imageUrl, file) => {
         setFormData((prevState) => ({
-            ...prevState,
-            property_details2: {
-                ...prevState.property_details2,
-                image: fileURL,
-            },
+          ...prevState,
+          property_details2: {
+            ...prevState.property_details2,
+            image: imageUrl,
+            imageName: file,
+          },
         }));
-    };
+      };
 
 
     return (
@@ -65,6 +70,7 @@ const CreatePropertySection1 = ({ data, setFormData, mode, handleImageChange }) 
                         <UploadImage />
                     </Box>
                 )}
+                 
 
             </Grid>
             <Grid item xs={12} style={{ textAlign: 'center' }} >
@@ -77,6 +83,9 @@ const CreatePropertySection1 = ({ data, setFormData, mode, handleImageChange }) 
                 <input type="file" ref={fileInputRef} onChange={handleImageUpload} style={{ display: 'none' }} />
 
             </Grid>
+            <Grid item xs={12} style={{ textAlign: 'center' }} >
+            {(errorList?.property_details2?.image!=='')? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.property_details2?.image}</FormHelperText> : ''}
+            </Grid> 
         </Grid>
     );
 }

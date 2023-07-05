@@ -23,7 +23,8 @@ export const CreatePropertySection2Style = makeStyles((theme) => ({
     },
 
     quillContainer: {
-      
+        display: 'flex !important',
+        flexDirection: 'column !important',
         border:'none',
         '& .quill': {
             border: '1px solid #bdbdbd !important',
@@ -65,8 +66,16 @@ export const CreatePropertySection2Style = makeStyles((theme) => ({
         left: '2px !important',
         marginLeft: '0px !important',
         color: 'Red !important',
+     },
+
+     inputHelperText: {
+
+     },
+
+     descriptionError: {
+        position: 'relative !important',
+        top: '0px !important',
+        zIndex: '1000 !important',
+       
      }
-
-     
-
 }));

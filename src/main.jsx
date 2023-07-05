@@ -43,6 +43,7 @@ const App = (props) => {
       plist: "",
       pets: "false",
       image: "",
+      imageName: "",
     },
 
     address_details: {
@@ -61,9 +62,9 @@ const App = (props) => {
 
     contact_details: {
       bphone: "",
-      stdcode: "044",
+      stdcode: "",
       mphone: "",
-      ccode: "+91",
+      ccode: "",
       website: "",
       email: "",
     },

@@ -13,13 +13,14 @@ import theme from "../ThemeProvider";
 import TickMark from "../../icons/Create-Property/TickMark";
 import { useContext } from 'react';
 import { DataContext } from "../../Context";
+import {FormHelperText} from "@mui/material";
 
 
 const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublicListChange, handlePetsAllowed }) => {
 
     const classes = CreatePropertySection3Style();
     const { property_details2 } = data;
-    const { propertiesList, setPropertiesList } = useContext(DataContext);
+    const { propertiesList, setPropertiesList, errorList, setErrorList } = useContext(DataContext);
 
     const handlePropertyDetailsChange = (event, element) => {
         setData(event, 'property_details2', element);
@@ -74,7 +75,7 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
     return (
         <Grid container>
             <Grid item xs={12}  >
-                <Grid container spacing={3}>
+                <Grid container spacing={4}>
 
 
                     {/* 1st grid item */}
@@ -93,6 +94,7 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 <MenuItem value={'Individual house'}><Typography variant='h2'>Individual house</Typography></MenuItem>
                                 <MenuItem value={'Plot'}><Typography variant='h2'>Plot</Typography></MenuItem>
                             </Select>
+                            {property_details2?.ptype ? '': <FormHelperText className={classes.helperText}>{errorList?.property_details2?.ptype}</FormHelperText>}
                         </FormControl>
                     </Grid>
 
@@ -112,6 +114,7 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 <MenuItem value={'Residential'}><Typography variant='h2'>Residential</Typography></MenuItem>
                                 <MenuItem value={'Commercial'}><Typography variant='h2'>Commercial</Typography></MenuItem>
                             </Select>
+                            {property_details2?.ppurp ? '': <FormHelperText className={classes.helperText}>{errorList?.property_details2?.ppurp}</FormHelperText>}
                         </FormControl>
                     </Grid>
 
@@ -134,6 +137,7 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 <MenuItem value={'Rent'}><Typography variant='h2'>Rent</Typography></MenuItem>
 
                             </Select>
+                            {property_details2?.rtype ? '': <FormHelperText className={classes.helperText}>{errorList?.property_details2?.rtype}</FormHelperText>}
                         </FormControl>
                     </Grid>
 
@@ -154,6 +158,7 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 <MenuItem value={'Sq.m'}><Typography variant='h2'>Sq.m</Typography></MenuItem>
 
                             </Select>
+                            {property_details2?.munit ? '': <FormHelperText className={classes.helperText}>{errorList?.property_details2?.munit}</FormHelperText>}
                         </FormControl>
                     </Grid>
 
@@ -167,6 +172,11 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 placeholder="Carpet Area"
                                 value={property_details2.carea}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'carea')}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'e' || event.key === 'E') {
+                                        event.preventDefault();
+                                    }
+                                }}
                                 fullWidth
                                 className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
@@ -175,6 +185,7 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                     </InputAdornment>
                                 }
                             />
+                             {(errorList?.property_details2?.carea!=='')? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.property_details2?.carea}</FormHelperText> : ''}
                         </FormControl>
                     </Grid>
 
@@ -188,6 +199,11 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 placeholder="Total Area"
                                 value={property_details2.tarea}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'tarea')}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'e' || event.key === 'E') {
+                                        event.preventDefault();
+                                    }
+                                }}
                                 fullWidth
                                 className={`${classes.InputStyling} ${classes.numberInput}`}
                                 endAdornment={
@@ -196,20 +212,14 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                     </InputAdornment>
                                 }
                             />
+                             {(errorList?.property_details2?.tarea!=='')? <FormHelperText className={`${classes.helperText} ${classes.inputHelperText}`}>{errorList?.property_details2?.tarea}</FormHelperText> : ''}
                         </FormControl>
                     </Grid>
-
-                    {/* <InputLabel shrink={!property_details2.ybuilt} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
-                                {property_details2.ybuilt ? '' : '01 /01 /2020'}
-                            </InputLabel> */}
 
                     {/* 7th grid item */}
                     <Grid item xs={12} sm={6} md={2}>
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Year Built</Typography>
                         <FormControl fullWidth>
-                            {/* <InputLabel shrink={!property_details2.ybuilt} id="select-label" style={{ top: '20px' }} className={classes.inputLabel}>
-                                {property_details2.ybuilt ? '' : '01 /01 /2020'}
-                            </InputLabel> */}
                             <InputBase
                                 type="date"
                                 placeholder="01 /01 /2020"
@@ -217,8 +227,9 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 onChange={(event) => handlePropertyDetailsChange(event, 'ybuilt')}
                                 fullWidth
                                 className={`${classes.InputStyling}`}
-                                style={{ color: property_details2.ybuilt ? 'initial' : 'transparent' }}
+                                style={{ opacity: property_details2.ybuilt ? '1.0' : '0.6' }}
                             />
+                             {property_details2?.ybuilt ? '': <FormHelperText className={classes.helperText}>{errorList?.property_details2?.ybuilt}</FormHelperText>}
                         </FormControl>
                     </Grid>
 
@@ -233,9 +244,10 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                                 value={property_details2.hdate}
                                 onChange={(event) => handlePropertyDetailsChange(event, 'hdate')}
                                 fullWidth
-                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px' }}
+                                style={{ border: '1px solid #bdbdbd', height: '55px', padding: '15px', borderRadius: '4px', opacity: property_details2.hdate ? '1.0' : '0.6'  }}
                                 className={`${classes.InputStyling}`}
                             />
+                             {property_details2?.hdate ? '': <FormHelperText className={classes.helperText}>{errorList?.property_details2?.hdate}</FormHelperText>}
                         </FormControl>
                     </Grid>
 
@@ -245,6 +257,7 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                         <Typography variant='h5' style={{ marginBottom: '10px', }}>Public Listing</Typography>
                         <ToggleButtonGroup
                             value={selected}
+                            style={{ opacity: property_details2.plist ? '1.0' : '0.6' }}
                         >
                             <ToggleButton
                                 value="Private"
@@ -282,8 +295,10 @@ const CreatePropertySection3 = ({ data, setData, mode, setFormData, handlePublic
                             >
                                 <Typography variant='h2' style={{ ...(selected === "None" && { color: 'white' }) }}>None</Typography>
                             </ToggleButton>
+                          
                         </ToggleButtonGroup>
-
+                        {property_details2?.plist ? '': <FormHelperText className={`${classes.helperText} ${classes.listingHelperText}`}>{errorList?.property_details2?.plist}</FormHelperText>}
+                       
                     </Grid>
 
 

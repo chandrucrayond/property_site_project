@@ -25,4 +25,12 @@ export const CreatePropertySection1Style = makeStyles((theme) => ({
         padding: '7px !important',
         marginTop: '30px !important',
     },
+    helperText: {
+        position: 'absolute !important',
+        textAlign: 'center !important',
+        left: '4% !important',
+        // marginLeft: '15px !important',
+        color: 'Red !important',
+     },
+
 }));
